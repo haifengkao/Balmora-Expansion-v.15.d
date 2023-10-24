@@ -1,22 +1,20 @@
 begin BE_returndancers
 if (BE_MakeloveTo != 1)
 	"BE_redguard dancer"-> positioncell 2905,5248,10758,270 "Balmora, Morgana's House of Earthly Delights"
-	set "BE_redguard dancer"->Returning to 1
+	set "BE_redguard dancer".Returning to 1
 endif
 
 if (BE_MakeloveTo != 2)
 	"BE_nord dancer"-> positioncell 2883,4995,10738,270 "Balmora, Morgana's House of Earthly Delights"
-	set "BE_nord dancer"->Returning to 1
+	set "BE_nord dancer".Returning to 1
 endif
 
-endif
 
 if (BE_MakeloveTo != 3)
 	"BE_breton dancer"-> positioncell 2892,4751,10753,270 "Balmora, Morgana's House of Earthly Delights"
-	set "BE_breton dancer"->Returning to 1
+	set "BE_breton dancer".Returning to 1
 endif
 
-endif
 
 stopscript BE_returndancers
 end BE_returndancers

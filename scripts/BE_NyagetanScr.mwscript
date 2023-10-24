@@ -36,7 +36,7 @@ if ( GetTarget, Player == 1 )
   Set timer to (timer + GetSecondsPassed)
   if ( timer >= 25 )
    if ( GetItemCount, "BE_ebony shortsword nyagetan" < 1 )
-    StopCombat Player
+    player->StopCombat
     AddItem, "BE_ebony shortsword nyagetan" 1
     StartCombat Player
    endif
