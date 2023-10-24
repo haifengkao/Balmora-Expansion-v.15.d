@@ -7,8 +7,8 @@ if ( "BE_lezring" == 4 )
 endif
 
 if ( OnKnockOut == 1 )
-	stopcombat, "BE_lina_inverse"
-	"BE_lina_inverse"-> stopcombat, "BE_naga_the serpent"
+	"BE_lina_inverse"-> stopcombat 
+	"BE_naga_theserpent"-> stopcombat
 	EnablePlayerFighting
 	EnablePlayerMagic
 	enablevanitymode

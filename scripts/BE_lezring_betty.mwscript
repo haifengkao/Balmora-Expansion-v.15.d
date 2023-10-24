@@ -7,8 +7,8 @@ if ( "BE_lezring" == 3 )
 endif
 
 if ( OnKnockOut == 1 )
-	stopcombat, "BE_wanda_williams"
-	"BE_wanda_williams"-> stopcombat, "BE_betty_bronson"
+	"BE_wanda_williams"->stopcombat
+	"BE_betty_bronson"->stopcombat
 	set "BE_lezring" to 5
 	EnablePlayerFighting
 	EnablePlayerMagic
