@@ -15,19 +15,19 @@ if ( Control == 1 )
 		return 
 	elseif ( button == 0 ) 
 		player->AddItem "1Ice_BE_FPHair11k_Human" 1 
-		player->Equip "1Ice_BE_FPHair11k_Human" 1 
+		player->Equip "1Ice_BE_FPHair11k_Human" 
 		set Control to 2 
 	elseif ( button == 1 ) 
 		player->AddItem "1Ice_BE_FPHair11k_D" 1 
-		player->Equip "1Ice_BE_FPHair11k_D" 1 
+		player->Equip "1Ice_BE_FPHair11k_D" 
 		set Control to 2 
 	elseif ( button == 2 ) 
 		player->AddItem "1Ice_BE_FPHair11k_H" 1 
-		player->Equip "1Ice_BE_FPHair11k_H" 1 
+		player->Equip "1Ice_BE_FPHair11k_H" 
 		set Control to 2 
 	elseif ( button == 3 ) 
 		player->AddItem "1Ice_BE_FPHair11k_w" 1 
-		player->Equip "1Ice_BE_FPHair11k_w" 1 
+		player->Equip "1Ice_BE_FPHair11k_w" 
 		set Control to 2
 	endif 
 endif 

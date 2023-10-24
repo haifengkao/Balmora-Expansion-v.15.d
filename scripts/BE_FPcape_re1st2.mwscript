@@ -15,35 +15,35 @@ if ( Control == 1 )
 		return 
 	elseif ( button == 0 ) 
 		player->AddItem "FP_cape_re_Br" 1 
-		player->Equip "FP_cape_re_Br" 1 
+		player->Equip "FP_cape_re_Br" 
 		set Control to 2 
 	elseif ( button == 1 ) 
 		player->AddItem "FP_cape_re_DE" 1 
-		player->Equip "FP_cape_re_DE" 1 
+		player->Equip "FP_cape_re_DE" 
 		set Control to 2 
 	elseif ( button == 2 ) 
 		player->AddItem "FP_cape_re_HE" 1 
-		player->Equip "FP_cape_re_HE" 1 
+		player->Equip "FP_cape_re_HE" 
 		set Control to 2 
 	elseif ( button == 3 ) 
 		player->AddItem "FP_cape_re_Im" 1 
-		player->Equip "FP_cape_re_Im" 1 
+		player->Equip "FP_cape_re_Im" 
 		set Control to 2 
 	elseif ( button == 4 ) 
 		player->AddItem "FP_cape_re_No" 1 
-		player->Equip "FP_cape_re_No" 1 
+		player->Equip "FP_cape_re_No" 
 		set Control to 2
 	elseif ( button == 5 ) 
 		player->AddItem "FP_cape_re_Or" 1 
-		player->Equip "FP_cape_re_Or" 1 
+		player->Equip "FP_cape_re_Or" 
 		set Control to 2
 	elseif ( button == 6 ) 
 		player->AddItem "FP_cape_re_RG" 1 
-		player->Equip "FP_cape_re_RG" 1 
+		player->Equip "FP_cape_re_RG" 
 		set Control to 2
 	elseif ( button == 7 ) 
 		player->AddItem "FP_cape_re_WE" 1 
-		player->Equip "FP_cape_re_WE" 1 
+		player->Equip "FP_cape_re_WE" 
 		set Control to 2
 	endif 
 endif 

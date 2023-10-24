@@ -15,35 +15,35 @@ if ( Control == 1 )
 		return 
 	elseif ( button == 0 ) 
 		player->AddItem "1Ice_BE_FPMOBraidk_B" 1 
-		player->Equip "1Ice_BE_FPMOBraidk_B" 1 
+		player->Equip "1Ice_BE_FPMOBraidk_B" 
 		set Control to 2 
 	elseif ( button == 1 ) 
 		player->AddItem "1Ice_BE_FPMOBraidk_D" 1 
-		player->Equip "1Ice_BE_FPMOBraidk_D" 1 
+		player->Equip "1Ice_BE_FPMOBraidk_D" 
 		set Control to 2 
 	elseif ( button == 2 ) 
 		player->AddItem "1Ice_BE_FPMOBraidk_H" 1 
-		player->Equip "1Ice_BE_FPMOBraidk_H" 1 
+		player->Equip "1Ice_BE_FPMOBraidk_H" 
 		set Control to 2 
 	elseif ( button == 3 ) 
 		player->AddItem "1Ice_BE_FPMOBraidk_I" 1 
-		player->Equip "1Ice_BE_FPMOBraidk_I" 1 
+		player->Equip "1Ice_BE_FPMOBraidk_I" 
 		set Control to 2 
 	elseif ( button == 4 ) 
 		player->AddItem "1Ice_BE_FPMOBraidk_N" 1 
-		player->Equip "1Ice_BE_FPMOBraidk_N" 1 
+		player->Equip "1Ice_BE_FPMOBraidk_N" 
 		set Control to 2
 	elseif ( button == 5 ) 
 		player->AddItem "1Ice_BE_FPMOBraidk_R" 1 
-		player->Equip "1Ice_BE_FPMOBraidk_R" 1 
+		player->Equip "1Ice_BE_FPMOBraidk_R" 
 		set Control to 2
 	elseif ( button == 6 ) 
 		player->AddItem "1Ice_BE_FPMOBraidk_W" 1 
-		player->Equip "1Ice_BE_FPMOBraidk_W" 1 
+		player->Equip "1Ice_BE_FPMOBraidk_W" 
 		set Control to 2
 	elseif ( button == 7 ) 
 		player->AddItem "1Ice_BE_FPMOBraidk_C" 1 
-		player->Equip "1Ice_BE_FPMOBraidk_C" 1 
+		player->Equip "1Ice_BE_FPMOBraidk_C" 
 		set Control to 2
 	endif 
 endif 

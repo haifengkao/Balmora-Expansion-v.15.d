@@ -15,39 +15,39 @@ if ( Control == 1 )
 		return 
 	elseif ( button == 0 ) 
 		player->AddItem "1Ice_BE_SnakeRobe_B" 1 
-		player->Equip "1Ice_BE_SnakeRobe_B" 1 
+		player->Equip "1Ice_BE_SnakeRobe_B" 
 		set Control to 2 
 	elseif ( button == 1 ) 
 		player->AddItem "1Ice_BE_SnakeRobe_D" 1 
-		player->Equip "1Ice_BE_SnakeRobe_D" 1 
+		player->Equip "1Ice_BE_SnakeRobe_D" 
 		set Control to 2 
 	elseif ( button == 2 ) 
 		player->AddItem "1Ice_BE_SnakeRobe_H" 1 
-		player->Equip "1Ice_BE_SnakeRobe_H" 1 
+		player->Equip "1Ice_BE_SnakeRobe_H" 
 		set Control to 2 
 	elseif ( button == 3 ) 
 		player->AddItem "1Ice_BE_SnakeRobe_I" 1 
-		player->Equip "1Ice_BE_SnakeRobe_I" 1 
+		player->Equip "1Ice_BE_SnakeRobe_I" 
 		set Control to 2 
 	elseif ( button == 4 ) 
 		player->AddItem "1Ice_BE_SnakeRobe_K" 1 
-		player->Equip "1Ice_BE_SnakeRobe_K" 1 
+		player->Equip "1Ice_BE_SnakeRobe_K" 
 		set Control to 2
 	elseif ( button == 5 ) 
 		player->AddItem "1Ice_BE_SnakeRobe_N" 1 
-		player->Equip "1Ice_BE_SnakeRobe_N" 1 
+		player->Equip "1Ice_BE_SnakeRobe_N" 
 		set Control to 2
 	elseif ( button == 6 ) 
 		player->AddItem "1Ice_BE_SnakeRobe_O" 1 
-		player->Equip "1Ice_BE_SnakeRobe_O" 1 
+		player->Equip "1Ice_BE_SnakeRobe_O" 
 		set Control to 2
 	elseif ( button == 7 ) 
 		player->AddItem "1Ice_BE_SnakeRobe_R" 1 
-		player->Equip "1Ice_BE_SnakeRobe_R" 1 
+		player->Equip "1Ice_BE_SnakeRobe_R" 
 		set Control to 2
 	elseif ( button == 8 ) 
 		player->AddItem "1Ice_BE_SnakeRobe_w" 1 
-		player->Equip "1Ice_BE_SnakeRobe_w" 1 
+		player->Equip "1Ice_BE_SnakeRobe_w" 
 		set Control to 2
 	endif 
 endif 

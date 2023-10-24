@@ -15,35 +15,35 @@ if ( Control == 1 )
 		return 
 	elseif ( button == 0 ) 
 		player->AddItem "1Ice_BE_BGWEhair5r_B" 1 
-		player->Equip "1Ice_BE_BGWEhair5r_B" 1 
+		player->Equip "1Ice_BE_BGWEhair5r_B" 
 		set Control to 2 
 	elseif ( button == 1 ) 
 		player->AddItem "1Ice_BE_BGWEhair5r_D" 1 
-		player->Equip "1Ice_BE_BGWEhair5r_D" 1 
+		player->Equip "1Ice_BE_BGWEhair5r_D" 
 		set Control to 2 
 	elseif ( button == 2 ) 
 		player->AddItem "1Ice_BE_BGWEhair5r_H" 1 
-		player->Equip "1Ice_BE_BGWEhair5r_H" 1 
+		player->Equip "1Ice_BE_BGWEhair5r_H" 
 		set Control to 2 
 	elseif ( button == 3 ) 
 		player->AddItem "1Ice_BE_BGWEhair5r_I" 1 
-		player->Equip "1Ice_BE_BGWEhair5r_I" 1 
+		player->Equip "1Ice_BE_BGWEhair5r_I" 
 		set Control to 2 
 	elseif ( button == 4 ) 
 		player->AddItem "1Ice_BE_BGWEhair5r_N" 1 
-		player->Equip "1Ice_BE_BGWEhair5r_N" 1 
+		player->Equip "1Ice_BE_BGWEhair5r_N" 
 		set Control to 2
 	elseif ( button == 5 ) 
 		player->AddItem "1Ice_BE_BGWEhair5r_R" 1 
-		player->Equip "1Ice_BE_BGWEhair5r_R" 1 
+		player->Equip "1Ice_BE_BGWEhair5r_R" 
 		set Control to 2
 	elseif ( button == 6 ) 
 		player->AddItem "1Ice_BE_BGWEhair5r_W" 1 
-		player->Equip "1Ice_BE_BGWEhair5r_W" 1 
+		player->Equip "1Ice_BE_BGWEhair5r_W" 
 		set Control to 2
 	elseif ( button == 7 ) 
 		player->AddItem "1Ice_BE_BGWEhair5r_C" 1 
-		player->Equip "1Ice_BE_BGWEhair5r_C" 1 
+		player->Equip "1Ice_BE_BGWEhair5r_C" 
 		set Control to 2
 	endif 
 endif 
