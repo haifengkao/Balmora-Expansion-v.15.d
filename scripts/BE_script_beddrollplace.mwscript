@@ -7,4 +7,4 @@ begin BE_script_beddrollplace
 		PlaceAtPC, "BE_Bedroll", 1, 0, 0
 		Set OnPCDrop to 0
 	endif
-end BE_script_bedrollplace
+end BE_script_beddrollplace
