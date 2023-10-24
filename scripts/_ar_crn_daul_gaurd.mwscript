@@ -15,7 +15,7 @@ if ( OnPCEquip == 1 )
 		if ( ItemEquipped == 0 )
 			
                Player-> AddItem "_ar_crn_daulgieen_left_gaurd_s" 1
-               Player-> Equip "_ar_crn_daulgieen_left_gaurd_s" 1 
+               Player-> Equip "_ar_crn_daulgieen_left_gaurd_s" 
 
 			set ItemEquipped to 1
 		endif

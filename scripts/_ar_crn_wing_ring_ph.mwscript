@@ -15,7 +15,7 @@ if ( OnPCEquip == 1 )
 		if ( ItemEquipped == 0 )
 			
                Player-> AddItem "_ar_crn_phoenix_ring_wings" 1
-               Player-> Equip "_ar_crn_phoenix_ring_wings" 1 
+               Player-> Equip "_ar_crn_phoenix_ring_wings" 
 
 			set ItemEquipped to 1
 		endif
