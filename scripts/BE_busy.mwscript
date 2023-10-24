@@ -1,0 +1,8 @@
+begin BE_busy
+
+if ( OnActivate == 1 )
+	PlaySound3D "LockedDoor"
+	Messagebox "It is locked. A sign on the door reads: 'Do not disturb'"
+endif
+
+end

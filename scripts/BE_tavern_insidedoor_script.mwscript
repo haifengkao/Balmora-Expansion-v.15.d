@@ -1,0 +1,9 @@
+Begin BE_tavern_insidedoor_script
+
+if ( OnActivate == 1 )
+StreamMusic "Explore/mx_explore_1.mp3"
+Activate
+
+endif
+
+End 

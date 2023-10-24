@@ -1,0 +1,79 @@
+Begin BE_NyagetanScr
+
+short state
+short state2
+short doOnce
+short doOnce2
+short distanceCheck
+float timer
+float timer2
+
+; Remove the Uber items when Nyagetan Dies.
+if ( OnDeath == 1 )
+ RemoveItem, "BE_exquisite_ring_nyagetan_01" 1
+ RemoveItem, "BE_exquisite_ring_nyagetan_02" 1
+ if ( GetItemCount, "BE_ebony shortsword nyagetan" < 1 )
+  AddItem, "BE_ebony shortsword nyagetan" 1
+ endif
+endif
+
+if ( MenuMode == 1 ) 
+ return
+endif 
+
+; BEGIN Battle humiliation.
+if ( GetTarget, Player == 1 )
+ if ( Player->GetFatigue <= 10 )
+  if ( doOnce == 0 )
+   set state to 8
+   set state2 to 1
+   set doOnce to 1
+   set timer to 0
+   RemoveItem, "BE_ebony shortsword nyagetan" 1
+  endif
+ endif
+ if ( state2 == 1 )
+  Set timer to (timer + GetSecondsPassed)
+  if ( timer >= 25 )
+   if ( GetItemCount, "BE_ebony shortsword nyagetan" < 1 )
+    StopCombat Player
+    AddItem, "BE_ebony shortsword nyagetan" 1
+    StartCombat Player
+   endif
+   set state2 to 0
+  endif
+  return
+ endif
+endif
+if ( state2 == 0 )
+ if ( GetTarget, Player == 1 )
+  if ( Player->GetHealth < 70 )
+   if ( doOnce2 == 0 )
+    set doOnce2 to 1
+    SetMagicka, 100
+   endif
+  endif
+ endif
+endif
+; END Battle humiliation.
+
+; Nyagetan is falling behind!
+if ( state > 8 )
+ if ( timer2 < 2 )
+  set timer2 to ( timer2 + GetSecondsPassed)
+  return
+ endif
+ if ( GetDistance Player < NPCVoiceDistance )
+  if ( GetDistance Player < 800 )
+   set distanceCheck to 0
+  endif
+  set timer2 to 0
+  return
+ endif
+ if ( distanceCheck == 0 )
+  Say "Vo\H\M\Flw_HM004.mp3" "Hey! Wait for me!"
+  set distanceCheck to 1
+ endif
+endif
+
+End BE_NyagetanScr

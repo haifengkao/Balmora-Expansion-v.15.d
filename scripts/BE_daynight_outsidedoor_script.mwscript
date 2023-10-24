@@ -1,0 +1,9 @@
+Begin BE_daynight_outsidedoor_script
+
+if ( OnActivate == 1 )
+StreamMusic "BE/BE_sewers.mp3"
+Activate
+
+endif
+
+End 

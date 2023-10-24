@@ -1,0 +1,27 @@
+begin BE_GBG_drum1
+
+short doneplaying
+
+; Bards only play during day:
+if( GameHour >= 19)
+	if( doneplaying == 0)
+		Disable
+		set doneplaying to 1
+	endif
+endif
+if( GameHour < 8)
+	if( doneplaying == 0)
+		Disable
+		set doneplaying to 1
+	endif
+endif
+if( GameHour >= 7)
+	if( GameHour < 19 )
+		if( doneplaying == 1)
+			Enable
+			set doneplaying to 0
+		endif
+	endif
+endif
+
+end

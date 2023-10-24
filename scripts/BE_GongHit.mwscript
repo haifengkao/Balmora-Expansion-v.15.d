@@ -1,0 +1,26 @@
+Begin BE_GongHit
+
+Short Swish
+
+If ( MenuMode == 1 )
+    Return
+EndIf
+
+If ( Swish == 1 )
+    If ( GetSoundPlaying "Gong Sound" == 0 )
+        Set Swish to 0
+    EndIf
+EndIf
+
+If  ( GetDistance, Player <= 128 )
+    If ( Player -> HasItemEquipped, "BE_Instrument_Mallet_01" == 1 )
+        If ( Player -> GetSoundPlaying "Weapon Swish" == 1 )
+            If ( Swish == 0 )
+                PlaySound3D "Gong Sound"
+                Set Swish to 1
+            EndIf
+        EndIf
+    EndIf
+EndIf
+
+End BE_GongHit

@@ -1,0 +1,9 @@
+begin dhscr_StartPlantCounter
+	short DoOnce
+
+	if ( DoOnce == 0 )
+		set DoOnce to 1
+		StartScript dhscr_PlantCounter
+	endif
+
+end

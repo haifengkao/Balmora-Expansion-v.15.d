@@ -1,0 +1,89 @@
+Begin farrp_CalcAlchArrows1_GL
+
+short Bone_fire1
+short Bone_fire2
+short Bone_fire3
+short Bone_fire4
+short Bone_fire5
+short Bone_poison1
+short Bone_poison2
+short Bone_poison3
+short Bone_poison4
+short Bone_poison5
+short Dwemer_fire1
+short Dwemer_fire2
+short Dwemer_fire3
+short Dwemer_fire4
+short Dwemer_fire5
+short Dwemer_poison1
+short Dwemer_poison2
+short Dwemer_poison3
+short Dwemer_poison4
+short Dwemer_poison5
+;short Ebony_fire1
+;short Ebony_fire2
+;short Ebony_fire3
+;short Ebony_fire4
+;short Ebony_fire5
+;short Ebony_poison1
+;short Ebony_poison2
+;short Ebony_poison3
+;short Ebony_poison4
+;short Ebony_poison5
+;short Gold_fire1
+;short Gold_fire2
+;short Gold_fire3
+;short Gold_fire4
+;short Gold_fire5
+
+set Bone_fire1 to "player"->GetItemCount "farrp_Arrow_Bone_fire1"
+set Bone_fire2 to "player"->GetItemCount "farrp_Arrow_Bone_fire2"
+set Bone_fire3 to "player"->GetItemCount "farrp_Arrow_Bone_fire3"
+set Bone_fire4 to "player"->GetItemCount "farrp_Arrow_Bone_fire4"
+set Bone_fire5 to "player"->GetItemCount "farrp_Arrow_Bone_fire5"
+set Bone_poison1 to "player"->GetItemCount "farrp_Arrow_Bone_poison1"
+set Bone_poison2 to "player"->GetItemCount "farrp_Arrow_Bone_poison1"
+set Bone_poison3 to "player"->GetItemCount "farrp_Arrow_Bone_poison1"
+set Bone_poison4 to "player"->GetItemCount "farrp_Arrow_Bone_poison1"
+set Bone_poison5 to "player"->GetItemCount "farrp_Arrow_Bone_poison1"
+
+set Dwemer_fire1 to "player"->GetItemCount "farrp_Arrow_Dwemer_fire1"
+set Dwemer_fire2 to "player"->GetItemCount "farrp_Arrow_Dwemer_fire2"
+set Dwemer_fire3 to "player"->GetItemCount "farrp_Arrow_Dwemer_fire3"
+set Dwemer_fire4 to "player"->GetItemCount "farrp_Arrow_Dwemer_fire4"
+set Dwemer_fire5 to "player"->GetItemCount "farrp_Arrow_Dwemer_fire5"
+set Dwemer_poison1 to "player"->GetItemCount "farrp_Arrow_Dwemer_poison1"
+set Dwemer_poison2 to "player"->GetItemCount "farrp_Arrow_Dwemer_poison2"
+set Dwemer_poison3 to "player"->GetItemCount "farrp_Arrow_Dwemer_poison3"
+set Dwemer_poison4 to "player"->GetItemCount "farrp_Arrow_Dwemer_poison4"
+set Dwemer_poison5 to "player"->GetItemCount "farrp_Arrow_Dwemer_poison5"
+
+;set Ebony_fire1 to "player"->GetItemCount "farrp_Arrow_Ebony_fire1"
+;set Ebony_fire2 to "player"->GetItemCount "farrp_Arrow_Ebony_fire2"
+;set Ebony_fire3 to "player"->GetItemCount "farrp_Arrow_Ebony_fire3"
+;set Ebony_fire4 to "player"->GetItemCount "farrp_Arrow_Ebony_fire4"
+;set Ebony_fire5 to "player"->GetItemCount "farrp_Arrow_Ebony_fire5"
+;set Ebony_poison1 to "player"->GetItemCount "farrp_Arrow_Ebony_poison1"
+;set Ebony_poison2 to "player"->GetItemCount "farrp_Arrow_Ebony_poison2"
+;set Ebony_poison3 to "player"->GetItemCount "farrp_Arrow_Ebony_poison3"
+;set Ebony_poison4 to "player"->GetItemCount "farrp_Arrow_Ebony_poison4"
+;set Ebony_poison5 to "player"->GetItemCount "farrp_Arrow_Ebony_poison5"
+;
+;set Gold_fire1 to "player"->GetItemCount "farrp_Arrow_Gold_fire1"
+;set Gold_fire2 to "player"->GetItemCount "farrp_Arrow_Gold_fire2"
+;set Gold_fire3 to "player"->GetItemCount "farrp_Arrow_Gold_fire3"
+;set Gold_fire4 to "player"->GetItemCount "farrp_Arrow_Gold_fire4"
+;set Gold_fire5 to "player"->GetItemCount "farrp_Arrow_Gold_fire5"
+
+set ajrb_TotalArrows_GL to ( ajrb_TotalArrows_GL + Bone_fire1 + Bone_fire2 + Bone_fire3 + Bone_fire4 + Bone_fire5)
+set ajrb_TotalArrows_GL to ( ajrb_TotalArrows_GL + Bone_poison1 + Bone_poison2 + Bone_poison3 + Bone_poison4 + Bone_poison5)
+set ajrb_TotalArrows_GL to ( ajrb_TotalArrows_GL + Dwemer_fire1 + Dwemer_fire2 + Dwemer_fire3 + Dwemer_fire4 + Dwemer_fire5)
+set ajrb_TotalArrows_GL to ( ajrb_TotalArrows_GL + Dwemer_poison1 + Dwemer_poison2 + Dwemer_poison3 + Dwemer_poison4 + Dwemer_poison5)
+;set ajrb_TotalArrows_GL to ( ajrb_TotalArrows_GL + Ebony_fire1 + Ebony_fire2 + Ebony_fire3 + Ebony_fire4 + Ebony_fire5)
+;set ajrb_TotalArrows_GL to ( ajrb_TotalArrows_GL + Ebony_poison1 + Ebony_poison2 + Ebony_poison3 + Ebony_poison4 + Ebony_poison5)
+;set ajrb_TotalArrows_GL to ( ajrb_TotalArrows_GL + Gold_fire1 + Gold_fire2 + Gold_fire3 + Gold_fire4 + Gold_fire5)
+
+StartScript "farrp_CalcAlchArrows2_GL"
+StopScript "farrp_CalcAlchArrows1_GL"
+
+End

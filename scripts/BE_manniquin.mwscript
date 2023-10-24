@@ -1,0 +1,15 @@
+begin BE_manniquin
+
+Short NoLore
+Short OnPCHitMe
+
+SkipAnim
+
+; To prevent mannequin from becoming permanently in combat with player
+if ( OnPCHitMe == 1 )
+	Set OnPCHitMe to 0
+	StopCombat
+endif
+
+
+end BE_manniquin

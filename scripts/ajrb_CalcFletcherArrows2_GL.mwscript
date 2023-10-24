@@ -1,0 +1,59 @@
+Begin ajrb_CalcFletcherArrows2_GL
+
+short Iron2side
+short Iron4side
+short Ironblk
+short Ironbrn
+short Ironscorp
+short Ironbleed
+short IronSbleed
+short Svr2side
+short Svr4side
+short Svrblk
+short Svrbrn
+short Svrscorp
+short Svrbleed
+short SvrSbleed
+short Stl2side
+short Stl4side
+short Stlblk
+short Stlbrn
+short Stlscorp
+short Stlbleed
+short StlSbleed
+
+
+set Iron2side to "player"->GetItemCount "WI_Arrow_Iron_2sided"
+set Iron4side to "player"->GetItemCount "WI_Arrow_Iron_4sided"
+set Ironblk to "player"->GetItemCount "WI_Arrow_Iron_BlackSpider"
+set Ironbrn to "player"->GetItemCount "WI_Arrow_Iron_BrownSpider"
+set Ironscorp to "player"->GetItemCount "WI_Arrow_Iron_Scorpion"
+set Ironbleed to "player"->GetItemCount "WI_Arrow_Iron_Bleeding"
+set IronSbleed to "player"->GetItemCount "WI_Arrow_Iron_SevereBleeding"
+
+set Svr2side to "player"->GetItemCount "WI_Arrow_Silver_2sided"
+set Svr4side to "player"->GetItemCount "WI_Arrow_Silver_4sided"
+set Svrblk to "player"->GetItemCount "WI_Arrow_Silver_BlackSpider"
+set Svrbrn to "player"->GetItemCount "WI_Arrow_Silver_BrownSpider"
+set Svrscorp to "player"->GetItemCount "WI_Arrow_Silver_Scorpion"
+set Svrbleed to "player"->GetItemCount "WI_Arrow_Silver_Bleeding"
+set SvrSbleed to "player"->GetItemCount "WI_Arrow_Silver_SevereBleeding"
+
+set Stl2side to "player"->GetItemCount "WI_Arrow_Steel_2sided"
+set Stl4side to "player"->GetItemCount "WI_Arrow_Steel_4sided"
+set Stlblk to "player"->GetItemCount "WI_Arrow_Steel_BlackSpider"
+set Stlbrn to "player"->GetItemCount "WI_Arrow_Steel_BrownSpider"
+set Stlscorp to "player"->GetItemCount "WI_Arrow_Steel_Scorpion"
+set Stlbleed to "player"->GetItemCount "WI_Arrow_Steel_Bleeding"
+set StlSbleed to "player"->GetItemCount "WI_Arrow_Steel_SevereBleeding"
+
+set ajrb_TotalArrows_GL to ( ajrb_TotalArrows_GL + Iron2side + Iron4side + Ironblk + Ironbrn + Ironscorp + Ironbleed )
+set ajrb_TotalArrows_GL to ( ajrb_TotalArrows_GL + IronSbleed + Svr2side + Svr4side + Svrblk + Svrbrn + Svrscorp )
+set ajrb_TotalArrows_GL to ( ajrb_TotalArrows_GL + Svrbleed + SvrSbleed + Stl2side + Stl4side + Stlblk + Stlbrn )
+set ajrb_TotalArrows_GL to ( ajrb_TotalArrows_GL + Stlscorp + Stlbleed + StlSbleed )
+
+
+StartScript "ajrb_QuiverSwitch_GL"
+StopScript "ajrb_CalcFletcherArrows2_GL"
+
+End

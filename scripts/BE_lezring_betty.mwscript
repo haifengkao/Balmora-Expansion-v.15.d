@@ -1,0 +1,23 @@
+begin BE_lezring_betty
+
+short NoLore
+
+if ( "BE_lezring" == 3 )
+	startcombat, "BE_wanda_williams"
+endif
+
+if ( OnKnockOut == 1 )
+	stopcombat, "BE_wanda_williams"
+	"BE_wanda_williams"-> stopcombat, "BE_betty_bronson"
+	set "BE_lezring" to 5
+	EnablePlayerFighting
+	EnablePlayerMagic
+	enablevanitymode
+endif
+
+if ( "BE_lezring" == 9 )
+	SetFatigue 170
+	SetHealth 69
+endif
+
+end

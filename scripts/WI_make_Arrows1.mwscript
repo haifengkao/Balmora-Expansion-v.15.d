@@ -1,0 +1,289 @@
+Begin WI_make_Arrows1
+
+short choice2
+short button2
+short numToMake
+short num10sToMake
+short shafts
+short heads
+
+short boneShafts
+short ironShafts
+short steelShafts
+short dwemerShafts
+short silverShafts
+short goldShafts
+short ebonyShafts
+short fletchingAmt
+short stoneArrowheadAmt
+short steelArrowheadAmt
+
+
+If ( Make_Arrows == 1 )
+	MessageBox "You prepare the tools to make arrows"
+	set boneShafts to "player"->GetItemCount "WI_Shafts_Bone"
+	set ironShafts to "player"->GetItemCount "WI_Shafts_Iron"
+	set steelShafts to "player"->GetItemCount "WI_Shafts_Steel"
+	set dwemerShafts to "player"->GetItemCount "WI_Shafts_Dwemer"
+	set silverShafts to "player"->GetItemCount "WI_Shafts_Silver"
+	set goldShafts to "player"->GetItemCount "WI_Shafts_Gold"
+	set ebonyShafts to "player"->GetItemCount "WI_Shafts_Ebony"
+	set fletchingAmt to "player"->GetItemCount "WI_Fletching"
+	set stoneArrowheadAmt to "player"->GetItemCount "WI_ArrowTips_Stone"
+	set steelArrowheadAmt to "player"->GetItemCount "WI_ArrowTips_Steel"
+	set Make_Arrows to 0
+	set choice2 to 1
+endif
+
+If ( choice2 == 1 )
+	MessageBox "What kind of arrows would you like to make?", "Exit", "Bonemold", "Iron", "Steel", "Dwemer", "Silver", "Gold", "Ebony"
+	set choice2 to 3
+endif 
+
+If ( choice2 == 3 )
+	set button2 to GetButtonPressed
+
+	If ( button2 == 0 )
+		set choice2 to 0
+		StopScript, "WI_make_Arrows1"
+	endif
+	
+	if ( button2 > 0 )
+		MessageBox "How many arrows would you like to make?", "Exit", "10", "20", "30", "40", "50", "100", "As many batches of 10 as possible"
+		set choice2 to 4
+	endif
+endif
+
+If ( choice2 == 4 )
+	set num10sToMake to GetButtonPressed
+
+	If ( num10sToMake == 0 )
+		set choice2 to 0
+		StopScript, "WI_make_Arrows1"
+	endif
+	
+	if ( num10sToMake > 0 )
+	
+		if ( num10sToMake == 6 )
+			; 100 to be made.
+			set num10sToMake to 10
+		endif
+		if ( num10sToMake == 7 )
+			; Calculate the max number that can be made.
+			set heads to steelArrowheadAmt
+			if ( button2 == 1 )
+				set shafts to boneShafts
+				set heads to stoneArrowheadAmt
+			elseif ( button2 == 2 )
+				set shafts to ironShafts
+			elseif ( button2 == 3 )
+				set shafts to steelShafts
+			elseif ( button2 == 4 )
+				set shafts to dwemerShafts
+			elseif ( button2 == 5 )
+				set shafts to silverShafts
+			elseif ( button2 == 6 )
+				set shafts to goldShafts
+			elseif ( button2 == 7 )
+				set shafts to ebonyShafts
+			endif
+			set num10sToMake to fletchingAmt
+			if ( heads < num10sToMake )
+				set num10sToMake to heads
+			endif
+			if ( shafts < num10sToMake )
+				set num10sToMake to shafts
+			endif
+			if ( num10sToMake == 0 )
+				set num10sToMake to 1
+			endif
+		endif
+		
+		set numToMake to num10sToMake * 10
+;		MessageBox "shafts= %.0f   heads= %.0f  fletching= %.0f" shafts heads fletchingAmt
+;		MessageBox "num10sToMake= %.0f   num to make= %.0f" num10sToMake numToMake
+		
+		;make bonemold arrows
+		If ( button2 == 1 )
+			if ( boneShafts >= num10sToMake )
+				if ( stoneArrowheadAmt >= num10sToMake )
+					if ( fletchingAmt >= num10sToMake )
+						MessageBox "You have created %.0f bonemold arrows" numToMake "Ok"
+						while ( num10sToMake > 0 )
+							"player"->RemoveItem "WI_Shafts_Bone" 1
+							"player"->RemoveItem "WI_ArrowTips_Stone" 1
+							"player"->RemoveItem "WI_Fletching" 1
+							"player"->AddItem "bonemold arrow" 10
+							PlaySound "Repair"
+							set num10sToMake to num10sToMake - 1
+						endwhile
+					else
+						MessageBox "You don't have enough fletching" "Ok"
+					endif
+				else
+					MessageBox "You don't have enough stone arrowheads" "Ok"
+				endif
+			else
+				MessageBox "You don't have enough bonemold arrow shafts" "Ok"
+			endif
+		endif
+		
+		;make iron arrows
+		If ( button2 == 2 )
+			if ( ironShafts >= 1 )
+				if ( steelArrowheadAmt >= 1 )
+					if ( fletchingAmt >= 1 )
+						MessageBox "You have created %.0f iron arrows" numToMake "Ok"
+						while ( num10sToMake > 0 )
+							"player"->RemoveItem "WI_Shafts_Iron" 1
+							"player"->RemoveItem "WI_ArrowTips_Steel" 1
+							"player"->RemoveItem "WI_Fletching" 1
+							"player"->AddItem "iron arrow" 10
+							PlaySound "Repair"
+							set num10sToMake to num10sToMake - 1
+						endwhile
+					else
+						MessageBox "You don't have enough fletching" "Ok"
+					endif
+				else
+					MessageBox "You don't have enough steel arrowheads" "Ok"
+				endif
+			else
+				MessageBox "You don't have enough iron arrow shafts" "Ok"
+			endif
+		endif
+		
+		;make steel arrows
+		If ( button2 == 3 )
+			if ( steelShafts >= 1 )
+				if ( steelArrowheadAmt >= 1 )
+					if ( fletchingAmt >= 1 )
+						MessageBox "You have created %.0f steel arrows" numToMake "Ok"
+						while ( num10sToMake > 0 )
+							"player"->RemoveItem "WI_Shafts_steel" 1
+							"player"->RemoveItem "WI_ArrowTips_Steel" 1
+							"player"->RemoveItem "WI_Fletching" 1
+							"player"->AddItem "steel arrow" 10
+							PlaySound "Repair"
+							set num10sToMake to num10sToMake - 1
+						endwhile
+					else
+						MessageBox "You don't have enough fletching" "Ok"
+					endif
+				else
+					MessageBox "You don't have enough steel arrowheads" "Ok"
+				endif
+			else
+				MessageBox "You don't have enough steel arrow shafts" "Ok"
+			endif
+		endif
+		
+		;make Dwemer arrows
+		If ( button2 == 4 )
+			if ( dwemerShafts >= 1 )
+				if ( steelArrowheadAmt >= 1 )
+					if ( fletchingAmt >= 1 )
+						MessageBox "You have created %.0f Dwemer arrows" numToMake "Ok"
+						while ( num10sToMake > 0 )
+							"player"->RemoveItem "WI_Shafts_Dwemer" 1
+							"player"->RemoveItem "WI_ArrowTips_Steel" 1
+							"player"->RemoveItem "WI_Fletching" 1
+							"player"->AddItem "WI_Arrow_Dwemer" 10
+							PlaySound "Repair"
+							set num10sToMake to num10sToMake - 1
+						endwhile
+					else
+						MessageBox "You don't have enough fletching" "Ok"
+					endif
+				else
+					MessageBox "You don't have enough steel arrowheads" "Ok"
+				endif
+			else
+				MessageBox "You don't have enough Dwemer arrow shafts" "Ok"
+			endif
+		endif
+		
+		;make silver arrows
+		If ( button2 == 5 )
+			if ( silverShafts >= 1 )
+				if ( steelArrowheadAmt >= 1 )
+					if ( fletchingAmt >= 1 )
+						MessageBox "You have created %.0f silver arrows" numToMake "Ok"
+						while ( num10sToMake > 0 )
+							"player"->RemoveItem "WI_Shafts_silver" 1
+							"player"->RemoveItem "WI_ArrowTips_Steel" 1
+							"player"->RemoveItem "WI_Fletching" 1
+							"player"->AddItem "silver arrow" 10
+							PlaySound "Repair"
+							set num10sToMake to num10sToMake - 1
+						endwhile
+					else
+						MessageBox "You don't have enough fletching" "Ok"
+					endif
+				else
+					MessageBox "You don't have enough steel arrowheads" "Ok"
+				endif
+			else
+				MessageBox "You don't have enough silver arrow shafts" "Ok"
+			endif
+		endif
+		
+		;make Gold arrows
+		If ( button2 == 6 )
+			if ( goldShafts >= 1 )
+				if ( steelArrowheadAmt >= 1 )
+					if ( fletchingAmt >= 1 )
+						MessageBox "You have created %.0f gold arrows" numToMake "Ok"
+						while ( num10sToMake > 0 )
+							"player"->RemoveItem "WI_Shafts_gold" 1
+							"player"->RemoveItem "WI_ArrowTips_Steel" 1
+							"player"->RemoveItem "WI_Fletching" 1
+							"player"->AddItem "WI_Arrow_Gold" 10
+							PlaySound "Repair"
+							set num10sToMake to num10sToMake - 1
+						endwhile
+					else
+						MessageBox "You don't have enough fletching" "Ok"
+					endif
+				else
+					MessageBox "You don't have enough steel arrowheads" "Ok"
+				endif
+			else
+				MessageBox "You don't have enough gold arrow shafts" "Ok"
+			endif
+		endif
+		
+		;make ebony arrows
+		If ( button2 == 7 )
+			if ( ebonyShafts >= 1 )
+				if ( steelArrowheadAmt >= 1 )
+					if ( fletchingAmt >= 1 )
+						MessageBox "You have created %.0f ebony arrows" numToMake "Ok"
+						while ( num10sToMake > 0 )
+							"player"->RemoveItem "WI_Shafts_ebony" 1
+							"player"->RemoveItem "WI_ArrowTips_Steel" 1
+							"player"->RemoveItem "WI_Fletching" 1
+							"player"->AddItem "ebony arrow" 10
+							PlaySound "Repair"
+							set num10sToMake to num10sToMake - 1
+						endwhile
+					else
+						MessageBox "You don't have enough fletching" "Ok"
+					endif
+				else
+					MessageBox "You don't have enough steel arrowheads" "Ok"
+				endif
+			else
+				MessageBox "You don't have enough ebony arrow shafts" "Ok"
+			endif
+		endif
+
+		set choice2 to 0					
+		StopScript, "WI_make_Arrows1"
+
+	endif
+	
+endif			
+
+
+End WI_make_Arrows1

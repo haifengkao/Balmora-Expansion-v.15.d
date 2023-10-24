@@ -1,0 +1,728 @@
+Begin WI_make_PBolts1
+short choice2
+short button2
+short boltBone
+short boltIron
+short boltSteel
+short boltDwemer
+short boltSilver
+short boltGold
+short blackSpider
+short brownSpider
+short scorpion
+short bleeding
+short Sbleeding
+If ( Make_PBolts == 1 )
+	MessageBox "You prepare the tools to apply the poisons to your bolts"
+	set boltBone to "player"->GetItemCount "bonemold bolt"
+	set boltIron to "player"->GetItemCount "iron bolt"
+	set boltSteel to "player"->GetItemCount "steel bolt"
+	set boltDwemer to "player"->GetItemCount "WI_Bolt_Dwemer"
+	set boltSilver to "player"->GetItemCount "silver bolt"
+	set boltGold to "player"->GetItemCount "WI_Bolt_Gold"
+	set blackSpider to "player"->GetItemCount "WI_BlackSpider_Poison"
+	set brownSpider to "player"->GetItemCount "WI_BrownSpider_Poison"
+	set scorpion to "player"->GetItemCount "WI_Poison_Scorpion"
+	set bleeding to "player"->GetItemCount "WI_Bleeding_Lotion"
+	set Sbleeding to "player"->GetItemCount "WI_Severe_Bleeding_Lotion"
+	set Make_PBolts to 0
+	set choice2 to 1
+endif
+If ( choice2 == 1 )
+	MessageBox "What kind of bolts do you want to apply poisons to?", "Exit", "Bonemold", "Iron", "Steel", "Dwemer", "Silver", "Gold"
+	set choice2 to 3
+endif 
+If ( choice2 == 3 )
+	set button2 to GetButtonPressed
+	if ( button2 == 0 )
+		set choice2 to 0
+		StopScript, "WI_make_PBolts1"
+	endif
+	if ( button2 == 1 )
+		set choice2 to 10
+	endif
+	if ( button2 == 2 )
+		set choice2 to 20
+	endif
+	if ( button2 == 3 )
+		set choice2 to 30	
+	endif
+	if ( button2 == 4 )
+		set choice2 to 40
+	endif
+	if ( button2 == 5 )
+		set choice2 to 50
+	endif
+	if ( button2 == 6 )
+		set choice2 to 60
+	endif	
+endif
+If ( choice2 == 10 )
+	MessageBox "What type of poison do you want to apply to the Bonemold bolts?", "Exit", "Black Spider Poison", "Brown Spider Poison", "Scorpion Poison", "Bleeding Lotion", "Severe Bleeding Lotion"
+	set choice2 to 12
+endif
+If ( choice2 == 12 )
+	set button2 to GetButtonPressed
+	if ( button2 == 0 )
+		set choice2 to 0
+		StopScript, "WI_make_PBolts1"
+	endif
+	if ( button2 == 1 )
+		set choice2 to 14
+	endif
+	if ( button2 == 2 )
+		set choice2 to 16
+	endif
+	if ( button2 == 3 )
+		set choice2 to 17
+	endif
+	if ( button2 == 4 )
+		set choice2 to 18
+	endif
+	if ( button2 == 5 )
+		set choice2 to 19
+	endif
+endif
+If ( choice2 == 14 )
+	If ( blackSpider >= 1 )
+		If ( boltBone >= 10 )
+			MessageBox "You apply the poison to the arrowheads and create 10 black spider poison bonemold bolts" "Ok"
+			"player"->RemoveItem "WI_BlackSpider_Poison" 1
+			"player"->RemoveItem "bonemold bolt" 10
+			"player"->AddItem "WI_bolt_Bone_BlackSpider" 10
+			set choice2 to 0
+		else
+			MessageBox "You don't have enough bonemold bolts" "Ok"
+			set choice2 to 0
+		endif
+	else
+		MessageBox "You don't have any Black Spider Poison" "Ok"
+		set choice2 to 0
+	endif
+endif
+If ( choice2 == 16 )
+	If ( brownSpider >= 1 )
+		If ( boltBone >= 10 )
+			MessageBox "You apply the poison to the arrowheads and create 10 brown spider poison bonemold bolts" "Ok"
+			"player"->RemoveItem "WI_BrownSpider_Poison" 1
+			"player"->RemoveItem "bonemold bolt" 10
+			"player"->AddItem "WI_Bolt_Bone_BrownSpider" 10
+			set choice2 to 0
+		else
+			MessageBox "You don't have enough bonemold bolts" "Ok"
+			set choice2 to 0
+		endif
+	else
+		MessageBox "You don't have any Brown Spider Poison" "Ok"
+		set choice2 to 0
+	endif
+endif
+If ( choice2 == 17 )
+	If ( scorpion >= 1 )
+		If ( boltBone >= 10 )
+			MessageBox "You apply the poison to the arrowheads and create 10 scorpion poison bonemold bolts" "Ok"
+			"player"->RemoveItem "WI_Poison_Scorpion" 1
+			"player"->RemoveItem "bonemold bolt" 10
+			"player"->AddItem "WI_Bolt_Bone_Scorpion" 10
+			set choice2 to 0
+		else
+			MessageBox "You don't have enough bonemold bolts" "Ok"
+			set choice2 to 0
+		endif
+	else
+		MessageBox "You don't have any Scorpion Poison" "Ok"
+		set choice2 to 0
+	endif
+endif
+If ( choice2 == 18 )
+	If ( bleeding >= 1 )
+		If ( boltBone >= 10 )
+			MessageBox "You apply the poison to the arrowheads and create 10 bleeding bonemold bolts" "Ok"
+			"player"->RemoveItem "WI_Bleeding_Lotion" 1
+			"player"->RemoveItem "bonemold bolt" 10
+			"player"->AddItem "WI_Bolt_Bone_Bleeding" 10
+			set choice2 to 0
+		else
+			MessageBox "You don't have enough bonemold bolts" "Ok"
+			set choice2 to 0
+		endif
+	else
+		MessageBox "You don't have any Bleeding Lotion" "Ok"
+		set choice2 to 0
+	endif
+endif
+If ( choice2 == 19 )
+	If ( Sbleeding >= 1 )
+		If ( boltBone >= 10 )
+			MessageBox "You apply the poison to the arrowheads and create 10 severe bleeding bonemold bolts" "Ok"
+			"player"->RemoveItem "WI_Severe_Bleeding_Lotion" 1
+			"player"->RemoveItem "bonemold bolt" 10
+			"player"->AddItem "WI_Bolt_Bone_SevereBleeding" 10
+			set choice2 to 0
+		else
+			MessageBox "You don't have enough bonemold bolts" "Ok"
+			set choice2 to 0
+		endif
+	else
+		MessageBox "You don't have any Severe Bleeding Lotion" "Ok"
+		set choice2 to 0
+	endif
+endif
+If ( choice2 == 20 )
+	MessageBox "What type of poison do you want to apply to the Iron bolds?", "Exit", "Black Spider Poison", "Brown Spider Poison", "Scorpion Poison", "Bleeding Lotion", "Severe Bleeding Lotion"
+	set choice2 to 22
+endif
+If ( choice2 == 22 )
+	set button2 to GetButtonPressed
+	if ( button2 == 0 )
+		set choice2 to 0
+		StopScript, "WI_make_PBolts1"
+	endif
+	if ( button2 == 1 )
+		set choice2 to 24
+	endif
+	if ( button2 == 2 )
+		set choice2 to 26
+	endif
+	if ( button2 == 3 )
+		set choice2 to 27
+	endif
+	if ( button2 == 4 )
+		set choice2 to 28
+	endif
+	if ( button2 == 5 )
+		set choice2 to 29
+	endif
+endif
+If ( choice2 == 24 )
+	If ( blackSpider >= 1 )
+		If ( boltIron >= 10 )
+			MessageBox "You apply the poison to the arrowheads and create 10 black spider poison iron bolts" "Ok"
+			"player"->RemoveItem "WI_BlackSpider_Poison" 1
+			"player"->RemoveItem "iron bolt" 10
+			"player"->AddItem "WI_Bolt_Iron_BlackSpider" 10
+			set choice2 to 0
+		else
+			MessageBox "You don't have enough iron bolts" "Ok"
+			set choice2 to 0
+		endif
+	else
+		MessageBox "You don't have any Black Spider Poison" "Ok"
+		set choice2 to 0
+	endif
+endif
+If ( choice2 == 26 )
+	If ( brownSpider >= 1 )
+		If ( boltIron >= 10 )
+			MessageBox "You apply the poison to the arrowheads and create 10 brown spider poison iron bolts" "Ok"
+			"player"->RemoveItem "WI_BrownSpider_Poison" 1
+			"player"->RemoveItem "iron bolt" 10
+			"player"->AddItem "WI_Bolt_Iron_BrownSpider" 10
+			set choice2 to 0
+		else
+			MessageBox "You don't have enough iron bolts" "Ok"
+			set choice2 to 0
+		endif
+	else
+		MessageBox "You don't have any Brown Spider Poison" "Ok"
+		set choice2 to 0
+	endif
+endif
+If ( choice2 == 27 )
+	If ( scorpion >= 1 )
+		If ( boltIron >= 10 )
+			MessageBox "You apply the poison to the arrowheads and create 10 scorpion poison iron bolts" "Ok"
+			"player"->RemoveItem "WI_Poison_Scorpion" 1
+			"player"->RemoveItem "iron bolt" 10
+			"player"->AddItem "WI_Bolt_Iron_Scorpion" 10
+			set choice2 to 0
+		else
+			MessageBox "You don't have enough iron bolts" "Ok"
+			set choice2 to 0
+		endif
+	else
+		MessageBox "You don't have any Scorpion Poison" "Ok"
+		set choice2 to 0
+	endif
+endif
+If ( choice2 == 28 )
+	If ( bleeding >= 1 )
+		If ( boltIron >= 10 )
+			MessageBox "You apply the poison to the arrowheads and create 10 bleeding iron bolt" "Ok"
+			"player"->RemoveItem "WI_Bleeding_Lotion" 1
+			"player"->RemoveItem "iron bolt" 10
+			"player"->AddItem "WI_Bolt_Iron_Bleeding" 10
+			set choice2 to 0
+		else
+			MessageBox "You don't have enough iron bolt" "Ok"
+			set choice2 to 0
+		endif
+	else
+		MessageBox "You don't have any Bleeding Lotion" "Ok"
+		set choice2 to 0
+	endif
+endif
+If ( choice2 == 29 )
+	If ( Sbleeding >= 1 )
+		If ( boltIron >= 10 )
+			MessageBox "You apply the poison to the arrowheads and create 10 severe bleeding iron bolts" "Ok"
+			"player"->RemoveItem "WI_Severe_Bleeding_Lotion" 1
+			"player"->RemoveItem "iron bolt" 10
+			"player"->AddItem "WI_Bolt_Iron_SevereBleeding" 10
+			set choice2 to 0
+		else
+			MessageBox "You don't have enough iron bolts" "Ok"
+			set choice2 to 0
+		endif
+	else
+		MessageBox "You don't have any Severe Bleeding Lotion" "Ok"
+		set choice2 to 0
+	endif
+endif
+If ( choice2 == 30 )
+	MessageBox "What type of poison do you want to apply to the Steel bolts?", "Exit", "Black Spider Poison", "Brown Spider Poison", "Scorpion Poison", "Bleeding Lotion", "Severe Bleeding Lotion"
+	set choice2 to 32
+endif
+If ( choice2 == 32 )
+	set button2 to GetButtonPressed
+	if ( button2 == 0 )
+		set choice2 to 0
+		StopScript, "WI_make_PBolts1"
+	endif
+	if ( button2 == 1 )
+		set choice2 to 34
+	endif
+	if ( button2 == 2 )
+		set choice2 to 36
+	endif
+	if ( button2 == 3 )
+		set choice2 to 37
+	endif
+	if ( button2 == 4 )
+		set choice2 to 38
+	endif
+	if ( button2 == 5 )
+		set choice2 to 39
+	endif
+endif
+If ( choice2 == 34 )
+	If ( blackSpider >= 1 )
+		If ( boltSteel >= 10 )
+			MessageBox "You apply the poison to the arrowheads and create 10 black spider poison steel bolts" "Ok"
+			"player"->RemoveItem "WI_BlackSpider_Poison" 1
+			"player"->RemoveItem "steel bolt" 10
+			"player"->AddItem "WI_Bolt_Steel_BlackSpider" 10
+			set choice2 to 0
+		else
+			MessageBox "You don't have enough steel bolts" "Ok"
+			set choice2 to 0
+		endif
+	else
+		MessageBox "You don't have any Black Spider Poison" "Ok"
+		set choice2 to 0
+	endif
+endif
+If ( choice2 == 36 )
+	If ( brownSpider >= 1 )
+		If ( boltSteel >= 10 )
+			MessageBox "You apply the poison to the arrowheads and create 10 brown spider poison steel bolts" "Ok"
+			"player"->RemoveItem "WI_BrownSpider_Poison" 1
+			"player"->RemoveItem "steel bolt" 10
+			"player"->AddItem "WI_Bolt_Steel_BrownSpider" 10
+			set choice2 to 0
+		else
+			MessageBox "You don't have enough steel bolt" "Ok"
+			set choice2 to 0
+		endif
+	else
+		MessageBox "You don't have any Brown Spider Poison" "Ok"
+		set choice2 to 0
+	endif
+endif
+If ( choice2 == 37 )
+	If ( scorpion >= 1 )
+		If ( boltSteel >= 10 )
+			MessageBox "You apply the poison to the arrowheads and create 10 scorpion poison steel bolt" "Ok"
+			"player"->RemoveItem "WI_Poison_Scorpion" 1
+			"player"->RemoveItem "steel bolt" 10
+			"player"->AddItem "WI_Bolt_Steel_Scorpion" 10
+			set choice2 to 0
+		else
+			MessageBox "You don't have enough steel bolts" "Ok"
+			set choice2 to 0
+		endif
+	else
+		MessageBox "You don't have any Scorpion Poison" "Ok"
+		set choice2 to 0
+	endif
+endif
+If ( choice2 == 38 )
+	If ( bleeding >= 1 )
+		If ( boltSteel >= 10 )
+			MessageBox "You apply the poison to the arrowheads and create 10 bleeding steel bolts" "Ok"
+			"player"->RemoveItem "WI_Bleeding_Lotion" 1
+			"player"->RemoveItem "steel bolt" 10
+			"player"->AddItem "WI_Bolt_Steel_Bleeding" 10
+			set choice2 to 0
+		else
+			MessageBox "You don't have enough steel bolt" "Ok"
+			set choice2 to 0
+		endif
+	else
+		MessageBox "You don't have any Bleeding Lotion" "Ok"
+		set choice2 to 0
+	endif
+endif
+If ( choice2 == 39 )
+	If ( Sbleeding >= 1 )
+		If ( boltSteel >= 10 )
+			MessageBox "You apply the poison to the arrowheads and create 10 severe bleeding steel bolt" "Ok"
+			"player"->RemoveItem "WI_Severe_Bleeding_Lotion" 1
+			"player"->RemoveItem "steel bolt" 10
+			"player"->AddItem "WI_Bolt_Steel_SevereBleeding" 10
+			set choice2 to 0
+		else
+			MessageBox "You don't have enough steel bolts" "Ok"
+			set choice2 to 0
+		endif
+	else
+		MessageBox "You don't have any Severe Bleeding Lotion" "Ok"
+		set choice2 to 0
+	endif
+endif
+If ( choice2 == 40 )
+	MessageBox "What type of poison do you want to apply to the Dwemer bolts?", "Exit", "Black Spider Poison", "Brown Spider Poison", "Scorpion Poison", "Bleeding Lotion", "Severe Bleeding Lotion"
+	set choice2 to 42
+endif
+If ( choice2 == 42 )
+	set button2 to GetButtonPressed
+	if ( button2 == 0 )
+		set choice2 to 0
+		StopScript, "WI_make_PBolts1"
+	endif
+	if ( button2 == 1 )
+		set choice2 to 44
+	endif
+	if ( button2 == 2 )
+		set choice2 to 46
+	endif
+	if ( button2 == 3 )
+		set choice2 to 47
+	endif
+	if ( button2 == 4 )
+		set choice2 to 48
+	endif
+	if ( button2 == 5 )
+		set choice2 to 49
+	endif
+endif
+If ( choice2 == 44 )
+	If ( blackSpider >= 1 )
+		If ( boltDwemer >= 10 )
+			MessageBox "You apply the poison to the arrowheads and create 10 black spider poison Dwemer bolts" "Ok"
+			"player"->RemoveItem "WI_BlackSpider_Poison" 1
+			"player"->RemoveItem "WI_Bolt_Dwemer" 10
+			"player"->AddItem "WI_Bolt_Dwemer_BlackSpider" 10
+			set choice2 to 0
+		else
+			MessageBox "You don't have enough Dwemer bolts" "Ok"
+			set choice2 to 0
+		endif
+	else
+		MessageBox "You don't have any Black Spider Poison" "Ok"
+		set choice2 to 0
+	endif
+endif
+If ( choice2 == 46 )
+	If ( brownSpider >= 1 )
+		If ( boltDwemer >= 10 )
+			MessageBox "You apply the poison to the arrowheads and create 10 brown spider poison Dwemer bolts" "Ok"
+			"player"->RemoveItem "WI_BrownSpider_Poison" 1
+			"player"->RemoveItem "WI_Bolt_Dwemer" 10
+			"player"->AddItem "WI_Bolt_Dwemer_BrownSpider" 10
+			set choice2 to 0
+		else
+			MessageBox "You don't have enough Dwemer bolt" "Ok"
+			set choice2 to 0
+		endif
+	else
+		MessageBox "You don't have any Brown Spider Poison" "Ok"
+		set choice2 to 0
+	endif
+endif
+If ( choice2 == 47 )
+	If ( scorpion >= 1 )
+		If ( boltDwemer >= 10 )
+			MessageBox "You apply the poison to the arrowheads and create 10 scorpion poison Dwemer bolts" "Ok"
+			"player"->RemoveItem "WI_Poison_Scorpion" 1
+			"player"->RemoveItem "WI_Bolt_Dwemer" 10
+			"player"->AddItem "WI_Bolt_Dwemer_Scorpion" 10
+			set choice2 to 0
+		else
+			MessageBox "You don't have enough Dwemer bolts" "Ok"
+			set choice2 to 0
+		endif
+	else
+		MessageBox "You don't have any Scorpion Poison" "Ok"
+		set choice2 to 0
+	endif
+endif
+If ( choice2 == 48 )
+	If ( bleeding >= 1 )
+		If ( boltDwemer >= 10 )
+			MessageBox "You apply the poison to the arrowheads and create 10 bleeding Dwemer bolts" "Ok"
+			"player"->RemoveItem "WI_Bleeding_Lotion" 1
+			"player"->RemoveItem "WI_Bolt_Dwemer" 10
+			"player"->AddItem "WI_Bolt_Dwemer_Bleeding" 10
+			set choice2 to 0
+		else
+			MessageBox "You don't have enough Dwemer bolts" "Ok"
+			set choice2 to 0
+		endif
+	else
+		MessageBox "You don't have any Bleeding Lotion" "Ok"
+		set choice2 to 0
+	endif
+endif
+If ( choice2 == 49 )
+	If ( Sbleeding >= 1 )
+		If ( boltDwemer >= 10 )
+			MessageBox "You apply the poison to the arrowheads and create 10 severe bleeding Dwemer bolt" "Ok"
+			"player"->RemoveItem "WI_Severe_Bleeding_Lotion" 1
+			"player"->RemoveItem "WI_Bolt_Dwemer" 10
+			"player"->AddItem "WI_Bolt_Dwemer_SevereBleeding" 10
+			set choice2 to 0
+		else
+			MessageBox "You don't have enough Dwemer bolts" "Ok"
+			set choice2 to 0
+		endif
+	else
+		MessageBox "You don't have any Severe Bleeding Lotion" "Ok"
+		set choice2 to 0
+	endif
+endif
+If ( choice2 == 50 )
+	MessageBox "What type of poison do you want to apply to the Silver bolt?", "Exit", "Black Spider Poison", "Brown Spider Poison", "Scorpion Poison", "Bleeding Lotion", "Severe Bleeding Lotion"
+	set choice2 to 52
+endif
+If ( choice2 == 52 )
+	set button2 to GetButtonPressed
+	if ( button2 == 0 )
+		set choice2 to 0
+		StopScript, "WI_make_PBolts1"
+	endif
+	if ( button2 == 1 )
+		set choice2 to 54
+	endif
+	if ( button2 == 2 )
+		set choice2 to 56
+	endif
+	if ( button2 == 3 )
+		set choice2 to 57
+	endif
+	if ( button2 == 4 )
+		set choice2 to 58
+	endif
+	if ( button2 == 5 )
+		set choice2 to 59
+	endif
+endif
+If ( choice2 == 54 )
+	If ( blackSpider >= 1 )
+		If ( boltSilver >= 10 )
+			MessageBox "You apply the poison to the arrowheads and create 10 black spider poison silver bolts" "Ok"
+			"player"->RemoveItem "WI_BlackSpider_Poison" 1
+			"player"->RemoveItem "silver bolt" 10
+			"player"->AddItem "WI_Bolt_Silver_BlackSpider" 10
+			set choice2 to 0
+		else
+			MessageBox "You don't have enough silver bolt" "Ok"
+			set choice2 to 0
+		endif
+	else
+		MessageBox "You don't have any Black Spider Poison" "Ok"
+		set choice2 to 0
+	endif
+endif
+If ( choice2 == 56 )
+	If ( brownSpider >= 1 )
+		If ( boltSilver >= 10 )
+			MessageBox "You apply the poison to the arrowheads and create 10 brown spider poison silver bolts" "Ok"
+			"player"->RemoveItem "WI_BrownSpider_Poison" 1
+			"player"->RemoveItem "silver bolt" 10
+			"player"->AddItem "WI_Bolt_Silver_BrownSpider" 10
+			set choice2 to 0
+		else
+			MessageBox "You don't have enough silver bolts" "Ok"
+			set choice2 to 0
+		endif
+	else
+		MessageBox "You don't have any Brown Spider Poison" "Ok"
+		set choice2 to 0
+	endif
+endif
+If ( choice2 == 57 )
+	If ( scorpion >= 1 )
+		If ( boltSilver >= 10 )
+			MessageBox "You apply the poison to the arrowheads and create 10 scorpion poison silver bolts" "Ok"
+			"player"->RemoveItem "WI_Poison_Scorpion" 1
+			"player"->RemoveItem "silver bolt" 10
+			"player"->AddItem "WI_Bolt_Silver_Scorpion" 10
+			set choice2 to 0
+		else
+			MessageBox "You don't have enough silver bolts" "Ok"
+			set choice2 to 0
+		endif
+	else
+		MessageBox "You don't have any Scorpion Poison" "Ok"
+		set choice2 to 0
+	endif
+endif
+If ( choice2 == 58 )
+	If ( bleeding >= 1 )
+		If ( boltSilver >= 10 )
+			MessageBox "You apply the poison to the arrowheads and create 10 bleeding silver bolt" "Ok"
+			"player"->RemoveItem "WI_Bleeding_Lotion" 1
+			"player"->RemoveItem "silver bolt" 10
+			"player"->AddItem "WI_Bolt_Silver_Bleeding" 10
+			set choice2 to 0
+		else
+			MessageBox "You don't have enough silver bolts" "Ok"
+			set choice2 to 0
+		endif
+	else
+		MessageBox "You don't have any Bleeding Lotion" "Ok"
+		set choice2 to 0
+	endif
+endif
+If ( choice2 == 59 )
+	If ( Sbleeding >= 1 )
+		If ( boltSilver >= 10 )
+			MessageBox "You apply the poison to the arrowheads and create 10 severe bleeding silver bolts" "Ok"
+			"player"->RemoveItem "WI_Severe_Bleeding_Lotion" 1
+			"player"->RemoveItem "silver bolt" 10
+			"player"->AddItem "WI_Bolt_Silver_SevereBleeding" 10
+			set choice2 to 0
+		else
+			MessageBox "You don't have enough silver bolt" "Ok"
+			set choice2 to 0
+		endif
+	else
+		MessageBox "You don't have any Severe Bleeding Lotion" "Ok"
+		set choice2 to 0
+	endif
+endif
+If ( choice2 == 60 )
+	MessageBox "What type of poison do you want to apply to the gold bolts?", "Exit", "Black Spider Poison", "Brown Spider Poison", "Scorpion Poison", "Bleeding Lotion", "Severe Bleeding Lotion"
+	set choice2 to 62
+endif
+If ( choice2 == 62 )
+	set button2 to GetButtonPressed
+	if ( button2 == 0 )
+		set choice2 to 0
+		StopScript, "WI_make_PBolts1"
+	endif
+	if ( button2 == 1 )
+		set choice2 to 64
+	endif
+	if ( button2 == 2 )
+		set choice2 to 66
+	endif
+	if ( button2 == 3 )
+		set choice2 to 67
+	endif
+	if ( button2 == 4 )
+		set choice2 to 68
+	endif
+	if ( button2 == 5 )
+		set choice2 to 69
+	endif
+endif
+If ( choice2 == 64 )
+	If ( blackSpider >= 1 )
+		If ( boltGold >= 10 )
+			MessageBox "You apply the poison to the arrowheads and create 10 black spider poison gold bolts" "Ok"
+			"player"->RemoveItem "WI_BlackSpider_Poison" 1
+			"player"->RemoveItem "WI_Bolt_Gold" 10
+			"player"->AddItem "WI_Bolt_Gold_BlackSpider" 10
+			set choice2 to 0
+		else
+			MessageBox "You don't have enough gold bolts" "Ok"
+			set choice2 to 0
+		endif
+	else
+		MessageBox "You don't have any Black Spider Poison" "Ok"
+		set choice2 to 0
+	endif
+endif
+If ( choice2 == 66 )
+	If ( brownSpider >= 1 )
+		If ( boltGold >= 10 )
+			MessageBox "You apply the poison to the arrowheads and create 10 brown spider poison gold bolts" "Ok"
+			"player"->RemoveItem "WI_BrownSpider_Poison" 1
+			"player"->RemoveItem "WI_Bolt_Gold" 10
+			"player"->AddItem "WI_Bolt_Gold_BrownSpider" 10
+			set choice2 to 0
+		else
+			MessageBox "You don't have enough gold bolts" "Ok"
+			set choice2 to 0
+		endif
+	else
+		MessageBox "You don't have any Brown Spider Poison" "Ok"
+		set choice2 to 0
+	endif
+endif
+If ( choice2 == 67 )
+	If ( scorpion >= 1 )
+		If ( boltGold >= 10 )
+			MessageBox "You apply the poison to the arrowheads and create 10 scorpion poison gold bolts" "Ok"
+			"player"->RemoveItem "WI_Poison_Scorpion" 1
+			"player"->RemoveItem "WI_Bolt_Gold" 10
+			"player"->AddItem "WI_Bolt_Gold_Scorpion" 10
+			set choice2 to 0
+		else
+			MessageBox "You don't have enough gold bolts" "Ok"
+			set choice2 to 0
+		endif
+	else
+		MessageBox "You don't have any Scorpion Poison" "Ok"
+		set choice2 to 0
+	endif
+endif
+If ( choice2 == 68 )
+	If ( bleeding >= 1 )
+		If ( boltGold >= 10 )
+			MessageBox "You apply the poison to the arrowheads and create 10 bleeding gold bolts" "Ok"
+			"player"->RemoveItem "WI_Bleeding_Lotion" 1
+			"player"->RemoveItem "WI_Bolt_Gold" 10
+			"player"->AddItem "WI_Bolt_Gold_Bleeding" 10
+			set choice2 to 0
+		else
+			MessageBox "You don't have enough Gold bolts" "Ok"
+			set choice2 to 0
+		endif
+	else
+		MessageBox "You don't have any Bleeding Lotion" "Ok"
+		set choice2 to 0
+	endif
+endif
+If ( choice2 == 69 )
+	If ( Sbleeding >= 1 )
+		If ( boltGold >= 10 )
+			MessageBox "You apply the poison to the arrowheads and create 10 severe bleeding gold bolts" "Ok"
+			"player"->RemoveItem "WI_Severe_Bleeding_Lotion" 1
+			"player"->RemoveItem "WI_Bolt_Gold" 10
+			"player"->AddItem "WI_Bolt_Gold_SevereBleeding" 10
+			set choice2 to 0
+		else
+			MessageBox "You don't have enough Gold bolts" "Ok"
+			set choice2 to 0
+		endif
+	else
+		MessageBox "You don't have any Severe Bleeding Lotion" "Ok"
+		set choice2 to 0
+	endif
+endif
+
+
+End WI_make_PBolts1

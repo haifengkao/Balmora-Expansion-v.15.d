@@ -1,0 +1,60 @@
+begin BE_IceSnakeRobe1st2
+
+; Vorwoda originally wrote this script for Daduke's Wizard Hats pluggin
+
+short Control 
+short button 
+
+if ( Control == 0 ) 
+	MessageBox "Select Race" "Breton" "DarkElf" "HighElf" "Imperial" "Khajiit" "Nord" "Orc" "Redguard" "WoodElf"
+	set Control to 1 
+endif 
+if ( Control == 1 ) 
+	set button to GetButtonPressed 
+	if ( button == -1 ) 
+		return 
+	elseif ( button == 0 ) 
+		player->AddItem "1Ice_BE_SnakeRobe_B" 1 
+		player->Equip "1Ice_BE_SnakeRobe_B" 1 
+		set Control to 2 
+	elseif ( button == 1 ) 
+		player->AddItem "1Ice_BE_SnakeRobe_D" 1 
+		player->Equip "1Ice_BE_SnakeRobe_D" 1 
+		set Control to 2 
+	elseif ( button == 2 ) 
+		player->AddItem "1Ice_BE_SnakeRobe_H" 1 
+		player->Equip "1Ice_BE_SnakeRobe_H" 1 
+		set Control to 2 
+	elseif ( button == 3 ) 
+		player->AddItem "1Ice_BE_SnakeRobe_I" 1 
+		player->Equip "1Ice_BE_SnakeRobe_I" 1 
+		set Control to 2 
+	elseif ( button == 4 ) 
+		player->AddItem "1Ice_BE_SnakeRobe_K" 1 
+		player->Equip "1Ice_BE_SnakeRobe_K" 1 
+		set Control to 2
+	elseif ( button == 5 ) 
+		player->AddItem "1Ice_BE_SnakeRobe_N" 1 
+		player->Equip "1Ice_BE_SnakeRobe_N" 1 
+		set Control to 2
+	elseif ( button == 6 ) 
+		player->AddItem "1Ice_BE_SnakeRobe_O" 1 
+		player->Equip "1Ice_BE_SnakeRobe_O" 1 
+		set Control to 2
+	elseif ( button == 7 ) 
+		player->AddItem "1Ice_BE_SnakeRobe_R" 1 
+		player->Equip "1Ice_BE_SnakeRobe_R" 1 
+		set Control to 2
+	elseif ( button == 8 ) 
+		player->AddItem "1Ice_BE_SnakeRobe_w" 1 
+		player->Equip "1Ice_BE_SnakeRobe_w" 1 
+		set Control to 2
+	endif 
+endif 
+if ( Control == 2 ) 
+	player->RemoveItem "1Ice_BE_SnakeRobe_Script" 1 
+	set Control to 0 
+	StopScript, BE_IceSnakeRobe1st2 
+endif 
+
+end

@@ -1,0 +1,10 @@
+begin dh_furn_AddTopics
+	short DoOnce
+
+	if (DoOnce == 0)
+		AddTopic "Furniture"
+		AddTopic "Furniture Market"
+		set DoOnce to 1
+	endif
+
+end

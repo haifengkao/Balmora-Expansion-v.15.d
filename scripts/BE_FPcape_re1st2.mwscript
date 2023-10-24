@@ -1,0 +1,56 @@
+begin BE_FPcape_re1st2
+
+; Vorwoda originally wrote this script for Daduke's Wizard Hats pluggin
+
+short Control 
+short button 
+ 
+if ( Control == 0 ) 
+	MessageBox "Select Race" "Breton" "DarkElf" "HighElf" "Imperial" "Nord" "Orc" "Redguard" "WoodElf"
+	set Control to 1 
+endif 
+if ( Control == 1 ) 
+	set button to GetButtonPressed 
+	if ( button == -1 ) 
+		return 
+	elseif ( button == 0 ) 
+		player->AddItem "FP_cape_re_Br" 1 
+		player->Equip "FP_cape_re_Br" 1 
+		set Control to 2 
+	elseif ( button == 1 ) 
+		player->AddItem "FP_cape_re_DE" 1 
+		player->Equip "FP_cape_re_DE" 1 
+		set Control to 2 
+	elseif ( button == 2 ) 
+		player->AddItem "FP_cape_re_HE" 1 
+		player->Equip "FP_cape_re_HE" 1 
+		set Control to 2 
+	elseif ( button == 3 ) 
+		player->AddItem "FP_cape_re_Im" 1 
+		player->Equip "FP_cape_re_Im" 1 
+		set Control to 2 
+	elseif ( button == 4 ) 
+		player->AddItem "FP_cape_re_No" 1 
+		player->Equip "FP_cape_re_No" 1 
+		set Control to 2
+	elseif ( button == 5 ) 
+		player->AddItem "FP_cape_re_Or" 1 
+		player->Equip "FP_cape_re_Or" 1 
+		set Control to 2
+	elseif ( button == 6 ) 
+		player->AddItem "FP_cape_re_RG" 1 
+		player->Equip "FP_cape_re_RG" 1 
+		set Control to 2
+	elseif ( button == 7 ) 
+		player->AddItem "FP_cape_re_WE" 1 
+		player->Equip "FP_cape_re_WE" 1 
+		set Control to 2
+	endif 
+endif 
+if ( Control == 2 ) 
+	player->RemoveItem "FP_cape_re_script" 1 
+	set Control to 0 
+	StopScript, BE_FPcape_re1st2 
+endif 
+
+end

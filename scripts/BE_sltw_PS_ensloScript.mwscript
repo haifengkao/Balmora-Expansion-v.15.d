@@ -1,0 +1,12 @@
+Begin BE_sltw_PS_ensloScript
+
+Short noLore
+Short enslogreet
+Short doOnce
+
+if ( doOnce == 1 )
+	set enslogreet to 0
+	set doOnce to 2
+endif
+
+End BE_sltw_PS_ensloScript

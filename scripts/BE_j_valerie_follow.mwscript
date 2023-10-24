@@ -1,0 +1,27 @@
+Begin BE_j_valerie_follow
+
+short followNow
+short followDone
+
+if ( FollowDone == 1 )
+	Return
+endif
+
+if ( GetHealth <= 0 )
+	return
+endif
+
+if ( GetCurrentAIPackage != 3 )
+set followNow to 1
+AiFollow Player 0 0 0 0 0
+endif
+
+if ( GetPCCell "Jolard - Moniah Home" == 1 )
+set followNow to 0
+set followDone to 1
+Say "Vo\W\F\Flw_WF003.mp3" "Thank you."
+SetHello 30
+AiWander 256 0 0 40 20 20 0 0 0 0 0 0
+endif
+
+End BE_j_valerie_follow

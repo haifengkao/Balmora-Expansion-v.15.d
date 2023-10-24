@@ -1,0 +1,7 @@
+begin BE_pantyscript
+
+if (OnActivate)
+	addtopic "Yvonne's Panties"
+	Activate
+endif
+end

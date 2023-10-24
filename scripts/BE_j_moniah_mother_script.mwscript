@@ -1,0 +1,4 @@
+begin BE_j_moniah_mother_script
+  	short nolore
+	AddTopic "Family's Problems"	
+end BE_j_moniah_mother_script

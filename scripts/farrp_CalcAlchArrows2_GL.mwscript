@@ -1,0 +1,91 @@
+Begin farrp_CalcAlchArrows2_GL
+
+short Gold_Poison1
+short Gold_Poison2
+short Gold_Poison3
+short Gold_Poison4
+short Gold_Poison5
+short Iron_fire1
+short Iron_fire2
+short Iron_fire3
+short Iron_fire4
+short Iron_fire5
+short Iron_Poison1
+short Iron_Poison2
+short Iron_Poison3
+short Iron_Poison4
+short Iron_Poison5
+short Silver_fire1
+short Silver_fire2
+short Silver_fire3
+short Silver_fire4
+short Silver_fire5
+short Silver_Poison1
+short Silver_Poison2
+short Silver_Poison3
+short Silver_Poison4
+short Silver_Poison5
+short Steel_fire1
+short Steel_fire2
+short Steel_fire3
+short Steel_fire4
+short Steel_fire5
+short Steel_Poison1
+short Steel_Poison2
+short Steel_Poison3
+short Steel_Poison4
+short Steel_Poison5
+
+set Gold_poison1 to "player"->GetItemCount "farrp_Arrow_Gold_poison1"
+set Gold_poison2 to "player"->GetItemCount "farrp_Arrow_Gold_poison2"
+set Gold_poison3 to "player"->GetItemCount "farrp_Arrow_Gold_poison3"
+set Gold_poison4 to "player"->GetItemCount "farrp_Arrow_Gold_poison4"
+set Gold_poison5 to "player"->GetItemCount "farrp_Arrow_Gold_poison5"
+
+set Iron_fire1 to "player"->GetItemCount "farrp_Arrow_Iron_fire1"
+set Iron_fire2 to "player"->GetItemCount "farrp_Arrow_Iron_fire2"
+set Iron_fire3 to "player"->GetItemCount "farrp_Arrow_Iron_fire3"
+set Iron_fire4 to "player"->GetItemCount "farrp_Arrow_Iron_fire4"
+set Iron_fire5 to "player"->GetItemCount "farrp_Arrow_Iron_fire5"
+set Iron_poison1 to "player"->GetItemCount "farrp_Arrow_Iron_poison1"
+set Iron_poison2 to "player"->GetItemCount "farrp_Arrow_Iron_poison2"
+set Iron_poison3 to "player"->GetItemCount "farrp_Arrow_Iron_poison3"
+set Iron_poison4 to "player"->GetItemCount "farrp_Arrow_Iron_poison4"
+set Iron_poison5 to "player"->GetItemCount "farrp_Arrow_Iron_poison5"
+
+set Silver_fire1 to "player"->GetItemCount "farrp_Arrow_Silver_fire1"
+set Silver_fire2 to "player"->GetItemCount "farrp_Arrow_Silver_fire2"
+set Silver_fire3 to "player"->GetItemCount "farrp_Arrow_Silver_fire3"
+set Silver_fire4 to "player"->GetItemCount "farrp_Arrow_Silver_fire4"
+set Silver_fire5 to "player"->GetItemCount "farrp_Arrow_Silver_fire5"
+set Silver_poison1 to "player"->GetItemCount "farrp_Arrow_Silver_poison1"
+set Silver_poison2 to "player"->GetItemCount "farrp_Arrow_Silver_poison2"
+set Silver_poison3 to "player"->GetItemCount "farrp_Arrow_Silver_poison3"
+set Silver_poison4 to "player"->GetItemCount "farrp_Arrow_Silver_poison4"
+set Silver_poison5 to "player"->GetItemCount "farrp_Arrow_Silver_poison5"
+
+set Steel_fire1 to "player"->GetItemCount "farrp_Arrow_Steel_fire1"
+set Steel_fire2 to "player"->GetItemCount "farrp_Arrow_Steel_fire2"
+set Steel_fire3 to "player"->GetItemCount "farrp_Arrow_Steel_fire3"
+set Steel_fire4 to "player"->GetItemCount "farrp_Arrow_Steel_fire4"
+set Steel_fire5 to "player"->GetItemCount "farrp_Arrow_Steel_fire5"
+set Steel_poison1 to "player"->GetItemCount "farrp_Arrow_Steel_poison1"
+set Steel_poison2 to "player"->GetItemCount "farrp_Arrow_Steel_poison2"
+set Steel_poison3 to "player"->GetItemCount "farrp_Arrow_Steel_poison3"
+set Steel_poison4 to "player"->GetItemCount "farrp_Arrow_Steel_poison4"
+set Steel_poison5 to "player"->GetItemCount "farrp_Arrow_Steel_poison5"
+
+set ajrb_TotalArrows_GL to ( ajrb_TotalArrows_GL + Gold_poison1 + Gold_poison2 + Gold_poison3 + Gold_poison4 + Gold_poison5)
+set ajrb_TotalArrows_GL to ( ajrb_TotalArrows_GL + Iron_fire1 + Iron_fire2 + Iron_fire3 + Iron_fire4 + Iron_fire5)
+set ajrb_TotalArrows_GL to ( ajrb_TotalArrows_GL + Iron_poison1 + Iron_poison2 + Iron_poison3 + Iron_poison4 + Iron_poison5)
+set ajrb_TotalArrows_GL to ( ajrb_TotalArrows_GL + Silver_fire1 + Silver_fire2 + Silver_fire3 + Silver_fire4 + Silver_fire5)
+set ajrb_TotalArrows_GL to ( ajrb_TotalArrows_GL + Silver_poison1 + Silver_poison2 + Silver_poison3 + Silver_poison4 + Silver_poison5)
+set ajrb_TotalArrows_GL to ( ajrb_TotalArrows_GL + Steel_fire1 + Steel_fire2 + Steel_fire3 + Steel_fire4 + Steel_fire5)
+set ajrb_TotalArrows_GL to ( ajrb_TotalArrows_GL + Steel_poison1 + Steel_poison2 + Steel_poison3 + Steel_poison4 + Steel_poison5)
+
+
+StartScript "ajrb_QuiverSwitch_GL"
+StopScript "farrp_CalcAlchArrows2_GL"
+
+End
+

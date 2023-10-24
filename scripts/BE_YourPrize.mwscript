@@ -1,0 +1,13 @@
+begin BE_YourPrize
+
+if ( Random 100 <= 40 )
+	player-> AddItem BE_unexpected_power_robe 1
+elseif ( Random 100 <= 80 )
+	player-> AddItem BE_faithful_companion_ring 1
+elseif ( Random 100 <= 100 )
+	player-> AddItem BE_slowdeath_dagger 1
+endif
+
+stopscript BE_YourPrize
+
+end

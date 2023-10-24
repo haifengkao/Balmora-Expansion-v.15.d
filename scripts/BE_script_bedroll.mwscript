@@ -1,0 +1,40 @@
+begin BE_script_bedroll
+	short button
+	short brollState
+
+	SkipAnim
+	
+	if ( menumode == 1 )
+		return
+	endif
+
+	if ( OnActivate == 0 )
+		if ( brollState == 0 )
+			return
+		endif
+	endif
+
+	if ( brollState == 0 )
+		MessageBox, "Bedroll", "Pick up bedroll", "Go to Sleep"
+		set brollState to 1
+	endif
+
+	if ( brollState == 1 )
+		set button to GetButtonPressed
+
+		if ( button == 0 )
+			set brollState to 10
+		elseif ( button == 1 )
+			set brollState to 0
+			ShowRestMenu
+		endif
+	endif
+
+	if ( brollState == 10 )
+		set brollState to 0
+		Disable
+		player->addItem, "BE_bedroll_placeholder", 1
+		playSound "Item Misc Up"
+	endif
+
+end BE_script_bedroll

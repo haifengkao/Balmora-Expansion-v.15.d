@@ -1,0 +1,11 @@
+begin BE_lovescript
+; Due to some bug..
+if (BE_MakelovePay=0)
+if (BE_Makelove>0)
+	set BE_Makelove to 0
+endif
+endif
+
+stopscript BE_lovescript
+
+end

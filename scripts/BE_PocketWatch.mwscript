@@ -1,0 +1,84 @@
+begin BE_PocketWatch
+Short OnPCEquip
+Short ClockHour
+set ClockHour to GameHour
+Float ClockMinute
+set ClockMinute to ( (GameHour - ClockHour) * 60 ) + .5
+If ( OnPCEquip == 1)
+   If (Month == 0)
+	If ( ClockMinute <= 9 )
+	MessageBox, "The Pocket Watch reads %.0f:0%.0f on day %.0f of Morning Star", ClockHour, ClockMinute, Day
+	elseif ( ClockMinute >= 10 )
+	MessageBox, "The Pocket Watch reads %.0f:%.0f on day %.0f of Morning Star", ClockHour, ClockMinute, Day
+	endif
+   elseif (Month == 1)
+	If ( ClockMinute <= 9 )
+	MessageBox, "The Pocket Watch reads %.0f:0%.0f on day %.0f of Sun's Dawn", ClockHour, ClockMinute, Day
+	elseif ( ClockMinute >= 10 )
+	MessageBox, "The Pocket Watch reads %.0f:%.0f on day %.0f of Sun's Dawn", ClockHour, ClockMinute, Day
+	endif
+   elseif (Month == 2)
+	If ( ClockMinute <= 9 )
+	MessageBox, "The Pocket Watch reads %.0f:0%.0f on day %.0f of First Seed", ClockHour, ClockMinute, Day
+	elseif ( ClockMinute >= 10 )
+	MessageBox, "The Pocket Watch reads %.0f:%.0f on day %.0f of First Seed", ClockHour, ClockMinute, Day
+	endif
+   elseif (Month == 3)
+	If ( ClockMinute <= 9 )
+	MessageBox, "The Pocket Watch reads %.0f:0%.0f on day %.0f of Rain's Hand", ClockHour, ClockMinute, Day
+	elseif ( ClockMinute >= 10 )
+	MessageBox, "The Pocket Watch reads %.0f:%.0f on day %.0f of Rain's Hand", ClockHour, ClockMinute, Day
+	endif
+   elseif (Month == 4)
+	If ( ClockMinute <= 9 )
+	MessageBox, "The Pocket Watch reads %.0f:0%.0f on day %.0f of Second Seed", ClockHour, ClockMinute, Day
+	elseif ( ClockMinute >= 10 )
+	MessageBox, "The Pocket Watch reads %.0f:%.0f on day %.0f of Second Seed", ClockHour, ClockMinute, Day
+	endif
+   elseif (Month == 5)
+	If ( ClockMinute <= 9 )
+	MessageBox, "The Pocket Watch reads %.0f:0%.0f on day %.0f of Mid Year", ClockHour, ClockMinute, Day
+	elseif ( ClockMinute >= 10 )
+	MessageBox, "The Pocket Watch reads %.0f:%.0f on day %.0f of Mid Year", ClockHour, ClockMinute, Day
+	endif
+   elseif (Month == 6)
+	If ( ClockMinute <= 9 )
+	MessageBox, "The Pocket Watch reads %.0f:0%.0f on day %.0f of Sun's Height", ClockHour, ClockMinute, Day
+	elseif ( ClockMinute >= 10 )
+	MessageBox, "The Pocket Watch reads %.0f:%.0f on day %.0f of Sun's Height", ClockHour, ClockMinute, Day
+	endif
+   elseif (Month == 7)
+     If ( ClockMinute <= 9 )
+	MessageBox, "The Pocket Watch reads %.0f:0%.0f on day %.0f of Last Seed", ClockHour, ClockMinute, Day
+	elseif ( ClockMinute >= 10 )
+	MessageBox, "The Pocket Watch reads %.0f:%.0f on day %.0f of Last Seed", ClockHour, ClockMinute, Day
+	endif
+   elseif (Month == 8)
+	If ( ClockMinute <= 9 )
+	MessageBox, "The Pocket Watch reads %.0f:0%.0f on day %.0f of Hearthfire", ClockHour, ClockMinute, Day
+	elseif ( ClockMinute >= 10 )
+	MessageBox, "The Pocket Watch reads %.0f:%.0f on day %.0f of Hearthfire", ClockHour, ClockMinute, Day
+	endif
+   elseif (Month == 9)
+	If ( ClockMinute <= 9 )
+	MessageBox, "The Pocket Watch reads %.0f:0%.0f on day %.0f of Frostfall", ClockHour, ClockMinute, Day
+	elseif ( ClockMinute >= 10 )
+	MessageBox, "The Pocket Watch reads %.0f:%.0f on day %.0f of Frostfall", ClockHour, ClockMinute, Day
+	endif
+   elseif (Month == 10)
+	If ( ClockMinute <= 9 )
+	MessageBox, "The Pocket Watch reads %.0f:0%.0f on day %.0f of Sun's Dusk", ClockHour, ClockMinute, Day
+	elseif ( ClockMinute >= 10 )
+	MessageBox, "The Pocket Watch reads %.0f:%.0f on day %.0f of Sun's Dusk", ClockHour, ClockMinute, Day
+	endif
+   elseif (Month == 11)
+	If ( ClockMinute <= 9 )
+	MessageBox, "The Pocket Watch reads %.0f:0%.0f on day %.0f of Evening Star", ClockHour, ClockMinute, Day
+	elseif ( ClockMinute >= 10 )
+	MessageBox, "The Pocket Watch reads %.0f:%.0f on day %.0f of Evening Star", ClockHour, ClockMinute, Day
+	endif
+   endif	
+
+	Set OnPCEquip to 0
+endif
+end BE_PocketWatch

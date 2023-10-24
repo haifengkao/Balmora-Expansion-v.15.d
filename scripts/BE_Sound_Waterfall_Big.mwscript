@@ -1,0 +1,9 @@
+begin BE_Sound_Waterfall_Big
+
+if ( CellChanged == 0 )
+	if ( GetSoundPlaying "Dwe_waterfall" == 0 )
+		PlayLoopSound3DVP "Dwe_waterfall", 1.0, 1.0
+	endif
+endif
+
+end

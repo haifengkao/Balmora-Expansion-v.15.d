@@ -1,0 +1,56 @@
+begin dhscr_furn_magicbox_08
+	short MessageState
+	short OnPCEquip
+	short Button
+	short NumUsed
+	float NumCharges
+
+			; Remove test objects from the player's inventory  
+	if ( player->getitemcount, "dh_furn_testbox_08" > 0 )
+		player->removeitem, "dh_furn_testbox_08", 1
+	endif
+
+			; Do nothing if the ring's charges have been used up
+	if ( NumUsed > g_dh_FurnBoxCharges )
+		return;
+	endif
+
+			;Start on object equip
+	if ( OnPCEquip == 1  )
+
+				;Display the messagebox/choice to the user
+		if ( MessageState == 0 )
+			set NumCharges to ( g_dh_FurnBoxCharges - NumUsed )
+			MessageBox, "Do you wish to create the sack just in front of your current position?  You have %.0f charges left...", NumCharges, "Yes", "Just Test", "No"
+			set MessageState to 2
+		endif
+
+		set OnPCEquip to 0
+	endif
+
+			;Process the user's choice from the messagebox
+	if ( MessageState == 2 )
+		set Button to GetButtonPressed
+
+		if ( Button == -1 )				; Nothing pressed yet
+			return;
+		elseif ( Button == 0 )			; Yes
+			PlaceAtPC, "dh_furn_box_08", 1, 0, 0
+			set MessageState to 0;
+			set NumUsed to ( NumUsed + 1 )
+
+					; Display message when charges are used up
+			if ( NumUsed > g_dh_FurnBoxCharges )
+				MessageBox, "The ring's glow slowly fades, it's magic has been used up"
+			endif
+
+		elseif ( Button == 1 )			; Test
+			PlaceAtPC, "dh_furn_testbox_08", 1, 0, 0
+			set MessageState to 0;
+		elseif ( Button == 2 )			; No
+			set MessageState to 0;
+		endif
+
+	endif
+
+end

@@ -1,0 +1,223 @@
+Begin ajrb_QuiverSwitch_GL
+
+	short newQuiverFill
+
+	if ( ajrb_TotalArrows_GL > 0)
+		set ajrb_TotalArrows_GL to ( ajrb_TotalArrows_GL - 1 )
+	endif
+	if ( ajrb_TotalArrows_GL <= 10 )
+		MessageBox "You only have %.0f arrows left in your quiver..." ajrb_TotalArrows_GL
+	endif
+
+	if ( ajrb_TotalArrows_GL >= 11 )
+		set newQuiverFill to 25
+	elseif ( ajrb_TotalArrows_GL >= 6 )
+		set newQuiverFill to 10
+	elseif ( ajrb_TotalArrows_GL >= 5 )
+		set newQuiverFill to 5
+	elseif ( ajrb_TotalArrows_GL >= 4 )
+		set newQuiverFill to 4
+	elseif ( ajrb_TotalArrows_GL >= 3 )
+		set newQuiverFill to 3
+	elseif ( ajrb_TotalArrows_GL >= 2 )
+		set newQuiverFill to 2
+	elseif ( ajrb_TotalArrows_GL >= 1 )
+		set newQuiverFill to 1
+	elseif ( ajrb_TotalArrows_GL <= 0 )
+		set newQuiverFill to 0
+	endif
+	
+	; If the fill level hasn't changed, stop.
+	if ( newQuiverFill == ajrb_QuiverFill_GL )
+
+		StopScript "ajrb_QuiverSwitch_GL"
+
+	else
+
+		; Remove the old quiver and add & equip the new one.
+
+		if ( ajrb_QuiverType_GL == 0 )
+			if ( ajrb_QuiverFill_GL == 0)
+				player->RemoveItem "BlckGuarsk empty" 1
+			elseif ( ajrb_QuiverFill_GL == 1)
+				player->RemoveItem "BlckGuarsk qvr-1" 1
+			elseif ( ajrb_QuiverFill_GL == 2)
+				player->RemoveItem "BlckGuarsk qvr-2" 1
+			elseif ( ajrb_QuiverFill_GL == 3)
+				player->RemoveItem "BlckGuarsk qvr-3" 1
+			elseif ( ajrb_QuiverFill_GL == 4)
+				player->RemoveItem "BlckGuarsk qvr-4" 1
+			elseif ( ajrb_QuiverFill_GL == 5)
+				player->RemoveItem "BlckGuarsk qvr-5" 1
+			elseif ( ajrb_QuiverFill_GL == 10)
+				player->RemoveItem "BlckGuarsk qvr-10" 1
+			elseif ( ajrb_QuiverFill_GL == 25)
+				player->RemoveItem "BlckGuarsk qvr25" 1
+			endif
+			if ( newQuiverFill == 0)
+				player->AddItem "BlckGuarsk empty" 1
+				player->Equip "BlckGuarsk empty"
+			elseif ( newQuiverFill == 1)
+				player->AddItem "BlckGuarsk qvr-1" 1
+				player->Equip "BlckGuarsk qvr-1"
+			elseif ( newQuiverFill == 2)
+				player->AddItem "BlckGuarsk qvr-2" 1
+				player->Equip "BlckGuarsk qvr-2"
+			elseif ( newQuiverFill == 3)
+				player->AddItem "BlckGuarsk qvr-3" 1
+				player->Equip "BlckGuarsk qvr-3"
+			elseif ( newQuiverFill == 4)
+				player->AddItem "BlckGuarsk qvr-4" 1
+				player->Equip "BlckGuarsk qvr-4"
+			elseif ( newQuiverFill == 5)
+				player->AddItem "BlckGuarsk qvr-5" 1
+				player->Equip "BlckGuarsk qvr-5"
+			elseif ( newQuiverFill == 10)
+				player->AddItem "BlckGuarsk qvr-10" 1
+				player->Equip "BlckGuarsk qvr-10"
+			elseif ( newQuiverFill == 25)
+				player->AddItem "BlckGuarsk qvr25" 1
+				player->Equip "BlckGuarsk qvr25"
+			endif
+			
+		elseif ( ajrb_QuiverType_GL == 1 )
+			if ( ajrb_QuiverFill_GL == 0)
+				player->RemoveItem "GuarSkin empty" 1
+			elseif ( ajrb_QuiverFill_GL == 1)
+				player->RemoveItem "GuarSkin qvr-1" 1
+			elseif ( ajrb_QuiverFill_GL == 2)
+				player->RemoveItem "GuarSkin qvr-2" 1
+			elseif ( ajrb_QuiverFill_GL == 3)
+				player->RemoveItem "GuarSkin qvr-3" 1
+			elseif ( ajrb_QuiverFill_GL == 4)
+				player->RemoveItem "GuarSkin qvr-4" 1
+			elseif ( ajrb_QuiverFill_GL == 5)
+				player->RemoveItem "GuarSkin qvr-5" 1
+			elseif ( ajrb_QuiverFill_GL == 10)
+				player->RemoveItem "GuarSkin qvr-10" 1
+			elseif ( ajrb_QuiverFill_GL == 25)
+				player->RemoveItem "GuarSkin qvr25" 1
+			endif
+			if ( newQuiverFill == 0)
+				player->AddItem "GuarSkin empty" 1
+				player->Equip "GuarSkin empty"
+			elseif ( newQuiverFill == 1)
+				player->AddItem "GuarSkin qvr-1" 1
+				player->Equip "GuarSkin qvr-1"
+			elseif ( newQuiverFill == 2)
+				player->AddItem "GuarSkin qvr-2" 1
+				player->Equip "GuarSkin qvr-2"
+			elseif ( newQuiverFill == 3)
+				player->AddItem "GuarSkin qvr-3" 1
+				player->Equip "GuarSkin qvr-3"
+			elseif ( newQuiverFill == 4)
+				player->AddItem "GuarSkin qvr-4" 1
+				player->Equip "GuarSkin qvr-4"
+			elseif ( newQuiverFill == 5)
+				player->AddItem "GuarSkin qvr-5" 1
+				player->Equip "GuarSkin qvr-5"
+			elseif ( newQuiverFill == 10)
+				player->AddItem "GuarSkin qvr-10" 1
+				player->Equip "GuarSkin qvr-10"
+			elseif ( newQuiverFill == 25)
+				player->AddItem "GuarSkin qvr25" 1
+				player->Equip "GuarSkin qvr25"
+			endif
+			
+		elseif ( ajrb_QuiverType_GL == 2 )
+			if ( ajrb_QuiverFill_GL == 0)
+				player->RemoveItem "Dw empty" 1
+			elseif ( ajrb_QuiverFill_GL == 1)
+				player->RemoveItem "Dw qvr-1" 1
+			elseif ( ajrb_QuiverFill_GL == 2)
+				player->RemoveItem "Dw qvr-2" 1
+			elseif ( ajrb_QuiverFill_GL == 3)
+				player->RemoveItem "Dw qvr-3" 1
+			elseif ( ajrb_QuiverFill_GL == 4)
+				player->RemoveItem "Dw qvr-4" 1
+			elseif ( ajrb_QuiverFill_GL == 5)
+				player->RemoveItem "Dw qvr-5" 1
+			elseif ( ajrb_QuiverFill_GL == 10)
+				player->RemoveItem "Dw qvr-10" 1
+			elseif ( ajrb_QuiverFill_GL == 25)
+				player->RemoveItem "Dw qvr25" 1
+			endif
+			if ( newQuiverFill == 0)
+				player->AddItem "Dw empty" 1
+				player->Equip "Dw empty"
+			elseif ( newQuiverFill == 1)
+				player->AddItem "Dw qvr-1" 1
+				player->Equip "Dw qvr-1"
+			elseif ( newQuiverFill == 2)
+				player->AddItem "Dw qvr-2" 1
+				player->Equip "Dw qvr-2"
+			elseif ( newQuiverFill == 3)
+				player->AddItem "Dw qvr-3" 1
+				player->Equip "Dw qvr-3"
+			elseif ( newQuiverFill == 4)
+				player->AddItem "Dw qvr-4" 1
+				player->Equip "Dw qvr-4"
+			elseif ( newQuiverFill == 5)
+				player->AddItem "Dw qvr-5" 1
+				player->Equip "Dw qvr-5"
+			elseif ( newQuiverFill == 10)
+				player->AddItem "Dw qvr-10" 1
+				player->Equip "Dw qvr-10"
+			elseif ( newQuiverFill == 25)
+				player->AddItem "Dw qvr25" 1
+				player->Equip "Dw qvr25"
+			endif
+			
+		elseif ( ajrb_QuiverType_GL == 3 )
+			if ( ajrb_QuiverFill_GL == 0)
+				player->RemoveItem "Leather empty" 1
+			elseif ( ajrb_QuiverFill_GL == 1)
+				player->RemoveItem "Leather qvr-1" 1
+			elseif ( ajrb_QuiverFill_GL == 2)
+				player->RemoveItem "Leather qvr-2" 1
+			elseif ( ajrb_QuiverFill_GL == 3)
+				player->RemoveItem "Leather qvr-3" 1
+			elseif ( ajrb_QuiverFill_GL == 4)
+				player->RemoveItem "Leather qvr-4" 1
+			elseif ( ajrb_QuiverFill_GL == 5)
+				player->RemoveItem "Leather qvr-5" 1
+			elseif ( ajrb_QuiverFill_GL == 10)
+				player->RemoveItem "Leather qvr-10" 1
+			elseif ( ajrb_QuiverFill_GL == 25)
+				player->RemoveItem "Leather qvr25" 1
+			endif
+			if ( newQuiverFill == 0)
+				player->AddItem "Leather empty" 1
+				player->Equip "Leather empty"
+			elseif ( newQuiverFill == 1)
+				player->AddItem "Leather qvr-1" 1
+				player->Equip "Leather qvr-1"
+			elseif ( newQuiverFill == 2)
+				player->AddItem "Leather qvr-2" 1
+				player->Equip "Leather qvr-2"
+			elseif ( newQuiverFill == 3)
+				player->AddItem "Leather qvr-3" 1
+				player->Equip "Leather qvr-3"
+			elseif ( newQuiverFill == 4)
+				player->AddItem "Leather qvr-4" 1
+				player->Equip "Leather qvr-4"
+			elseif ( newQuiverFill == 5)
+				player->AddItem "Leather qvr-5" 1
+				player->Equip "Leather qvr-5"
+			elseif ( newQuiverFill == 10)
+				player->AddItem "Leather qvr-10" 1
+				player->Equip "Leather qvr-10"
+			elseif ( newQuiverFill == 25)
+				player->AddItem "Leather qvr25" 1
+				player->Equip "Leather qvr25"
+			endif
+		endif
+
+		; Update global quiver fill level.
+		set ajrb_QuiverFill_GL to newQuiverFill
+;MessageBox "Switched quiver fill from: %.0f to %.0f" ajrb_QuiverFill_GL newQuiverFill
+
+	endif
+	
+	StopScript "ajrb_QuiverSwitch_GL"
+End

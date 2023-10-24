@@ -1,0 +1,10 @@
+Begin _ar_crn_drop_disabler
+
+short OnPCDrop
+
+If (OnPCDrop == 1 )
+disable
+set OnPCDrop to 0
+endif
+endif
+end

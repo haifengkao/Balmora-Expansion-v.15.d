@@ -1,0 +1,7 @@
+begin BE_LuckyBugger
+
+set BE_prize to ( BE_prize + 1 )
+
+stopscript BE_LuckyBugger
+
+end

@@ -1,0 +1,40 @@
+begin BE_IceBGWEHair4k1st2
+
+; Vorwoda originally wrote this script for Daduke's Wizard Hats pluggin
+
+short Control 
+short button 
+
+if ( Control == 0 ) 
+	MessageBox "Select Race" "Human" "DarkElf" "HighElf" "WoodElf"
+	set Control to 1 
+endif 
+if ( Control == 1 ) 
+	set button to GetButtonPressed 
+	if ( button == -1 ) 
+		return 
+	elseif ( button == 0 ) 
+		player->AddItem "1Ice_BE_BGWEhair4k_Human" 1 
+		player->Equip "1Ice_BE_BGWEhair4k_Human" 1 
+		set Control to 2 
+	elseif ( button == 1 ) 
+		player->AddItem "1Ice_BE_BGWEhair4k_D" 1 
+		player->Equip "1Ice_BE_BGWEhair4k_D" 1 
+		set Control to 2 
+	elseif ( button == 2 ) 
+		player->AddItem "1Ice_BE_BGWEhair4k_H" 1 
+		player->Equip "1Ice_BE_BGWEhair4k_H" 1 
+		set Control to 2 
+	elseif ( button == 3 ) 
+		player->AddItem "1Ice_BE_BGWEhair4k_w" 1 
+		player->Equip "1Ice_BE_BGWEhair4k_w" 1 
+		set Control to 2
+	endif 
+endif 
+if ( Control == 2 ) 
+	player->RemoveItem "1Ice_BE_BGWEhair4k_Script" 1 
+	set Control to 0 
+	StopScript, BE_IceBGWEHair4k1st2 
+endif 
+
+end

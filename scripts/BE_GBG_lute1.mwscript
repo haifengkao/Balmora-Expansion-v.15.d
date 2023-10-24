@@ -1,0 +1,66 @@
+begin BE_GBG_lute1
+
+short playlist
+short doneplaying
+
+;reset playlist
+if ( CellChanged == 1 )
+	set playlist to 0
+endif
+
+; Bards only play during day:
+if( GameHour >= 19)
+	if( doneplaying == 0)
+		Disable
+		set doneplaying to 1
+	endif
+endif
+if( GameHour < 8)
+	if( doneplaying == 0)
+		Disable
+		set doneplaying to 1
+	endif
+endif
+if( GameHour >= 7)
+	if( GameHour < 19 )
+		if( doneplaying == 1)
+			Enable
+			set doneplaying to 0
+		endif
+	endif
+endif
+
+; Avoid clash with game music:
+;StreamMusic, "silent.mp3"
+; Jukebox toplay music in sequence
+if ( playlist == 0 )
+ if ( GetSoundPlaying "lute4" == 1 )
+	return
+ else
+	PlaySound3D "lute1"
+	set playlist to 1
+ endif
+elseif ( playlist == 1 )
+ if ( GetSoundPlaying "lute1" == 1 )
+	Return
+ else
+	PlaySound3D "lute2"
+	set playlist to 2
+ endif
+elseif ( playlist == 2 )
+ if ( GetSoundPlaying "lute2" == 1 )
+	Return
+ else
+	PlaySound3D"lute3"
+	set playlist to 3
+ endif
+elseif ( playlist == 3 )
+ if ( GetSoundPlaying "lute3" == 1 )
+	Return
+ else
+	PlaySound3D "lute4"
+	set playlist to 0
+ endif
+endif
+
+end

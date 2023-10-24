@@ -1,0 +1,98 @@
+begin dhscr_furn_plant_39
+			; Used for plants that can be picked up and dropped, and harvested. Defaults to harvest
+			; if the picking up of objects is currently disabled.
+	short	messageOn
+	short	button
+	float	HarvestElapsedHour
+	float   OrigPlantCounter 
+	float	NumHarvest
+	short	DoOnce
+
+	if ( DoOnce == 0 )
+		set OrigPlantCounter to g_dh_PlantCounter
+		Set DoOnce to 1
+	endif
+
+			; Compute time
+	set HarvestElapsedHour to ( g_dh_PlantCounter - OrigPlantCounter )
+
+			; Check for object activation
+	if ( OnActivate == 1 )
+	
+				; Do nothing if the picking up of items has been disabled
+		if (g_dhfurn_EnableMove == 0)
+			set messageOn to 10
+		else 
+			Set messageOn to 2
+		endif
+	endif
+
+			; Abort script if nothing to do
+	if ( messageOn == 0 )
+		return
+	endif
+
+			; Display message choices to user
+	if ( messageOn == 2 )
+		MessageBox "What do you want to do with this object?"  "Pick it up" "Harvest" "Nothing"
+		Set messageOn to 1
+	endif
+
+			; Process message choices
+	if ( messageOn == 1 )
+		set button to GetButtonPressed
+
+				; Default activation, pick the item up
+		if ( button == 0 )
+			Activate
+			Set messageOn to 0
+			return
+		endif
+
+		if ( button == 1 )				; Harvest
+			Set messageOn to 10
+		endif
+
+		if ( button == 2 )				; Do nothing
+			Set messageOn to 0
+			return
+		endif
+
+	endif
+
+			; Attempt to harvest the plant
+	if ( messageOn == 10 )
+		set messageOn to 0
+
+				; Only harvest if the plant's harvest time has been reached
+		if ( HarvestElapsedHour > g_dhFurnPlantHarvest )
+			set OrigPlantCounter to g_dh_PlantCounter
+			player->additem, "ingred_ash_yam_01", 1
+			set NumHarvest to 1
+
+					; Add 0 to 4 ingrediants per havest (100, 50, 25, 12.5% chances)
+			if ( Random, 2 == 1 )
+				player->additem, "ingred_ash_yam_01", 1
+				set NumHarvest to 2
+
+				if ( Random, 2 == 1 )
+					player->additem, "ingred_ash_yam_01", 1
+					set NumHarvest to 3
+
+					if ( Random, 2 == 1 )
+						player->additem, "ingred_ash_yam_01", 1
+						set NumHarvest to 4
+					endif
+				endif
+			endif
+
+			MessageBox, "You harvest %.0f ingrediants from the plant!", NumHarvest
+
+				; Display message if plant is not ready for harvesting
+		else
+			MessageBox, "The plant is not yet ready for harvesting..."
+		endif
+	endif
+
+end
+

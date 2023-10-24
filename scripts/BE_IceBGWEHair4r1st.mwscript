@@ -1,0 +1,12 @@
+begin BE_IceBGWEHair4r1st
+
+; Vorwoda originally wrote this script for Daduke's Wizard Hats pluggin
+
+short OnPCEquip
+
+if ( OnPCEquip == 1 ) 
+	StartScript, BE_IceBGWEHair4r1st2 
+	StopScript, BE_IceBGWEHair4r1st
+endif
+
+end

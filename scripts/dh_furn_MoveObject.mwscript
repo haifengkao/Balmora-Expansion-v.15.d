@@ -1,0 +1,174 @@
+begin dh_furn_MoveObject
+	; Displays a message to pickup, or move up/down/left/right the object.  Moves
+	; the object as required until the user activates it again, or the maximum amount of movement
+	; has been exceeded to try and stop the object from 'running away' from the PC.  Used for
+	; simple objects like banners which the player might want to rearrange in different orientations.
+
+  short	messageOn
+  short     IsMovingUpDown
+  short     IsMovingLeftRight
+  short	button
+  short	NoLore
+  float		OriginalPosition
+  float		MaxPosition
+  float		NewPosition
+
+	; Ignore if currently in menu mode
+if ( MenuMode == 1)
+	return
+endif
+
+	; Check for object activation
+if ( OnActivate == 1 )
+
+		; Do nothing if the script has been disabled
+	if (g_dhfurn_EnableMove == 0)
+		return
+	endif
+
+	Set messageOn to 2
+endif
+
+	; Check for doing nothing to exit script early, hopefully speeding it up
+if (messageOn == 0)
+	return
+endif
+
+	; Initial object activation 
+if ( messageOn == 2 )
+     
+			; Turn off moving up/down if required
+     if (IsMovingUpDown != 0) 
+		set IsMovingUpDown to 0
+		set messageOn to 0
+		return
+     endif
+
+			; Turn off moving left/right if required
+     if (IsMovingLeftRight != 0) 
+		set IsMovingLeftRight to 0
+		set messageOn to 0
+		return
+     endif
+	
+		; Display message box with choices for the player
+	MessageBox "What do you want to do with this object?"  "   Pick it up    " "    Move Up     "  "  Move Down   " "  Move Left   " " Move Right  " "     Nothing      "
+	Set messageOn to 1
+endif
+
+	; Process the player's choice from the message box
+if ( messageOn == 1 )
+	set button to GetButtonPressed
+
+		; Pickup object
+	if ( button == 0 )
+		Activate
+		Set messageOn to 0
+		return
+	endif
+
+		; Move object up
+	if ( button == 1 )
+		Set OriginalPosition to GetPos, Z
+		Set MaxPosition to OriginalPosition + g_dhfurn_MaxMove
+		Set IsMovingUpDown to 1
+		Set messageOn to 10
+		return
+	endif
+
+		; Move object down
+	if ( button == 2 )
+		Set OriginalPosition to GetPos, Z
+		Set MaxPosition to OriginalPosition - g_dhfurn_MaxMove
+		Set IsMovingUpDown to 2
+		Set messageOn to 10
+		return
+	endif
+
+		; Move object left
+	if ( button == 3)
+		Set OriginalPosition to GetPos, X
+		Set MaxPosition to OriginalPosition + g_dhfurn_MaxMove
+		Set IsMovingLeftRight to 1
+		Set messageOn to 10
+		return
+	endif
+
+		; Move object right
+	if ( button == 4)
+		Set OriginalPosition to GetPos, X
+		Set MaxPosition to OriginalPosition - g_dhfurn_MaxMove
+		Set IsMovingLeftRight to 2
+		Set messageOn to 10
+		return
+	endif
+
+		; Do nothing
+	if ( button == 5 )
+		Set messageOn to 0
+		return
+	endif
+
+endif
+
+	; Move up
+if (IsMovingUpDown == 1)
+	set NewPosition to GetPos, Z
+
+			; Ensure the object doesn't 'run away' on us
+	if (NewPosition  > MaxPosition)
+		set messageOn to 0
+		set IsMovingUpDown to 0
+		return
+	endif
+
+	MoveWorld, z, 0.3
+	CellUpdate
+endif
+
+		; Move down
+if (IsMovingUpDown == 2)
+	set NewPosition to GetPos, Z
+
+			; Ensure the object doesn't 'run away' on us
+	if (NewPosition  < MaxPosition)
+		set messageOn to 0
+		set IsMovingUpDown to 0
+		return
+	endif
+
+	MoveWorld, z, -0.3
+endif
+
+		; Move left
+if (IsMovingLeftRight == 1)
+	set NewPosition to GetPos, X
+
+			; Ensure the object doesn't 'run away' on us
+	if (NewPosition  > MaxPosition)
+		set messageOn to 0
+		set IsMovingLeftRight to 0
+		return
+	endif
+
+	Move, x, -10
+	DontSaveObject 
+endif
+
+		; Move right
+if (IsMovingLeftRight == 2)
+	set NewPosition to GetPos, X
+
+			; Ensure the object doesn't 'run away' on us
+	if (NewPosition  < MaxPosition)
+		set messageOn to 0
+		set IsMovingLeftRight to 0
+		return
+	endif
+
+	Move, x, 10
+	DontSaveObject 
+endif
+
+
+end

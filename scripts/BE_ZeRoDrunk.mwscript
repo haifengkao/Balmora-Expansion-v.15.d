@@ -1,0 +1,17 @@
+Begin BE_ZeRoDrunk
+
+short nolore
+
+addspell"BE_Drunk Man Spell"
+
+If ( Pcvampire = 1) 
+	AddSpell, "Vampire Blood Aundae"	
+	AddSpell, "Vampire Attributes"
+	AddSpell, "Vampire Skills"
+	AddSpell, "Vampire Immunities"
+	AddSpell, "Vampire Sun Damage"
+	AddSpell, "Vampire Touch"
+	AddSpell, "Vampire Aundae Specials"
+endif
+
+end

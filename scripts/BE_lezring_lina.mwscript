@@ -1,0 +1,23 @@
+begin BE_lezring_lina
+
+short NoLore
+
+if ( "BE_lezring" == 4 )
+	startcombat, "BE_naga_theserpent"
+endif
+
+if ( OnKnockOut == 1 )
+	stopcombat, "BE_naga_theserpent"
+	"BE_naga_theserpent"-> stopcombat, "BE_lina_inverse"
+	EnablePlayerFighting
+	EnablePlayerMagic
+	enablevanitymode
+	set "BE_lezring" to 5
+endif
+
+if ( "BE_lezring" == 9 )
+	SetFatigue 170
+	SetHealth 69
+endif
+
+end

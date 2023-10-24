@@ -1,0 +1,90 @@
+Begin WI_ArrowheadKit_MAIN
+
+short OnPCEquip
+short button
+short choice
+short steelAmt
+short stoneAmt
+short alloyAmt
+
+If ( MenuMode == 0 )
+	return
+endif
+
+If ( OnPCEquip == 1 )
+	MessageBox "You prepair the kit to make arrowheads"
+	set steelAmt to "player"->GetItemCount "WI_Bar_Steel"
+	set stoneAmt to "player"->GetItemCount "WI_Rock_Small"
+	set alloyAmt to "player"->GetItemCount "WI_Bar_Alloy"
+	set choice to 1
+	set OnPCEquip to 0
+endif
+
+If ( choice == 1 )
+	MessageBox "What type of arrowheads to you want to make?", "Exit", "Stone", "Steel", "Alloy"
+	set choice to 3
+endif
+
+If ( choice == 3 )
+	set button to GetButtonPressed
+	if ( button == 0 )
+		set choice to 0
+	endif
+	if ( button == 1 )
+		set choice to 10
+	endif
+	if ( button == 2 )
+		set choice to 20
+	endif
+	if ( button == 3 )
+		set choice to 30
+	endif
+endif
+
+;make stone arrowheads from rock
+If ( choice == 10 )
+	If ( stoneAmt >= 1 )
+		MessageBox "You use the chisel and the small hammer to break up the rock and form it into the right shaped pieces.  Then you use the sharpening stone on them until the edges are sharp" "Ok"
+		"player"->RemoveItem "WI_Rock_Small" 1
+		"player"->Additem "WI_ArrowTips_Stone" 1
+		PlaySound "Repair"
+		set choice to 0
+	else
+		MessageBox "You don't have any Rocks to make stone arrowheads with" "Ok"
+		set choice to 0
+		set OnPCEquip to 0
+	endif
+endif
+
+;make steel arrowheads from steel bars
+If ( choice == 20 )
+	If ( steelAmt >= 1 )
+		MessageBox "You use the chisel and the small hammer to break up the steel bar and form it into the right shaped pieces.  Then you use the sharpening stone on them until the edges are sharp" "Ok"
+		"player"->RemoveItem "WI_Bar_Steel" 1
+		"player"->AddItem "WI_ArrowTips_Steel" 1
+		PlaySound "Repair"
+		set choice to 0
+	else
+		MessageBox "You don't have any Steel bars to make the arrowheads out of" "Ok"
+		set choice to 0
+		set OnPCEquip to 0
+	endif
+endif
+
+;make alloy razor tips from alloy bars
+If ( choice == 30 )
+	If ( alloyAmt >= 1 )
+		MessageBox "You use the chisel and the small hammer to break up the alloy bar and form it into the right shaped pieces.  Then you use the sharpening stone on them until the edges are razor sharp" "Ok"
+		"player"->RemoveItem "WI_Bar_Alloy" 1
+		"player"->AddItem "WI_ArrowTips_Alloy" 1
+		PlaySound "Repair"
+		set choice to 0
+	else
+		MessageBox "You don't have any Alloy bars to make the arrowheads out of" "Ok"
+		set choice to 0
+		set OnPCEquip to 0
+	endif
+endif
+
+
+End WI_ArrowheadKit_MAIN

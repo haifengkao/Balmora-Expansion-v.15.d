@@ -1,0 +1,63 @@
+begin dh_furn_Bed
+		;used for standard beds the player can activate and sleep in or pick up
+
+  short	messageOn
+  short	button
+  short	NoLore
+
+	; Ignore if currently in menu mode
+if ( MenuMode == 1 )
+	return
+endif
+
+	; Check for object activation
+if ( OnActivate == 1 )
+
+		; Activate if the pickup option is currently disabled
+	if (g_dhfurn_EnableMove == 0)
+          ShowRestMenu	     
+		return
+	endif
+
+	Set messageOn to 2
+endif
+
+	; Abort script if nothing to do
+if ( messageOn == 0 )
+	return
+endif
+
+	; Display menu options to user
+if ( messageOn == 2 )
+	MessageBox "What do you want to do with this object?"  "Pick it up" "Rest" "Nothing"
+	Set messageOn to 1
+endif
+
+	; Process the menu choice from the user
+if ( messageOn == 1 )
+	set button to GetButtonPressed
+
+		; Default activation, pick the bed up
+	if ( button == 0 )
+		Activate
+		Set messageOn to 0
+		return
+	endif
+
+		; Display user the rest menu
+	if ( button == 1 )
+          ShowRestMenu	     
+		Set messageOn to 0
+		return
+	endif
+
+		; Do nothing
+	if ( button == 2 )
+		Set messageOn to 0
+		return
+	endif
+
+endif
+
+
+end

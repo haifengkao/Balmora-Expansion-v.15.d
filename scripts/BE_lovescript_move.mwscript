@@ -1,0 +1,19 @@
+begin BE_lovescript_move
+; Move girl to lovechamber
+if (BE_MakeLoveTo==1)
+	"BE_redguard dancer"-> AiTravel 2955, 4451,10731
+; 	"BE_redguard dancer"->ModDisposition 100
+endif
+
+if (BE_MakeLoveTo==2)
+	"BE_nord dancer"-> AiTravel 2955, 4451,10731
+;	"BE_nord dancer"->ModDisposition 100
+endif
+
+if (BE_MakeLoveTo==3)
+	"BE_breton dancer"-> AiTravel 2955, 4451,10731
+;	"BE_breton dancer"->ModDisposition 100
+endif
+
+stopscript BE_lovescript_move
+end

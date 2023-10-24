@@ -1,0 +1,587 @@
+Begin farrp_make_AlchArrows1
+
+short choice5
+short button5
+short CalcOutcome2
+short FailChance
+float HurtDam
+short doOnce
+short arrowType
+short mixType
+short tipType
+short go2loop
+short loop
+float timer
+
+;------------------------------------------Calculate Outcome (this part will only run when it's called upon by the portion of script at the bottom)--------------------------
+If ( CalcOutcome2 == 1 )			
+	set timer to ( timer + GetSecondsPassed )
+	If ( timer >= 3 )
+		set timer to 0
+		If ( "player"->GetAlchemy >= 90 )
+			set FailChance to Random, 25	
+			set go2loop to 1
+		elseif ( "player"->GetAlchemy >= 80 )		
+			set FailChance to Random, 20
+			set go2loop to 1
+		elseif ( "player"->GetAlchemy >= 70 )
+			set FailChance to Random, 17
+			set go2loop to 1
+		elseif	( "player"->GetAlchemy >= 60 )
+			set FailChance to Random, 15
+			set go2loop to 1
+		elseif	( "player"->GetAlchemy >= 50 )
+			set FailChance to Random, 12
+			set go2loop to 1
+		elseif	( "player"->GetAlchemy >= 40 )
+			set FailChance to Random, 8
+			set go2loop to 1
+		elseif	( "player"->GetAlchemy >= 1 )
+			set FailChance to Random, 5
+			set go2loop to 1
+		endif
+		If ( mixType == 1 )
+			set HurtDam to Random, 8
+		elseif ( mixType == 2 )
+			set HurtDam to Random, 12
+		elseif ( mixType == 3 )
+			set HurtDam to Random, 16
+		elseif ( mixType == 4 )
+			set HurtDam to Random, 20
+		elseif ( mixType == 5 )
+			set HurtDam to Random, 25
+		endif
+	else
+		return
+	endif
+endif
+
+;------------------------------------------This will loop until all 10 arrow creation attempts are completed--------------------------
+If ( go2loop == 1 )
+	set go2loop to 0
+	If ( loop >= 10 )	;---> If loop has cycled 10 times then reset variables and stop script
+		set loop to 0
+		set go2loop to 0
+		set choice5 to 0
+		set CalcOutcome2 to 0
+		EnablePlayerControls
+		StopScript "farrp_make_AlchArrows1"
+	elseif ( loop <= 9 )  ;--------------------------------------------------> If loop has cycled less than 10 times then attempt to creat an arrow again		
+		set CalcOutcome2 to 1
+		set loop to ( loop + 1 )	
+		If ( FailChance <= 1 )
+			MessageBox "...while tying the pouch to the arrowhead you puncture it, causing the mixture to explode in your face!"
+			set HurtDam to ( HurtDam - HurtDam - HurtDam )
+			"player"->ModCurrenthealth, HurtDam
+			PlaySound "destruction hit"
+			If ( arrowType == 1 )
+				"Player"->RemoveItem "bonemold arrow" 1
+				return
+			elseif ( arrowType == 2 )
+				"Player"->RemoveItem "iron arrow" 1
+				return
+			elseif ( arrowType == 3 )
+				"Player"->RemoveItem "steel arrow" 1
+				return
+			elseif ( arrowType == 4 )
+				"Player"->RemoveItem "WI_Arrow_Dwemer" 1
+				return
+			elseif ( arrowType == 5 )
+				"Player"->RemoveItem "silver arrow" 1
+				return
+			elseif ( arrowType == 6 )
+				"Player"->RemoveItem "ebony arrow" 1
+				return
+			elseif ( arrowType == 7 )
+				"Player"->RemoveItem "WI_Arrow_Gold" 1
+				return
+			endif
+		elseif ( FailChance >= 2 )
+			set choice5 to 1000
+		endif
+	endif
+endif
+
+;------------------------------------------This will do ALL the calculations to add the proper arrow to your inventory after creation------------------		
+If ( choice5 == 1000 )
+			PlaySound "Repair"
+			MessageBox "...you safely tie the pouch to the arrowhead and place the arrow in your inventory."
+			set farrp_AlchemyTipExp to ( farrp_AlchemyTipExp + 0.1 )
+			set choice5 to 1001
+endif
+
+If ( choice5 == 1001 )
+			If ( arrowType == 1 )  ;------------------------------------------------------------------------->> Bone Arrows				
+				"Player"->RemoveItem "bonemold arrow" 1
+				If ( mixType == 1 )
+					If ( TipType == 1 )
+						"Player"->AddItem "farrp_Arrow_Bone_fire1" 1
+					elseif ( TipType == 2 )
+						"Player"->AddItem "farrp_Arrow_Bone_poison1" 1	
+					endif
+				elseif ( mixType == 2 )	
+					If ( TipType == 1 )
+						"Player"->AddItem "farrp_Arrow_Bone_fire2" 1
+					elseif ( TipType == 2 )
+						"Player"->AddItem "farrp_Arrow_Bone_poison2" 1	
+					endif
+				elseif ( mixType == 3 )	
+					If ( TipType == 1 )
+						"Player"->AddItem "farrp_Arrow_Bone_fire3" 1
+					elseif ( TipType == 2 )
+						"Player"->AddItem "farrp_Arrow_Bone_poison3" 1	
+					endif
+				elseif ( mixType == 4 )	
+					If ( TipType == 1 )
+						"Player"->AddItem "farrp_Arrow_Bone_fire4" 1
+					elseif ( TipType == 2 )
+						"Player"->AddItem "farrp_Arrow_Bone_poison4" 1	
+					endif
+				elseif ( mixType == 5 )	
+					If ( TipType == 1 )
+						"Player"->AddItem "farrp_Arrow_Bone_fire5" 1
+					elseif ( TipType == 2 )
+						"Player"->AddItem "farrp_Arrow_Bone_poison5" 1	
+					endif
+				endif	
+			endif
+endif
+
+If ( choice5 == 1001 )					
+			If ( arrowType == 2 )  ;------------------------------------------------------------------------->> Iron Arrows	
+				"Player"->RemoveItem "iron arrow" 1			
+				If ( mixType == 1 )
+					If ( TipType == 1 )
+						"Player"->AddItem "farrp_Arrow_Iron_fire1" 1
+					elseif ( TipType == 2 )
+						"Player"->AddItem "farrp_Arrow_Iron_poison1" 1	
+					endif
+				elseif ( mixType == 2 )	
+					If ( TipType == 1 )
+						"Player"->AddItem "farrp_Arrow_Iron_fire2" 1
+					elseif ( TipType == 2 )
+						"Player"->AddItem "farrp_Arrow_Iron_poison2" 1	
+					endif
+				elseif ( mixType == 3 )	
+					If ( TipType == 1 )
+						"Player"->AddItem "farrp_Arrow_Iron_fire3" 1
+					elseif ( TipType == 2 )
+						"Player"->AddItem "farrp_Arrow_Iron_poison3" 1	
+					endif
+				elseif ( mixType == 4 )	
+					If ( TipType == 1 )
+						"Player"->AddItem "farrp_Arrow_Iron_fire4" 1
+					elseif ( TipType == 2 )
+						"Player"->AddItem "farrp_Arrow_Iron_poison4" 1	
+					endif
+				elseif ( mixType == 5 )	
+					If ( TipType == 1 )
+						"Player"->AddItem "farrp_Arrow_Iron_fire5" 1
+					elseif ( TipType == 2 )
+						"Player"->AddItem "farrp_Arrow_Iron_poison5" 1	
+					endif
+				endif
+			endif
+endif
+
+If ( choice5 == 1001 )
+			If ( arrowType == 3 )  ;------------------------------------------------------------------------->> Steel Arrows	
+				"Player"->RemoveItem "steel arrow" 1			
+				If ( mixType == 1 )
+					If ( TipType == 1 )
+						"Player"->AddItem "farrp_Arrow_steel_fire1" 1
+					elseif ( TipType == 2 )
+						"Player"->AddItem "farrp_Arrow_steel_poison1" 1	
+					endif
+				elseif ( mixType == 2 )	
+					If ( TipType == 1 )
+						"Player"->AddItem "farrp_Arrow_steel_fire2" 1
+					elseif ( TipType == 2 )
+						"Player"->AddItem "farrp_Arrow_steel_poison2" 1	
+					endif
+				elseif ( mixType == 3 )	
+					If ( TipType == 1 )
+						"Player"->AddItem "farrp_Arrow_steel_fire3" 1
+					elseif ( TipType == 2 )
+						"Player"->AddItem "farrp_Arrow_steel_poison3" 1	
+					endif
+				elseif ( mixType == 4 )	
+					If ( TipType == 1 )
+						"Player"->AddItem "farrp_Arrow_steel_fire4" 1
+					elseif ( TipType == 2 )
+						"Player"->AddItem "farrp_Arrow_steel_poison4" 1	
+					endif
+				elseif ( mixType == 5 )	
+					If ( TipType == 1 )
+						"Player"->AddItem "farrp_Arrow_steel_fire5" 1
+					elseif ( TipType == 2 )
+						"Player"->AddItem "farrp_Arrow_steel_poison5" 1	
+					endif
+				endif
+			endif
+endif
+
+If ( choice5 == 1001 )
+			If ( arrowType == 4 )  ;------------------------------------------------------------------------->> Dwemer Arrows	
+				"Player"->RemoveItem "WI_Arrow_Dwemer" 1			
+				If ( mixType == 1 )
+					If ( TipType == 1 )
+						"Player"->AddItem "farrp_Arrow_Dwemer_fire1" 1
+					elseif ( TipType == 2 )
+						"Player"->AddItem "farrp_Arrow_Dwemer_poison1" 1	
+					endif
+				elseif ( mixType == 2 )	
+					If ( TipType == 1 )
+						"Player"->AddItem "farrp_Arrow_Dwemer_fire2" 1
+					elseif ( TipType == 2 )
+						"Player"->AddItem "farrp_Arrow_Dwemer_poison2" 1	
+					endif
+				elseif ( mixType == 3 )	
+					If ( TipType == 1 )
+						"Player"->AddItem "farrp_Arrow_Dwemer_fire3" 1
+					elseif ( TipType == 2 )
+						"Player"->AddItem "farrp_Arrow_Dwemer_poison3" 1	
+					endif
+				elseif ( mixType == 4 )	
+					If ( TipType == 1 )
+						"Player"->AddItem "farrp_Arrow_Dwemer_fire4" 1
+					elseif ( TipType == 2 )
+						"Player"->AddItem "farrp_Arrow_Dwemer_poison4" 1	
+					endif
+				elseif ( mixType == 5 )	
+					If ( TipType == 1 )
+						"Player"->AddItem "farrp_Arrow_Dwemer_fire5" 1
+					elseif ( TipType == 2 )
+						"Player"->AddItem "farrp_Arrow_Dwemer_poison5" 1	
+					endif
+				endif
+			endif
+endif
+
+If ( choice5 == 1001)
+			If ( arrowType == 5 )  ;------------------------------------------------------------------------->> Silver Arrows	
+				"Player"->RemoveItem "silver arrow" 1			
+				If ( mixType == 1 )
+					If ( TipType == 1 )
+						"Player"->AddItem "farrp_Arrow_silver_fire1" 1
+					elseif ( TipType == 2 )
+						"Player"->AddItem "farrp_Arrow_silver_poison1" 1	
+					endif
+				elseif ( mixType == 2 )	
+					If ( TipType == 1 )
+						"Player"->AddItem "farrp_Arrow_silver_fire2" 1
+					elseif ( TipType == 2 )
+						"Player"->AddItem "farrp_Arrow_silver_poison2" 1	
+					endif
+				elseif ( mixType == 3 )	
+					If ( TipType == 1 )
+						"Player"->AddItem "farrp_Arrow_silver_fire3" 1
+					elseif ( TipType == 2 )
+						"Player"->AddItem "farrp_Arrow_silver_poison3" 1	
+					endif
+				elseif ( mixType == 4 )	
+					If ( TipType == 1 )
+						"Player"->AddItem "farrp_Arrow_silver_fire4" 1
+					elseif ( TipType == 2 )
+						"Player"->AddItem "farrp_Arrow_silver_poison4" 1	
+					endif
+				elseif ( mixType == 5 )	
+					If ( TipType == 1 )
+						"Player"->AddItem "farrp_Arrow_silver_fire5" 1
+					elseif ( TipType == 2 )
+						"Player"->AddItem "farrp_Arrow_silver_poison5" 1	
+					endif
+				endif
+			endif
+endif
+
+If ( choice5 == 1001 )
+			If ( arrowType == 6 )  ;----------------------------------------------------------------------------->> Ebony Arrows	
+				"Player"->RemoveItem "ebony arrow" 1			
+				If ( mixType == 1 )
+					If ( TipType == 1 )
+						"Player"->AddItem "farrp_Arrow_ebony_fire1" 1
+					elseif ( TipType == 2 )
+						"Player"->AddItem "farrp_Arrow_ebony_poison1" 1	
+					endif
+				elseif ( mixType == 2 )	
+					If ( TipType == 1 )
+						"Player"->AddItem "farrp_Arrow_ebony_fire2" 1
+					elseif ( TipType == 2 )
+						"Player"->AddItem "farrp_Arrow_ebony_poison2" 1	
+					endif
+				elseif ( mixType == 3 )	
+					If ( TipType == 1 )
+						"Player"->AddItem "farrp_Arrow_ebony_fire3" 1
+					elseif ( TipType == 2 )
+						"Player"->AddItem "farrp_Arrow_ebony_poison3" 1	
+					endif
+				elseif ( mixType == 4 )	
+					If ( TipType == 1 )
+						"Player"->AddItem "farrp_Arrow_ebony_fire4" 1
+					elseif ( TipType == 2 )
+						"Player"->AddItem "farrp_Arrow_ebony_poison4" 1	
+					endif
+				elseif ( mixType == 5 )	
+					If ( TipType == 1 )
+						"Player"->AddItem "farrp_Arrow_ebony_fire5" 1
+					elseif ( TipType == 2 )
+						"Player"->AddItem "farrp_Arrow_ebony_poison5" 1	
+					endif
+				endif
+			endif
+endif
+
+If ( choice5 == 1001 )
+			If ( arrowType == 7 )  ;------------------------------------------------------------------------->> Gold Arrows	
+				"Player"->RemoveItem "WI_Arrow_Gold" 1			
+				If ( mixType == 1 )
+					If ( TipType == 1 )
+						"Player"->AddItem "farrp_Arrow_Gold_fire1" 1
+					elseif ( TipType == 2 )
+						"Player"->AddItem "farrp_Arrow_Gold_poison1" 1	
+					endif
+				elseif ( mixType == 2 )	
+					If ( TipType == 1 )
+						"Player"->AddItem "farrp_Arrow_Gold_fire2" 1
+					elseif ( TipType == 2 )
+						"Player"->AddItem "farrp_Arrow_Gold_poison2" 1	
+					endif
+				elseif ( mixType == 3 )	
+					If ( TipType == 1 )
+						"Player"->AddItem "farrp_Arrow_Gold_fire3" 1
+					elseif ( TipType == 2 )
+						"Player"->AddItem "farrp_Arrow_Gold_poison3" 1	
+					endif
+				elseif ( mixType == 4 )	
+					If ( TipType == 1 )
+						"Player"->AddItem "farrp_Arrow_Gold_fire4" 1
+					elseif ( TipType == 2 )
+						"Player"->AddItem "farrp_Arrow_Gold_poison4" 1	
+					endif
+				elseif ( mixType == 5 )	
+					If ( TipType == 1 )
+						"Player"->AddItem "farrp_Arrow_Gold_fire5" 1
+					elseif ( TipType == 2 )
+						"Player"->AddItem "farrp_Arrow_Gold_poison5" 1	
+					endif
+				endif
+			endif				
+endif
+
+;-----------------------------------This is the actual START of the script.  It launches when it's called from the MAIN fletching kit script-------------------
+If ( Make_AlchArrows == 1 )
+	set Make_AlchArrows to 0
+	set choice5 to 1	
+	MessageBox "What kind of arrows do you want to attach Alchemy Tips to?" "Exit", "Bonemold", "Iron", "Steel", "Dwemer", "Silver", "Ebony", "Gold"
+endif
+
+;---------------------------------This is a safeguard to keep the script from running unnecessarily
+If ( choice5 == 0 )
+	StopScript, "farrp_make_AlchArrows1"
+endif
+
+;----------------------------------------Select Arrow Type----------------------
+If ( choice5 == 1 )
+	set button5 to GetButtonPressed
+	if ( button5 == 0 )
+		set choice5 to 0		
+		StopScript, "farrp_make_AlchArrows1"
+	elseif ( button5 == 1 )		
+		set arrowType to 1
+		set choice5 to 100
+	elseif ( button5 == 2 )
+		set arrowType to 2
+		set choice5 to 100		
+	elseif ( button5 == 3 )
+		set arrowType to 3
+		set choice5 to 100
+	elseif ( button5 == 4 )
+		set arrowType to 4
+		set choice5 to 100
+	elseif ( button5 == 5 )		
+		set arrowType to 5
+		set choice5 to 100
+	elseif ( button5 == 6 )		
+		set arrowType to 6
+		set choice5 to 100
+	elseif ( button5 == 7 )		
+		set arrowType to 7
+		set choice5 to 100
+	endif
+endif
+
+;----------------------------------------Select Alchemy Tips Type----------------------
+If ( choice5 == 100 )
+	MessageBox "What kind of Alchmey Tips do you want to attach?" "Exit", "Fire Salt Tips", "Poison Tips"
+	set choice5 to 101
+endif 
+
+If ( choice5 == 101 )
+	set button5 to GetButtonPressed
+	if ( button5 == 0 )
+		set choice5 to 0
+		StopScript, "farrp_make_AlchArrows1"
+	endif
+	if ( button5 == 1 )		
+		set tipType to 1
+		set choice5 to 200
+	endif
+	if ( button5 == 2 )
+		set tipType to 2
+		set choice5 to 200
+	endif		
+endif
+
+;----------------------------------------Select Mixture Type----------------------
+If ( choice5 == 200 )
+	MessageBox "Which mixture of Fire Salt Tips would you like to attach?" "Exit", "Mix #1", "Mix #2", "Mix #3", "Mix #4", "Mix #5"
+	set choice5 to 201
+endif 
+
+If ( choice5 == 201 )
+	set button5 to GetButtonPressed
+	if ( button5 == 0 )
+		set choice5 to 0		
+		StopScript, "farrp_make_AlchArrows1"
+	endif
+	if ( button5 == 1 )		
+		set HurtDam to Random, 8
+		set HurtDam to ( HurtDam * -1 )
+		set mixType to 1
+		set choice5 to 300
+	endif
+	if ( button5 == 2 )		
+		set HurtDam to Random, 12
+		set HurtDam to ( HurtDam * -1 )
+		set mixType to 2
+		set choice5 to 300
+	endif
+	if ( button5 == 3 )
+		set HurtDam to Random, 16
+		set HurtDam to ( HurtDam * -1 )
+		set mixType to 3
+		set choice5 to 300
+	endif
+	if ( button5 == 4 )		
+		set HurtDam to Random, 20
+		set HurtDam to ( HurtDam * -1 )
+		set mixType to 4
+		set choice5 to 300
+	endif
+	if ( button5 == 5 )		
+		set HurtDam to Random, 25
+		set HurtDam to ( HurtDam * -1 )
+		set mixType to 5
+		set choice5 to 300
+	endif		
+endif
+
+;----------------------------------------Check for Proper Arrow Count in player inventory----------------------
+If ( choice5 == 300 )	
+	If ( arrowType == 1 )
+		If ( "player"->GetItemCount "bonemold arrow" >= 10 )
+			set choice5 to 310
+		else
+			MessageBox "You don't have enough bonemold arrows" "Ok"
+			set choice5 to 0
+		endif
+	elseif ( arrowType == 2 )
+		If ( "player"->GetItemCount "iron arrow" >= 10 )
+			set choice5 to 310
+		else
+			MessageBox "You don't have enough iron arrows" "Ok"
+			set choice5 to 0
+		endif
+	elseif ( arrowType == 3 )
+		If ( "player"->GetItemCount "steel arrow" >= 10 )
+			set choice5 to 310
+		else
+			MessageBox "You don't have enough steel arrows" "Ok"
+			set choice5 to 0
+		endif
+	elseif ( arrowType == 4 )
+		If ( "player"->GetItemCount "WI_Arrow_Dwemer" >= 10 )
+			set choice5 to 310
+		else
+			MessageBox "You don't have enough Dwemer arrows" "Ok"
+			set choice5 to 0
+		endif
+	elseif ( arrowType == 5 )
+		If ( "player"->GetItemCount "silver arrow" >= 10 )
+			set choice5 to 310
+		else
+			MessageBox "You don't have enough silver arrows" "Ok"
+			set choice5 to 0
+		endif
+	elseif ( arrowType == 6 )
+		If ( "player"->GetItemCount "ebony arrow" >= 10 )
+			set choice5 to 310
+		else
+			MessageBox "You don't have enough ebony arrows" "Ok"
+			set choice5 to 0
+		endif
+	elseif ( arrowType == 7 )
+		If ( "player"->GetItemCount "WI_Arrow_Gold" >= 10 )
+			set choice5 to 310
+		else
+			MessageBox "You don't have enough gold arrows" "Ok"
+			set choice5 to 0
+		endif
+	endif	
+endif
+
+;----------------------------------------Check for Proper Alchemy Tip Mixture Count----------------------
+If ( choice5 == 310 ) 	
+	If ( mixType == 1 )
+		If ( "player"->GetItemCount "farrp_AlcTip_Fire1" >= 1 )
+			"player"->RemoveItem "farrp_AlcTip_Fire1" 1			
+			set choice5 to 320
+		else
+			MessageBox "You don't have enough Fire Salts Tips (mix#1)" "Ok"			
+			set choice5 to 0
+		endif
+	elseif ( mixType == 2 )
+		If ( "player"->GetItemCount "farrp_AlcTip_Fire2" >= 1 )
+			"player"->RemoveItem "farrp_AlcTip_Fire2" 1			
+			set choice5 to 320			
+		else
+			MessageBox "You don't have enough Fire Salts Tips (mix#2)" "Ok"
+			set choice5 to 0
+		endif
+	elseif ( mixType == 3 )
+		If ( "player"->GetItemCount "farrp_AlcTip_Fire3" >= 1 )
+			"player"->RemoveItem "farrp_AlcTip_Fire3" 1		
+			set choice5 to 320			
+		else
+			MessageBox "You don't have enough Fire Salts Tips (mix#3)" "Ok"
+			set choice5 to 0
+		endif
+	elseif ( mixType == 4 )
+		If ( "player"->GetItemCount "farrp_AlcTip_Fire4" >= 1 )
+			"player"->RemoveItem "farrp_AlcTip_Fire4" 1
+			set choice5 to 320
+		else
+			MessageBox "You don't have enough Fire Salts Tips (mix#4)" "Ok"
+			set choice5 to 0
+		endif
+	elseif ( mixType == 5 )
+		If ( "player"->GetItemCount "farrp_AlcTip_Fire5" >= 1 )
+			"player"->RemoveItem "farrp_AlcTip_Fire5" 1
+			set choice5 to 320
+		else
+			MessageBox "You don't have enough Fire Salts Tips (mix#5)" "Ok"
+			set choice5 to 0
+		endif
+	endif
+endif
+
+;---------------------------------------------Disable player controls and start CalcOutcome portion of the code (at the top of the script)---------
+If ( choice5 == 320 )
+	set CalcOutcome2 to 1
+	MessageBox "You slowly pull the sticky mixture from the small bag and divide it into 10 equal parts.  Then you wrap each of the parts inside a thin cloth pouch.  Once that's done, you begin to carefully tie each of the 10 pouches to the tip of a differant arrow..." "Ok"
+	DisablePlayerControls
+	return
+endif
+
+END

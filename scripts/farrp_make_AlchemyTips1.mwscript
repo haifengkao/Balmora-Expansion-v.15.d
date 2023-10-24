@@ -1,0 +1,762 @@
+Begin farrp_make_AlchemyTips1
+
+short choice3
+short button3
+short CalcOutcome
+short Fail
+short TipType
+short MixNum
+short HurtDam
+float ocTimer
+
+
+If ( CalcOutcome == 1 )	
+	set ocTimer to ( ocTimer + GetSecondsPassed )
+	If ( ocTimer >= 5 )
+		set choice3 to 1000 
+	else
+		return
+	endif
+endif
+
+If ( choice3 == 1000 )
+		If ( TipType == 1 )  ;------------------------------------Type:  Fire Salt
+			If ( MixNum == 1 )
+				If ( Fail <= 1 )
+					MessageBox "The mixture blows up in your face!"
+					EnablePlayerControls
+					set HurtDam to ( HurtDam * -1 )
+					"player"->ModCurrenthealth, HurtDam
+					PlaySound "destruction hit"
+					set ocTimer to 0
+					set CalcOutcome to 0
+					set choice3 to 0
+				elseif ( Fail >= 2 )
+					PlaySound "Repair"
+					MessageBox "You mix the ingredients together successfully and you put it into a small bag." "Ok"
+					EnablePlayerControls
+					StartScript "farrp_AlchemyTip_exp"					
+					"Player"->AddItem "farrp_AlcTip_Fire1" 1					
+					set ocTimer to 0
+					set CalcOutcome to 0
+					set choice3 to 0
+				endif					
+			elseif ( MixNum == 2 )
+					If ( Fail <= 1 )
+					MessageBox "The mixture blows up in your face!"
+					EnablePlayerControls
+					set HurtDam to ( HurtDam * -1 )
+					"player"->ModCurrenthealth, HurtDam
+					PlaySound "destruction hit"
+					set ocTimer to 0
+					set CalcOutcome to 0
+					set choice3 to 0
+				elseif ( Fail >= 2 )
+					PlaySound "Repair"
+					MessageBox "You mix the ingredients together successfully and you put it into a small bag." "Ok"
+					EnablePlayerControls
+					StartScript "farrp_AlchemyTip_exp"					
+					"Player"->AddItem "farrp_AlcTip_Fire2" 1	
+					set ocTimer to 0
+					set CalcOutcome to 0
+					set choice3 to 0				
+				endif			
+			elseif ( MixNum == 3 )
+					If ( Fail <= 1 )
+					MessageBox "The mixture blows up in your face!"
+					EnablePlayerControls
+					set HurtDam to ( HurtDam * -1 )
+					"player"->ModCurrenthealth, HurtDam
+					PlaySound "destruction hit"
+					set ocTimer to 0
+					set CalcOutcome to 0
+					set choice3 to 0
+				elseif ( Fail >= 2 )
+					PlaySound "Repair"
+					MessageBox "You mix the ingredients together successfully and you put it into a small bag." "Ok"
+					EnablePlayerControls
+					StartScript "farrp_AlchemyTip_exp"					
+					"Player"->AddItem "farrp_AlcTip_Fire3" 1	
+					set ocTimer to 0
+					set CalcOutcome to 0
+					set choice3 to 0				
+				endif	
+			elseif ( MixNum == 4 )
+					If ( Fail <= 1 )
+					MessageBox "The mixture blows up in your face!"
+					EnablePlayerControls
+					set HurtDam to ( HurtDam * -1 )
+					"player"->ModCurrenthealth, HurtDam
+					PlaySound "destruction hit"
+					set ocTimer to 0
+					set CalcOutcome to 0
+					set choice3 to 0
+				elseif ( Fail >= 2 )
+					PlaySound "Repair"
+					MessageBox "You mix the ingredients together successfully and you put it into a small bag." "Ok"
+					EnablePlayerControls
+					StartScript "farrp_AlchemyTip_exp"					
+					"Player"->AddItem "farrp_AlcTip_Fire4" 1	
+					set ocTimer to 0
+					set CalcOutcome to 0
+					set choice3 to 0				
+				endif	
+			elseif ( MixNum == 5 )
+					If ( Fail <= 1 )
+					MessageBox "The mixture blows up in your face!"
+					EnablePlayerControls
+					set HurtDam to ( HurtDam * -1 )
+					"player"->ModCurrenthealth, HurtDam
+					PlaySound "destruction hit"
+					set ocTimer to 0
+					set CalcOutcome to 0
+					set choice3 to 0
+				elseif ( Fail >= 2 )
+					PlaySound "Repair"
+					MessageBox "You mix the ingredients together successfully and you put it into a small bag." "Ok"
+					EnablePlayerControls
+					StartScript "farrp_AlchemyTip_exp"					
+					"Player"->AddItem "farrp_AlcTip_Fire5" 1	
+					set ocTimer to 0
+					set CalcOutcome to 0
+					set choice3 to 0				
+				endif	
+			endif
+		endif
+endif
+
+If ( choice3 == 1000 )
+		If ( TipType == 2 )  ;------------------------------------Type:  Poison
+			If ( MixNum == 1 )
+				If ( Fail <= 1 )
+					MessageBox "The mixture blows up in your face!"
+					EnablePlayerControls
+					set HurtDam to ( HurtDam * -1 )
+					"player"->ModCurrenthealth, HurtDam
+					PlaySound "destruction hit"
+					set ocTimer to 0
+					set CalcOutcome to 0
+					set choice3 to 0
+				elseif ( Fail >= 2 )
+					PlaySound "Repair"
+					MessageBox "You mix the ingredients together successfully and you put it into a small bag." "Ok"
+					EnablePlayerControls
+					StartScript "farrp_AlchemyTip_exp"					
+					"Player"->AddItem "farrp_AlcTip_Poison1" 1					
+					set ocTimer to 0
+					set CalcOutcome to 0
+					set choice3 to 0
+				endif					
+			elseif ( MixNum == 2 )
+					If ( Fail <= 1 )
+					MessageBox "The mixture blows up in your face!"
+					EnablePlayerControls
+					set HurtDam to ( HurtDam * -1 )
+					"player"->ModCurrenthealth, HurtDam
+					PlaySound "destruction hit"
+					set ocTimer to 0
+					set CalcOutcome to 0
+					set choice3 to 0
+				elseif ( Fail >= 2 )
+					PlaySound "Repair"
+					MessageBox "You mix the ingredients together successfully and you put it into a small bag." "Ok"
+					EnablePlayerControls
+					StartScript "farrp_AlchemyTip_exp"					
+					"Player"->AddItem "farrp_AlcTip_Poison2" 1	
+					set ocTimer to 0
+					set CalcOutcome to 0
+					set choice3 to 0				
+				endif			
+			elseif ( MixNum == 3 )
+					If ( Fail <= 1 )
+					MessageBox "The mixture blows up in your face!"
+					EnablePlayerControls
+					set HurtDam to ( HurtDam * -1 )
+					"player"->ModCurrenthealth, HurtDam
+					PlaySound "destruction hit"
+					set ocTimer to 0
+					set CalcOutcome to 0
+					set choice3 to 0
+				elseif ( Fail >= 2 )
+					PlaySound "Repair"
+					MessageBox "You mix the ingredients together successfully and you put it into a small bag." "Ok"
+					EnablePlayerControls
+					StartScript "farrp_AlchemyTip_exp"					
+					"Player"->AddItem "farrp_AlcTip_Poison3" 1	
+					set ocTimer to 0
+					set CalcOutcome to 0
+					set choice3 to 0				
+				endif	
+			elseif ( MixNum == 4 )
+					If ( Fail <= 1 )
+					MessageBox "The mixture blows up in your face!"
+					EnablePlayerControls
+					set HurtDam to ( HurtDam * -1 )
+					"player"->ModCurrenthealth, HurtDam
+					PlaySound "destruction hit"
+					set ocTimer to 0
+					set CalcOutcome to 0
+					set choice3 to 0
+				elseif ( Fail >= 2 )
+					PlaySound "Repair"
+					MessageBox "You mix the ingredients together successfully and you put it into a small bag." "Ok"
+					EnablePlayerControls
+					StartScript "farrp_AlchemyTip_exp"					
+					"Player"->AddItem "farrp_AlcTip_Poison4" 1	
+					set ocTimer to 0
+					set CalcOutcome to 0
+					set choice3 to 0				
+				endif	
+			elseif ( MixNum == 5 )
+					If ( Fail <= 1 )
+					MessageBox "The mixture blows up in your face!"
+					EnablePlayerControls
+					set HurtDam to ( HurtDam * -1 )
+					"player"->ModCurrenthealth, HurtDam
+					PlaySound "destruction hit"
+					set ocTimer to 0
+					set CalcOutcome to 0
+					set choice3 to 0
+				elseif ( Fail >= 2 )
+					PlaySound "Repair"
+					MessageBox "You mix the ingredients together successfully and you put it into a small bag." "Ok"
+					EnablePlayerControls
+					StartScript "farrp_AlchemyTip_exp"					
+					"Player"->AddItem "farrp_AlcTip_Poison5" 1	
+					set ocTimer to 0
+					set CalcOutcome to 0
+					set choice3 to 0				
+				endif	
+			endif
+		endif	
+endif
+
+If ( Make_AlchemyTips == 1 )
+	set choice3 to 2
+	set Make_AlchemyTips to 0
+	MessageBox "What kind of Alchemy Tips do you want to make?" "None" "Fire Salt Tips" "Poison Tips"
+endif
+
+If ( choice3 == 0 )
+	StopScript, "farrp_make_AlchemyTips1"
+endif
+
+If ( choice3 == 2 )
+	set button3 to GetButtonPressed
+	if ( button3 == 0 )
+		set choice3 to 0
+		StopScript, "farrp_make_AlchemyTips1"
+	elseif ( button3 == 1 )
+		set choice3 to 100
+	elseif ( button3 == 2 )
+		set choice3 to 200
+	endif
+endif
+
+;---------------------------------------------------------------------------Fire Salt------------------------------------------------------
+If ( choice3 == 100 )
+	MessageBox "Which mixture of Fire Salt Tips would you like to make? (listed from weakest to strongest)" "None" "Mix #1" "Mix #2" "Mix #3" "Mix #4" "Mix #5"	
+	set choice3 to 110
+endif
+
+If ( choice3 == 110 )
+	set button3 to GetButtonPressed
+	if ( button3 == 0 )
+		set choice3 to 0
+		StopScript, "farrp_make_AlchemyTips1"
+	endif
+endif
+	
+If ( choice3 == 110 )
+	If ( button3 == 1 )
+		set TipType to 1 ;---> TipType1 is fire salt tips
+		set MixNum to 1
+		set HurtDam to Random, 30
+		If ( "player"->GetAlchemy <= 29 )
+			MessageBox "Your alchemy skill isn't high enough to make Fire Salt Tips mix #1" "Ok"
+			set choice3 to 0
+		else
+			If ( "player"->GetAlchemy >= 80 )
+				set Fail to Random, 20			
+			elseif	( "player"->GetAlchemy >= 60 )
+				set Fail to Random, 15
+			elseif	( "player"->GetAlchemy >= 50 )
+				set Fail to Random, 10
+			elseif	( "player"->GetAlchemy >= 40 )
+				set Fail to Random, 7
+			elseif	( "player"->GetAlchemy >= 30 )
+				set Fail to Random, 5			
+			endif
+			If ( "player"->GetItemCount "ingred_fire_salts_01" >= 1 )	
+					If ( "player"->GetItemCount "ingred_muck_01" >= 2 )
+						MessageBox "You begin to mix the ingredients..."	
+						"player"->RemoveItem "ingred_fire_salts_01" 1
+						"player"->RemoveItem "ingred_muck_01" 2
+						DisablePlayerControls	
+						set CalcOutcome to 1
+						return										
+					else
+						MessageBox "You don't have enough muck to make the mixture." "Ok"
+						set choice3 to 0
+					endif								
+			else
+				MessageBox "You don't have enough fire salt to make the mixture." "Ok"
+				set choice3 to 0			
+			endif			
+		endif
+	endif
+endif
+
+If ( choice3 == 110 )
+	If ( button3 == 2 )
+		set TipType to 1 ;---> TipType1 is fire salt tips
+		set MixNum to 2
+		set HurtDam to Random, 40
+		If ( "player"->GetAlchemy <= 39 )
+			MessageBox "Your alchemy skill isn't high enough to make Fire Salt Tips mix #2" "Ok"
+			set choice3 to 0
+		else
+			If ( "player"->GetAlchemy >= 90 )
+				set Fail to Random, 20			
+			elseif	( "player"->GetAlchemy >= 70 )
+				set Fail to Random, 15
+			elseif	( "player"->GetAlchemy >= 60 )
+				set Fail to Random, 10
+			elseif	( "player"->GetAlchemy >= 50 )
+				set Fail to Random, 7
+			elseif	( "player"->GetAlchemy >= 40 )
+				set Fail to Random, 5			
+			endif	
+			If ( "player"->GetItemCount "ingred_fire_salts_01" >= 1 )	
+					If ( "player"->GetItemCount "ingred_muck_01" >= 4 )
+						If ( "player"->GetItemCount "ingred_fire_petal_01" >= 1 )
+							MessageBox "You begin to mix the ingredients..."	
+							"player"->RemoveItem "ingred_muck_01" 4									
+							"player"->RemoveItem "ingred_fire_petal_01" 1
+							"player"->RemoveItem "ingred_fire_salts_01" 1
+							DisablePlayerControls	
+							set CalcOutcome to 1
+							return	
+						else 
+							MessageBox "You don't have enough fire petals to make the mixture." "Ok"
+							set choice3 to 0
+						endif
+					else
+						MessageBox "You don't have enough muck to make the mixture." "Ok"
+						set choice3 to 0
+					endif		
+			else					
+				MessageBox "You don't have enough fire salt to make the mixture." "Ok"
+				set choice3 to 0			
+			endif			
+		endif	
+	endif
+endif
+
+If ( choice3 == 110 )
+	If ( button3 == 3 )
+		set TipType to 1 ;---> TipType1 is fire salt tips
+		set MixNum to 3
+		set HurtDam to Random, 50
+		If ( "player"->GetAlchemy <= 49 )
+			MessageBox "Your alchemy skill isn't high enough to make Fire Salt Tips mix #3" "Ok"
+			set choice3 to 0
+		else
+			If ( "player"->GetAlchemy >= 90 )
+				set Fail to Random, 20			
+			elseif	( "player"->GetAlchemy >= 80 )
+				set Fail to Random, 15
+			elseif	( "player"->GetAlchemy >= 70 )
+				set Fail to Random, 10
+			elseif	( "player"->GetAlchemy >= 60 )
+				set Fail to Random, 7
+			elseif	( "player"->GetAlchemy >= 50 )
+				set Fail to Random, 5
+			endif	
+			If ( "player"->GetItemCount "ingred_fire_salts_01" >= 2 )	
+					If ( "player"->GetItemCount "ingred_muck_01" >= 5 )
+						If ( "player"->GetItemCount "ingred_fire_petal_01" >= 2 )
+							MessageBox "You begin to mix the ingredients..."	
+							"player"->RemoveItem "ingred_muck_01" 5									
+							"player"->RemoveItem "ingred_fire_petal_01" 2
+							"player"->RemoveItem "ingred_fire_salts_01" 2
+							DisablePlayerControls	
+							set CalcOutcome to 1
+							return	
+						else 
+							MessageBox "You don't have enough fire petals to make the mixture." "Ok"
+							set choice3 to 0
+						endif
+					else
+						MessageBox "You don't have enough muck to make the mixture." "Ok"
+						set choice3 to 0
+					endif
+				else				
+			else
+				MessageBox "You don't have enough fire salt to make the mixture." "Ok"
+				set choice3 to 0			
+			endif			
+		endif	
+	endif
+endif
+
+If ( choice3 == 110 )
+	If ( button3 == 4 )
+		set TipType to 1 ;---> TipType1 is fire salt tips
+		set MixNum to 4
+		set HurtDam to Random, 60
+		If ( "player"->GetAlchemy <= 59 )
+			MessageBox "Your alchemy skill isn't high enough to make Fire Salt Tips mix #4" "Ok"
+			set choice3 to 0
+		else
+			If ( "player"->GetAlchemy >= 100 )
+				set Fail to Random, 20			
+			elseif	( "player"->GetAlchemy >= 90 )
+				set Fail to Random, 15
+			elseif	( "player"->GetAlchemy >= 80 )
+				set Fail to Random, 10
+			elseif	( "player"->GetAlchemy >= 70 )
+				set Fail to Random, 7
+			elseif	( "player"->GetAlchemy >= 60 )
+				set Fail to Random, 5
+			endif				
+			If ( "player"->GetItemCount "ingred_fire_salts_01" >= 2 )
+				If ( "player"->GetItemCount "ingred_muck_01" >= 7 )	
+					If ( "player"->GetItemCount "ingred_fire_petal_01" >= 3 )
+						If ( "player"->GetItemCount "ingred_bonemeal_01" >= 2 )
+						MessageBox "You begin to mix the ingredients..."	
+						"player"->RemoveItem "ingred_muck_01" 7
+						"player"->RemoveItem "ingred_fire_salts_01" 2
+						"player"->RemoveItem "ingred_bonemeal_01" 2									
+						"player"->RemoveItem "ingred_fire_petal_01" 3
+						DisablePlayerControls	
+						set CalcOutcome to 1
+						return	
+						else
+							MessageBox "You don't have enough bone meal to make the mixture." "Ok"
+							set choice3 to 0
+						endif
+					else 
+						MessageBox "You don't have enough fire petals to make the mixture." "Ok"
+						set choice3 to 0					
+					endif					
+				else				
+					MessageBox "You don't have enough muck to make the mixture." "Ok"
+					set choice3 to 0
+					
+				endif
+			else
+				MessageBox "You don't have enough fire salt to make the mixture." "Ok"
+				set choice3 to 0			
+			endif			
+		endif	
+	endif
+endif
+
+If ( choice3 == 110 )
+	If ( button3 == 5 )
+		set TipType to 1 ;---> TipType1 is fire salt tips
+		set MixNum to 5
+		set HurtDam to Random, 80
+		If ( "player"->GetAlchemy <= 69 )
+			MessageBox "Your alchemy skill isn't high enough to make Fire Salt Tips mix #5" "Ok"
+			set choice3 to 0
+		else
+			If ( "player"->GetAlchemy >= 100 )
+				set Fail to Random, 15						
+			elseif	( "player"->GetAlchemy >= 90 )
+				set Fail to Random, 10
+			elseif	( "player"->GetAlchemy >= 80 )
+				set Fail to Random, 7
+			elseif	( "player"->GetAlchemy >= 70 )
+				set Fail to Random, 5
+			endif	
+			If ( "player"->GetItemCount "ingred_fire_salts_01" >= 2 )	
+				If ( "player"->GetItemCount "ingred_bonemeal_01" >= 5 )
+					If ( "player"->GetItemCount "ingred_muck_01" >= 7 )
+						If ( "player"->GetItemCount "ingred_fire_petal_01" >= 5 )
+							MessageBox "You begin to mix the ingredients..."	
+							"player"->RemoveItem "ingred_muck_01" 7
+							"player"->RemoveItem "ingred_bonemeal_01" 5
+							"player"->RemoveItem "ingred_fire_salts_01" 2									
+							"player"->RemoveItem "ingred_fire_petal_01" 5
+							DisablePlayerControls	
+							set CalcOutcome to 1
+							return	
+						else 
+							MessageBox "You don't have enough fire petals to make the mixture." "Ok"
+							set choice3 to 0
+						endif
+					else
+						MessageBox "You don't have enough muck to make the mixture." "Ok"
+						set choice3 to 0
+					endif
+				else
+					MessageBox "You don't have enough bone meal to make the mixture." "Ok"
+					set choice3 to 0					
+				endif
+			else
+				MessageBox "You don't have enough fire salt to make the mixture." "Ok"
+				set choice3 to 0			
+			endif			
+		endif	
+	endif
+endif
+
+;---------------------------------------------------------------------------Poison------------------------------------------------------
+If ( choice3 == 200 )
+	MessageBox "Which mixture of Poison Tips would you like to make? (listed from weakest to strongest)" "None" "Mix #1" "Mix #2" "Mix #3" "Mix #4" "Mix #5"	
+	set choice3 to 210
+endif
+
+If ( choice3 == 210 )
+	set button3 to GetButtonPressed
+	if ( button3 == 0 )
+		set choice3 to 0
+		StopScript, "farrp_make_AlchemyTips1"
+	endif
+endif
+	
+If ( choice3 == 210 )
+	If ( button3 == 1 )
+		set TipType to 2 ;---> TipType2 is poison tips
+		set MixNum to 1
+		set HurtDam to Random, 30
+		If ( "player"->GetAlchemy <= 29 )
+			MessageBox "Your alchemy skill isn't high enough to make Poison Tips mix #1" "Ok"
+			set choice3 to 0
+		else
+			If ( "player"->GetAlchemy >= 80 )
+				set Fail to Random, 20			
+			elseif	( "player"->GetAlchemy >= 60 )
+				set Fail to Random, 15
+			elseif	( "player"->GetAlchemy >= 50 )
+				set Fail to Random, 10
+			elseif	( "player"->GetAlchemy >= 40 )
+				set Fail to Random, 7
+			elseif	( "player"->GetAlchemy >= 30 )
+				set Fail to Random, 5
+			endif		
+			If ( "player"->GetItemCount "ingred_dreugh_wax_01" >= 1 )	
+					If ( "player"->GetItemCount "ingred_bc_spore_pod" >= 1 )
+						If ( "player"->GetItemCount "ingred_chokeweed_01" >= 1 )
+							MessageBox "You begin to mix the ingredients..."	
+							"player"->RemoveItem "ingred_dreugh_wax_01" 1
+							"player"->RemoveItem "ingred_bc_spore_pod" 1
+							"player"->RemoveItem "ingred_chokeweed_01" 1
+							DisablePlayerControls	
+							set CalcOutcome to 1
+							return										
+						else
+							MessageBox "You don't have enough chokeweed to make the mixture." "Ok"
+							set choice3 to 0
+						endif
+					else
+						MessageBox "You don't have enough spore pods to make the mixture." "Ok"
+						set choice3 to 0
+					endif								
+			else
+				MessageBox "You don't have enough dreugh wax to make the mixture." "Ok"
+				set choice3 to 0			
+			endif			
+		endif
+	endif
+endif
+
+If ( choice3 == 210 )
+	If ( button3 == 2 )
+		set TipType to 2 ;---> TipType2 is poison tips
+		set MixNum to 2
+		set HurtDam to Random, 40
+		If ( "player"->GetAlchemy <= 39 )
+			MessageBox "Your alchemy skill isn't high enough to make Poison Tips mix #2" "Ok"
+			set choice3 to 0
+		else
+			If ( "player"->GetAlchemy >= 90 )
+				set Fail to Random, 20			
+			elseif	( "player"->GetAlchemy >= 70 )
+				set Fail to Random, 15
+			elseif	( "player"->GetAlchemy >= 60 )
+				set Fail to Random, 10
+			elseif	( "player"->GetAlchemy >= 50 )
+				set Fail to Random, 7
+			elseif	( "player"->GetAlchemy >= 40 )
+				set Fail to Random, 5
+			endif	
+			If ( "player"->GetItemCount "ingred_dreugh_wax_01" >= 1 )	
+					If ( "player"->GetItemCount "ingred_bc_spore_pod" >= 4 )
+						If ( "player"->GetItemCount "ingred_chokeweed_01" >= 2 )
+							MessageBox "You begin to mix the ingredients..."	
+							"player"->RemoveItem "ingred_dreugh_wax_01" 1
+							"player"->RemoveItem "ingred_bc_spore_pod" 4
+							"player"->RemoveItem "ingred_chokeweed_01" 2
+							DisablePlayerControls	
+							set CalcOutcome to 1
+							return										
+						else
+							MessageBox "You don't have enough chokeweed to make the mixture." "Ok"
+							set choice3 to 0
+						endif
+					else
+						MessageBox "You don't have enough spore pods to make the mixture." "Ok"
+						set choice3 to 0
+					endif								
+			else
+				MessageBox "You don't have enough dreugh wax to make the mixture." "Ok"
+				set choice3 to 0			
+			endif			
+		endif	
+	endif
+endif
+
+If ( choice3 == 210 )
+	If ( button3 == 3 )
+		set TipType to 2 ;---> TipType2 is fire salt tips
+		set MixNum to 3
+		set HurtDam to Random, 50
+		If ( "player"->GetAlchemy <= 49 )
+			MessageBox "Your alchemy skill isn't high enough to make Poison Tips mix #3" "Ok"
+			set choice3 to 0
+		else
+			If ( "player"->GetAlchemy >= 90 )
+				set Fail to Random, 20			
+			elseif	( "player"->GetAlchemy >= 80 )
+				set Fail to Random, 15
+			elseif	( "player"->GetAlchemy >= 70 )
+				set Fail to Random, 10
+			elseif	( "player"->GetAlchemy >= 60 )
+				set Fail to Random, 7
+			elseif	( "player"->GetAlchemy >= 50 )
+				set Fail to Random, 5
+			endif	
+			If ( "player"->GetItemCount "ingred_dreugh_wax_01" >= 2 )	
+					If ( "player"->GetItemCount "ingred_bc_spore_pod" >= 5 )
+						If ( "player"->GetItemCount "ingred_chokeweed_01" >= 3 )
+							MessageBox "You begin to mix the ingredients..."	
+							"player"->RemoveItem "ingred_dreugh_wax_01" 2
+							"player"->RemoveItem "ingred_bc_spore_pod" 5
+							"player"->RemoveItem "ingred_chokeweed_01" 3
+							DisablePlayerControls	
+							set CalcOutcome to 1
+							return										
+						else
+							MessageBox "You don't have enough chokeweed to make the mixture." "Ok"
+							set choice3 to 0
+						endif
+					else
+						MessageBox "You don't have enough spore pods to make the mixture." "Ok"
+						set choice3 to 0
+					endif								
+			else
+				MessageBox "You don't have enough dreugh wax to make the mixture." "Ok"
+				set choice3 to 0			
+			endif			
+		endif	
+	endif
+endif
+
+If ( choice3 == 210 )
+	If ( button3 == 4 )
+		set TipType to 2 ;---> TipType2 is fire salt tips
+		set MixNum to 4
+		set HurtDam to Random, 60
+		If ( "player"->GetAlchemy <= 59 )
+			MessageBox "Your alchemy skill isn't high enough to make Poison Tips mix #4" "Ok"
+			set choice3 to 0
+		else
+			If ( "player"->GetAlchemy >= 100 )
+				set Fail to Random, 20			
+			elseif	( "player"->GetAlchemy >= 90 )
+				set Fail to Random, 15
+			elseif	( "player"->GetAlchemy >= 80 )
+				set Fail to Random, 10
+			elseif	( "player"->GetAlchemy >= 70 )
+				set Fail to Random, 7
+			elseif	( "player"->GetAlchemy >= 60 )
+				set Fail to Random, 5
+			endif				
+			If ( "player"->GetItemCount "ingred_dreugh_wax_01" >= 2 )	
+				If ( "player"->GetItemCount "ingred_bc_spore_pod" >= 7 )
+					If ( "player"->GetItemCount "ingred_chokeweed_01" >= 4 )
+						If ( "player"->GetItemCount "ingred_ash_salts_01" >= 1 )
+							MessageBox "You begin to mix the ingredients..."	
+							"player"->RemoveItem "ingred_dreugh_wax_01" 2
+							"player"->RemoveItem "ingred_bc_spore_pod" 7
+							"player"->RemoveItem "ingred_chokeweed_01" 4
+							"player"->RemoveItem "ingred_ash_salts_01" 1
+							DisablePlayerControls	
+							set CalcOutcome to 1
+							return										
+						else
+							MessageBox "You don't have enough ash salts to make the mixture." "Ok"
+							set choice3 to 0
+						endif
+					else
+						MessageBox "You don't have enough chokeweed to make the mixture." "Ok"
+						set choice3 to 0
+					endif
+				else
+					MessageBox "You don't have enough spore pods to make the mixture." "Ok"
+					set choice3 to 0
+				endif								
+			else
+				MessageBox "You don't have enough dreugh wax to make the mixture." "Ok"
+				set choice3 to 0			
+			endif			
+		endif	
+	endif
+endif
+
+If ( choice3 == 210 )
+	If ( button3 == 5 )
+		set TipType to 2 ;---> TipType2 is fire salt tips
+		set MixNum to 5
+		set HurtDam to Random, 80
+		If ( "player"->GetAlchemy <= 69 )
+			MessageBox "Your alchemy skill isn't high enough to make Poison Tips mix #5" "Ok"
+			set choice3 to 0
+		else
+			If ( "player"->GetAlchemy >= 100 )
+				set Fail to Random, 15						
+			elseif	( "player"->GetAlchemy >= 90 )
+				set Fail to Random, 10
+			elseif	( "player"->GetAlchemy >= 80 )
+				set Fail to Random, 7
+			elseif	( "player"->GetAlchemy >= 70 )
+				set Fail to Random, 5
+			endif	
+			If ( "player"->GetItemCount "ingred_dreugh_wax_01" >= 2 )	
+				If ( "player"->GetItemCount "ingred_bc_spore_pod" >= 8 )
+					If ( "player"->GetItemCount "ingred_chokeweed_01" >= 5 )
+						If ( "player"->GetItemCount "ingred_ash_salts_01" >= 2 )
+							MessageBox "You begin to mix the ingredients..."	
+							"player"->RemoveItem "ingred_dreugh_wax_01" 2
+							"player"->RemoveItem "ingred_bc_spore_pod" 8
+							"player"->RemoveItem "ingred_chokeweed_01" 5
+							"player"->RemoveItem "ingred_ash_salts_01" 2
+							DisablePlayerControls	
+							set CalcOutcome to 1
+							return										
+						else
+							MessageBox "You don't have enough ash salts to make the mixture." "Ok"
+							set choice3 to 0
+						endif
+					else
+						MessageBox "You don't have enough chokeweed to make the mixture." "Ok"
+						set choice3 to 0
+					endif
+				else
+					MessageBox "You don't have enough spore pods to make the mixture." "Ok"
+					set choice3 to 0
+				endif	
+			else
+				MessageBox "You don't have enough dreugh wax to make the mixture." "Ok"
+				set choice3 to 0			
+			endif		
+		endif	
+	endif
+endif
+
+
+
+END

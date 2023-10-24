@@ -1,0 +1,46 @@
+Begin farrp_AlchemyTip_exp
+
+;-------------------GLOBAL farrp_AlchemyTipExp
+short AlchemySk
+
+
+set farrp_AlchemyTipExp to ( farrp_AlchemyTipExp + 1 )
+	
+If ( "player"->GetAlchemy <= 40 )
+	If ( farrp_AlchemyTipExp >= 15 )
+		set farrp_AlchemyTipExp to 0
+		"player"->ModAlchemy, 1
+		set AlchemySk to ("player"->GetAlchemy)	
+		PlaySound "skillraise"			
+		MessageBox "Making Alchemy Tips has raised your Alchemy skill to %.0f" AlchemySk
+	endif
+elseif ( "player"->GetAlchemy <= 50 )
+	If ( farrp_AlchemyTipExp >= 20 )
+		set farrp_AlchemyTipExp to 0
+		"player"->ModAlchemy, 1
+		set AlchemySk to ("player"->GetAlchemy)	
+		PlaySound "skillraise"			
+		MessageBox "Making Alchemy Tips has raised your Alchemy skill to %.0f" AlchemySk
+	endif
+elseif ( "player"->GetAlchemy < = 70 )
+	If ( farrp_AlchemyTipExp >= 30 )
+		set farrp_AlchemyTipExp to 0
+		"player"->ModAlchemy, 1
+		set AlchemySk to ("player"->GetAlchemy)	
+		PlaySound "skillraise"			
+		MessageBox "Making Alchemy Tips has raised your Alchemy skill to %.0f" AlchemySk
+	endif
+elseif ( "player"->GetAlchemy > = 71 )
+	If ( farrp_AlchemyTipExp >= 40 ) 
+		set farrp_AlchemyTipExp to 0
+		"player"->ModAlchemy, 1
+		set AlchemySk to ("player"->GetAlchemy)	
+		PlaySound "skillraise"			
+		MessageBox "Making Alchemy Tips has raised your Alchemy skill to %.0f" AlchemySk
+	endif
+endif
+
+
+StopScript "farrp_AlchemyTip_exp"
+
+END

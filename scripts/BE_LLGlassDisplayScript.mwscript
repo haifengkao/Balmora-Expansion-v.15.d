@@ -1,0 +1,57 @@
+Begin, BE_LLGlassDisplayScript
+
+Short State
+Short First
+Short Open
+Short Close
+Float Timer
+
+If ( MenuMode == 1 )
+    Return
+EndIf
+
+If ( OnActivate == 1 )
+    Set State to 1
+EndIf
+
+If ( State == 1 )
+    If ( First == 0 )
+        PlayGroup, Idle2, 0
+        PlaySound3D, "Door Creaky Open"
+        Set Open to 1
+    EndIf
+EndIf
+
+If ( Open == 1 )
+    Set Timer to ( Timer + GetSecondsPassed )
+        If ( Timer < 0.5 )
+            Return
+        EndIf
+    Set Timer to 0
+    PlayGroup, Idle3
+    Set First to 1
+    Set State to 0
+    Set Open to 0
+EndIf
+
+If ( State == 1 )
+    If ( First == 1 )
+        PlayGroup, Idle4, 0
+        PlaySound3D, "Door Creaky Close"
+        Set Close to 1
+    EndIf
+EndIf
+
+If ( Close == 1 )
+    Set Timer to ( Timer + GetSecondsPassed )
+        If ( Timer < 0.5 )
+            Return
+        EndIf
+    Set Timer to 0
+    PlayGroup, Idle
+    Set First to 0
+    Set State to 0
+    Set Close to 0
+EndIf
+
+End, BE_LLGlassDisplayScript

@@ -1,0 +1,13 @@
+Begin BE_Lute_Act
+
+If ( MenuMode == 1 )
+    Return
+EndIf
+
+If ( OnActivate == 0 )
+    Return
+EndIf
+
+PlaySound3D, "Lute Sound"
+
+End

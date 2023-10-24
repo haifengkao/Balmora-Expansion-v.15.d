@@ -1,0 +1,72 @@
+begin BE_crowd
+
+short NoLore
+short root
+float timer
+
+if ( MenuMode == 1 )
+	return
+endif
+
+if ( "BE_lezring" <= 2 )
+	set root to 0
+	set timer to 0
+elseif ( "BE_lezring" >= 5 )
+	set root to 2
+else
+	set root to 1
+endif
+
+if ( root == 2 )
+	return
+endif
+
+if ( root == 1)
+set timer to ( timer + GetSecondsPassed )
+	if timer > 10
+		if ( Random100 <= 5 )
+			Messagebox "Grab her! Grab her where it HURTS!"
+		elseif ( Random100 <= 10 )
+			Messagebox "Come on, show me what you've got!"
+		elseif ( Random100 <= 15 )
+			Messagebox "Ouch! That must have hurt."
+		elseif ( Random100 <= 20 )
+			Messagebox "Yes, baby! Smash her! Smash her!"
+		elseif ( Random100 <= 25 )
+			Messagebox "Nice tits, baby!"
+		elseif ( Random100 <= 30 )
+			Messagebox "That's the way to do it! Get the bitch!"
+		elseif ( Random100 <= 35 )
+			Messagebox "Did you see that? Great move!"
+		elseif ( Random100 <= 40 )
+			Messagebox "Hang in there, baby! I put my money on you!"
+		elseif ( Random100 <= 45 )
+			Messagebox "I think I'm going to get sick..."
+		elseif ( Random100 <= 50 )
+			Messagebox "The ears! Go for her ears!"
+		elseif ( Random100 <= 55 )
+			Messagebox "Finish her off already!"
+		elseif ( Random100 <= 60 )
+			Messagebox "You can do it, baby! You're the best!"
+		elseif ( Random100 <= 65 )
+			Messagebox "Kill her! Kill her! Kill her!"
+		elseif ( Random100 <= 70 )
+			Messagebox "The ears! Go for her ears!"
+		elseif ( Random100 <= 75 )
+			Messagebox "Come on, baby! Make me rich!"
+		elseif ( Random100 <= 80 )
+			Messagebox "Hey babe, can I see you after the fight?"
+		elseif ( Random100 <= 85 )
+			Messagebox "Wow, that broad sure knows how to fight!"
+		elseif ( Random100 <= 90 )
+			Messagebox "What are you doing? Get a hold of yourself, dammit!"
+		elseif ( Random100 <= 95 )
+			Messagebox "By Stendarr! I didn't think women had it in them!"
+		elseif ( Random100 <= 100 )
+			Messagebox "No mercy! I want to see BLOOD!"
+		endif
+		set timer to 0
+	endif
+endif
+
+end

@@ -1,0 +1,9 @@
+Begin BE_tavern_outsidedoor_script
+
+if ( OnActivate == 1 )
+StreamMusic "BE/BE_tavern.mp3"
+Activate
+
+endif
+
+End 

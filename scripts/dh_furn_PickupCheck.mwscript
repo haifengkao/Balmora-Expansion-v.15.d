@@ -1,0 +1,54 @@
+begin dh_furn_PickupCheck
+		; Used for objects that can be picked up and dropped, but not moved.  Does nothing
+		; if the picking up of objects is currently disabled.
+  short	messageOn
+  short	button
+  short	NoLore
+
+	; Ignore if in menu mode
+if ( MenuMode == 1 )
+	return
+endif
+
+	; Check for object activation
+if ( OnActivate == 1 )
+	
+		; Do nothing if the picking up of items has been disabled
+	if (g_dhfurn_EnableMove == 0)
+		return
+	endif
+
+	Set messageOn to 2
+endif
+
+	; Abort script if nothing to do
+if ( messageOn == 0 )
+	return
+endif
+
+	; Display message choices to user
+if ( messageOn == 2 )
+	MessageBox "What do you want to do with this object?"  "Pick it up" "Nothing"
+	Set messageOn to 1
+endif
+
+	; Process message choices
+if ( messageOn == 1 )
+	set button to GetButtonPressed
+
+		; Default activation, pick the item up
+	if ( button == 0 )
+		Activate
+		Set messageOn to 0
+		return
+	endif
+
+		; Do nothing
+	if ( button == 1 )
+		Set messageOn to 0
+		return
+	endif
+endif
+
+end
+

@@ -1,0 +1,13 @@
+Begin BE_j_band_malamar
+
+;makes malamar attack when you get too close
+
+if ( GetDistance, Player < 500 )
+	;MessageBox "Die you scum"
+	"BE_j_bandit_malamar"->StartCombat Player
+EndIf
+
+End BE_j_band_malamar
+
+
+End

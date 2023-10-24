@@ -1,0 +1,34 @@
+begin BE_Bed_MakeLove
+
+if ( MenuMode == 0)
+
+	if ( OnActivate == 1 )
+
+		if ( BE_Makelove == 2 )
+
+			if ( Player->GetItemCount( "BE_condom") == 0)
+				Messagebox "You can't make love unprotected"
+				return
+			endif
+			Player->removeitem "BE_condom" 1
+			DisablePlayerControls
+			DisablePlayerLooking		
+			Player->Rotate 90 1
+			FadeTo 100 0.5
+if (BE_MakeLoveTo==1)
+"BE_redguard dancer"->Say "Love\love.wav" "Oh yes!"
+endif
+if (BE_MakeLoveTo==2)
+"BE_nord dancer"->Say "Love\love.wav" "Give it to me!"
+endif
+if (BE_MakeLoveTo==3)
+"BE_breton dancer"->Say "Love\love.wav" "Mmm!"
+endif
+set BE_MakeLove to 4
+		else
+          	ShowRestMenu
+		endif
+	endif
+endif
+
+end

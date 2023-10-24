@@ -1,0 +1,492 @@
+Begin WI_make_RazorArrows1
+
+short choice2
+short button2
+short arrowBone
+short arrowIron
+short arrowSteel
+short arrowDwemer
+short arrowSilver
+short arrowGold
+short arrowEbony
+short razorTips
+
+If ( Make_RazorArrows == 1 )
+	MessageBox "You prepare the tools to attach alloy razor tips to arrows"
+	set arrowBone to "player"->GetItemCount "bonemold arrow"
+	set arrowIron to "player"->GetItemCount "iron arrow"
+	set arrowSteel to "player"->GetItemCount "steel arrow"
+	set arrowDwemer to "player"->GetItemCount "WI_Arrow_Dwemer"
+	set arrowSilver to "player"->GetItemCount "silver arrow"
+	set arrowGold to "player"->GetItemCount "WI_Arrow_Gold"
+	set arrowEbony to "player"->GetItemCount "ebony arrow"
+	set razorTips to "player"->GetItemCount "WI_ArrowTips_Alloy"
+	set Make_RazorArrows to 0
+	set choice2 to 1
+endif
+
+if ( choice2 == 0 )
+	StopScript, "WI_make_RazorArrows1"
+endif
+
+If ( choice2 == 1 )
+	MessageBox "What kind of arrows do you want to add Alloy Razor tips to?", "Exit", "Bonemold", "Iron", "Steel", "Dwemer", "Silver", "Gold", "Ebony"
+	set choice2 to 3
+endif
+
+If ( choice2 == 3 )
+	set button2 to GetButtonPressed
+	if ( button2 == 0 )
+		set choice2 to 0
+	endif
+	if ( button2 == 1 )
+		set choice2 to 10
+	endif
+	if ( button2 == 2 )
+		set choice2 to 20
+	endif
+	if ( button2 == 3 )
+		set choice2 to 30
+	endif
+	if ( button2 == 4 )
+		set choice2 to 40 
+	endif
+	if ( button2 == 5 )
+		set choice2 to 50
+	endif
+	if ( button2 == 6 )
+		set choice2 to 60
+	endif
+	if ( button2 == 7 )
+		set choice2 to 70
+	endif
+endif
+
+If ( choice2 == 10 )
+	MessageBox "What type of Alloy razor tips do you want to add to the bonemold arrows?", "Exit", "2-sided Razor Tip", "4-sided Razor Tip"
+	set choice2 to 12
+endif
+
+If ( choice2 == 12 )
+	set button2 to GetButtonPressed
+	if ( button2 == 0 )
+		set choice2 to 0
+	endif
+	if ( button2 == 1 )
+		set choice2 to 14
+	endif
+	if ( button2 == 2 )
+		set choice2 to 16
+	endif
+endif
+
+;add 2-sided razors to bonemold arrows
+If ( choice2 == 14 )
+	If ( RazorTips >= 1 )
+		If ( arrowBone >= 10 )
+			MessageBox "You attach the arrow tips and create 10 2-sided razor tipped bonemold arrows" "Ok"
+			"player"->RemoveItem "WI_ArrowTips_Alloy" 1
+			"player"->RemoveItem "bonemold arrow" 10
+			"player"->AddItem "WI_Arrow_Bone_2sided" 10
+			"player"->AddItem "WI_ArrowTips_Stone" 1
+			PlaySound "Repair"
+			set choice2 to 0
+		else
+			MessageBox "You don't have enough bonemold arrows" "Ok"
+			set choice2 to 0
+		endif
+	else
+		MessageBox "You don't have any alloy razor tips" "Ok"
+		set choice2 to 0
+	endif
+endif
+
+;add 4-sided razors to bonemold arrows
+If ( choice2 == 16 )
+	If ( RazorTips >= 2 )
+		If ( arrowBone >= 10 )
+			MessageBox "You attach the arrows tips and create 10 4-sided razor tipped bonemold arrows" "Ok"
+			"player"->RemoveItem "WI_ArrowTips_Alloy" 2
+			"player"->RemoveItem "bonemold arrow" 10
+			"player"->AddItem "WI_Arrow_Bone_4sided" 10
+			"player"->AddItem "WI_ArrowTips_Stone" 1
+			PlaySound "Repair"
+			set choice2 to 0
+		else
+			MessageBox "You don't have enough bonemold arrows" "Ok"
+			set choice2 to 0
+		endif
+	else
+		MessageBox "You don't have enough alloy razor tips" "Ok"
+		set choice2 to 0
+	endif
+endif
+
+If ( choice2 == 20 )
+	MessageBox "What type of Alloy razor tips do you want to add to the iron arrows?", "Exit", "2-sided Razor Tip", "4-sided Razor Tip"
+	set choice2 to 22
+endif
+
+If ( choice2 == 22 )
+	set button2 to GetButtonPressed
+	if ( button2 == 0 )
+		set choice2 to 0
+		StopScript, "WI_make_RazorArrows1"
+	endif
+	if ( button2 == 1 )
+		set choice2 to 24
+	endif
+	if ( button2 == 2 )
+		set choice2 to 26
+	endif
+endif
+
+;add 2-sided razors to iron arrows
+If ( choice2 == 24 )
+	If ( RazorTips >= 1 )
+		If ( arrowIron >= 10 )
+			MessageBox "You attach the arrow tips and create 10 2-sided razor tipped iron arrows" "Ok"
+			"player"->RemoveItem "WI_ArrowTips_Alloy" 1
+			"player"->RemoveItem "iron arrow" 10
+			"player"->AddItem "WI_Arrow_Iron_2sided" 10
+			"player"->AddItem "WI_ArrowTips_Steel" 1
+			PlaySound "Repair"
+			set choice2 to 0
+		else
+			MessageBox "You don't have enough iron arrows" "Ok"
+			set choice2 to 0
+		endif
+	else
+		MessageBox "You don't have any alloy razor tips" "Ok"
+		set choice2 to 0
+	endif
+endif
+
+;add 4-sided razors to iron arrows
+If ( choice2 == 26 )
+	If ( RazorTips >= 2 )
+		If ( arrowIron >= 10 )
+			MessageBox "You attach the arrows tips and create 10 4-sided razor tipped iron arrows" "Ok"
+			"player"->RemoveItem "WI_ArrowTips_Alloy" 2
+			"player"->RemoveItem "iron arrow" 10
+			"player"->AddItem "WI_Arrow_Iron_4sided" 10
+			"player"->AddItem "WI_ArrowTips_Steel" 1
+			PlaySound "Repair"
+			set choice2 to 0
+		else
+			MessageBox "You don't have enough iron arrows" "Ok"
+			set choice2 to 0
+		endif
+	else
+		MessageBox "You don't have enough alloy razor tips" "Ok"
+		set choice2 to 0
+	endif
+endif
+
+If ( choice2 == 30 )
+	MessageBox "What type of Alloy razor tips do you want to add to the steel arrows?", "Exit", "2-sided Razor Tip", "4-sided Razor Tip"
+	set choice2 to 32
+endif
+
+If ( choice2 == 32 )
+	set button2 to GetButtonPressed
+	if ( button2 == 0 )
+		set choice2 to 0
+		StopScript, "WI_make_RazorArrows1"
+	endif
+	if ( button2 == 1 )
+		set choice2 to 34
+	endif
+	if ( button2 == 2 )
+		set choice2 to 36
+	endif
+endif
+
+;add 2-sided razors to steel arrows
+If ( choice2 == 34 )
+	If ( RazorTips >= 1 )
+		If ( arrowSteel >= 10 )
+			MessageBox "You attach the arrow tips and create 10 2-sided razor tipped steel arrows" "Ok"
+			"player"->RemoveItem "WI_ArrowTips_Alloy" 1
+			"player"->RemoveItem "steel arrow" 10
+			"player"->AddItem "WI_Arrow_Steel_2sided" 10
+			"player"->AddItem "WI_ArrowTips_Steel" 1
+			PlaySound "Repair"
+			set choice2 to 0
+		else
+			MessageBox "You don't have enough steel arrows" "Ok"
+			set choice2 to 0
+		endif
+	else
+		MessageBox "You don't have any alloy razor tips" "Ok"
+		set choice2 to 0
+	endif
+endif
+
+;add 4-sided razors to steel arrows
+If ( choice2 == 36 )
+	If ( RazorTips >= 2 )
+		If ( arrowSteel >= 10 )
+			MessageBox "You attach the arrows tips and create 10 4-sided razor tipped steel arrows" "Ok"
+			"player"->RemoveItem "WI_ArrowTips_Alloy" 2
+			"player"->RemoveItem "steel arrow" 10
+			"player"->AddItem "WI_Arrow_Steel_4sided" 10
+			"player"->AddItem "WI_ArrowTips_Steel" 1
+			PlaySound "Repair"
+			set choice2 to 0
+		else
+			MessageBox "You don't have enough steel arrows" "Ok"
+			set choice2 to 0
+		endif
+	else
+		MessageBox "You don't have enough alloy razor tips" "Ok"
+		set choice2 to 0
+	endif
+endif
+
+If ( choice2 == 40 )
+	MessageBox "What type of Alloy razor tips do you want to add to the Dwemer arrows?", "Exit", "2-sided Razor Tip", "4-sided Razor Tip"
+	set choice2 to 42
+endif
+
+If ( choice2 == 42 )
+	set button2 to GetButtonPressed
+	if ( button2 == 0 )
+		set choice2 to 0
+		StopScript, "WI_make_RazorArrows1"
+	endif
+	if ( button2 == 1 )
+		set choice2 to 44
+	endif
+	if ( button2 == 2 )
+		set choice2 to 46
+	endif
+endif
+
+;add 2-sided razors to Dwemer arrows
+If ( choice2 == 44 )
+	If ( RazorTips >= 1 )
+		If ( arrowDwemer >= 10 )
+			MessageBox "You attach the arrow tips and create 10 2-sided razor tipped Dwemer arrows" "Ok"
+			"player"->RemoveItem "WI_ArrowTips_Alloy" 1
+			"player"->RemoveItem "WI_Arrow_Dwemer" 10
+			"player"->AddItem "WI_Arrow_Dwemer_2sided" 10
+			"player"->AddItem "WI_ArrowTips_Steel" 1
+			PlaySound "Repair"
+			set choice2 to 0
+		else
+			MessageBox "You don't have enough Dwemer arrows" "Ok"
+			set choice2 to 0
+		endif
+	else
+		MessageBox "You don't have any alloy razor tips" "Ok"
+		set choice2 to 0
+	endif
+endif
+
+;add 4-sided razors to Dwemer arrows
+If ( choice2 == 46 )
+	If ( RazorTips >= 2 )
+		If ( arrowDwemer >= 10 )
+			MessageBox "You attach the arrows tips and create 10 4-sided razor tipped Dwemer arrows" "Ok"
+			"player"->RemoveItem "WI_ArrowTips_Alloy" 2
+			"player"->RemoveItem "WI_Arrow_Dwemer" 10
+			"player"->AddItem "WI_Arrow_Dwemer_4sided" 10
+			"player"->AddItem "WI_ArrowTips_Steel" 1
+			PlaySound "Repair"
+			set choice2 to 0
+		else
+			MessageBox "You don't have enough Dwemer arrows" "Ok"
+			set choice2 to 0
+		endif
+	else
+		MessageBox "You don't have enough alloy razor tips" "Ok"
+		set choice2 to 0
+	endif
+endif
+
+If ( choice2 == 50 )
+	MessageBox "What type of Alloy razor tips do you want to add to the silver arrows?", "Exit", "2-sided Razor Tip", "4-sided Razor Tip"
+	set choice2 to 52
+endif
+
+If ( choice2 == 52 )
+	set button2 to GetButtonPressed
+	if ( button2 == 0 )
+		set choice2 to 0
+		StopScript, "WI_make_RazorArrows1"
+	endif
+	if ( button2 == 1 )
+		set choice2 to 54
+	endif
+	if ( button2 == 2 )
+		set choice2 to 56
+	endif
+endif
+
+;add 2-sided razors to silver arrows
+If ( choice2 == 54 )
+	If ( RazorTips >= 1 )
+		If ( arrowSilver >= 10 )
+			MessageBox "You attach the arrow tips and create 10 2-sided razor tipped silver arrows" "Ok"
+			"player"->RemoveItem "WI_ArrowTips_Alloy" 1
+			"player"->RemoveItem "silver arrow" 10
+			"player"->AddItem "WI_Arrow_Silver_2sided" 10
+			"player"->AddItem "WI_ArrowTips_Steel" 1
+			PlaySound "Repair"
+			set choice2 to 0
+		else
+			MessageBox "You don't have enough silver arrows" "Ok"
+			set choice2 to 0
+		endif
+	else
+		MessageBox "You don't have any alloy razor tips" "Ok"
+		set choice2 to 0
+	endif
+endif
+
+;add 4-sided razors to silver arrows
+If ( choice2 == 56 )
+	If ( RazorTips >= 2 )
+		If ( arrowSilver >= 10 )
+			MessageBox "You attach the arrows tips and create 10 4-sided razor tipped silver arrows" "Ok"
+			"player"->RemoveItem "WI_ArrowTips_Alloy" 2
+			"player"->RemoveItem "silver arrow" 10
+			"player"->AddItem "WI_Arrow_Silver_4sided" 10
+			"player"->AddItem "WI_ArrowTips_Steel" 1
+			PlaySound "Repair"
+			set choice2 to 0
+		else
+			MessageBox "You don't have enough silver arrows" "Ok"
+			set choice2 to 0
+		endif
+	else
+		MessageBox "You don't have enough alloy razor tips" "Ok"
+		set choice2 to 0
+	endif
+endif
+
+If ( choice2 == 60 )
+	MessageBox "What type of Alloy razor tips do you want to add to the Gold arrows?", "Exit", "2-sided Razor Tip", "4-sided Razor Tip"
+	set choice2 to 62
+endif
+
+If ( choice2 == 62 )
+	set button2 to GetButtonPressed
+	if ( button2 == 0 )
+		set choice2 to 0
+		StopScript, "WI_make_RazorArrows1"
+	endif
+	if ( button2 == 1 )
+		set choice2 to 64
+	endif
+	if ( button2 == 2 )
+		set choice2 to 66
+	endif
+endif
+
+;add 2-sided razors to gold arrows
+If ( choice2 == 64 )
+	If ( RazorTips >= 1 )
+		If ( arrowGold >= 10 )
+			MessageBox "You attach the arrow tips and create 10 2-sided razor tipped gold arrows" "Ok"
+			"player"->RemoveItem "WI_ArrowTips_Alloy" 1
+			"player"->RemoveItem "WI_Arrow_Gold" 10
+			"player"->AddItem "WI_Arrow_Gold_2sided" 10
+			"player"->AddItem "WI_ArrowTips_Steel" 1
+			PlaySound "Repair"
+			set choice2 to 0
+		else
+			MessageBox "You don't have enough gold arrows" "Ok"
+			set choice2 to 0
+		endif
+	else
+		MessageBox "You don't have any alloy razor tips" "Ok"
+		set choice2 to 0
+	endif
+endif
+
+;add 4-sided razors to gold arrows
+If ( choice2 == 66 )
+	If ( RazorTips >= 2 )
+		If ( arrowGold >= 10 )
+			MessageBox "You attach the arrows tips and create 10 4-sided razor tipped gold arrows" "Ok"
+			"player"->RemoveItem "WI_ArrowTips_Alloy" 2
+			"player"->RemoveItem "WI_Arrow_Gold" 10
+			"player"->AddItem "WI_Arrow_Gold_4sided" 10
+			"player"->AddItem "WI_ArrowTips_Steel" 1
+			PlaySound "Repair"
+			set choice2 to 0
+		else
+			MessageBox "You don't have enough gold arrows" "Ok"
+			set choice2 to 0
+		endif
+	else
+		MessageBox "You don't have enough alloy razor tips" "Ok"
+		set choice2 to 0
+	endif
+endif
+
+If ( choice2 == 70 )
+	MessageBox "What type of Alloy razor tips do you want to add to the ebony arrows?", "Exit", "2-sided Razor Tip", "4-sided Razor Tip"
+	set choice2 to 72
+endif
+
+If ( choice2 == 72 )
+	set button2 to GetButtonPressed
+	if ( button2 == 0 )
+		set choice2 to 0
+		StopScript, "WI_make_RazorArrows1"
+	endif
+	if ( button2 == 1 )
+		set choice2 to 74
+	endif
+	if ( button2 == 2 )
+		set choice2 to 76
+	endif
+endif
+
+;add 2-sided razors to ebony arrows
+If ( choice2 == 74 )
+	If ( RazorTips >= 1 )
+		If ( arrowEbony >= 10 )
+			MessageBox "You attach the arrow tips and create 10 2-sided razor tipped ebony arrows" "Ok"
+			"player"->RemoveItem "WI_ArrowTips_Alloy" 1
+			"player"->RemoveItem "ebony arrow" 10
+			"player"->AddItem "WI_Arrow_Ebony_2sided" 10
+			"player"->AddItem "WI_ArrowTips_Steel" 1
+			PlaySound "Repair"
+			set choice2 to 0
+		else
+			MessageBox "You don't have enough ebony arrows" "Ok"
+			set choice2 to 0
+		endif
+	else
+		MessageBox "You don't have any alloy razor tips" "Ok"
+		set choice2 to 0
+	endif
+endif
+
+;add 4-sided razors to ebony arrows
+If ( choice2 == 76 )
+	If ( RazorTips >= 2 )
+		If ( arrowEbony >= 10 )
+			MessageBox "You attach the arrows tips and create 10 4-sided razor tipped Ebony arrows" "Ok"
+			"player"->RemoveItem "WI_ArrowTips_Alloy" 2
+			"player"->RemoveItem "ebony arrow" 10
+			"player"->AddItem "WI_Arrow_Ebony_4sided" 10
+			"player"->AddItem "WI_ArrowTips_Steel" 1
+			PlaySound "Repair"
+			set choice2 to 0
+		else
+			MessageBox "You don't have enough ebony arrows" "Ok"
+			set choice2 to 0
+		endif
+	else
+		MessageBox "You don't have enough alloy razor tips" "Ok"
+		set choice2 to 0
+	endif
+endif
+
+
+End WI_make_RazorArrows1

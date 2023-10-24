@@ -1,0 +1,10 @@
+begin dhscr_furn_magicbox_old
+	short OnPCEquip
+
+			;Start on object equip
+	if ( OnPCEquip == 1  )
+		MessageBox, "The magic in this ring has mysteriously vanished, rendering the ring useless."
+		set OnPCEquip to 0
+	endif
+
+end

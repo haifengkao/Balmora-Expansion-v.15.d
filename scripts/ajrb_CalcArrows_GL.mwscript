@@ -1,0 +1,108 @@
+Begin ajrb_CalcArrows_GL
+
+short Calc
+short Pause
+short NewArrows
+short wastingFlame
+short wastingShard
+short wastingSpark
+short wastingViper
+short bonemold
+short chitin
+short corkbulb
+short cruelFlame
+short cruelFrost
+short cruelShard
+short cruelSpark
+short cruelViper
+short daedric
+short direFlame
+short direFrost
+short direShard
+short direSpark
+short direViper
+short ebony
+short flame
+short glass
+short greyHolding
+short greyNonsense
+short greyUnraveling
+short iron
+short shard
+short silver
+short spark
+short steel
+short viper
+float timer
+
+;If ( "player"->HasItemEquipped "arrow of wasting flame" == 1 )
+;	set ajrb_TotalArrows_GL to ( "player"->GetItemCount "arrow of wasting flame" )
+;elseif ( "player"->HasItemEquipped "arrow of wasting shard" == 1 )
+;	set ajrb_TotalArrows_GL to ( "player"->GetItemCount "arrow of wasting shard" )
+;endif
+	
+	
+If ( Pause == 1 )
+	set timer to ( timer + GetSecondsPassed )
+	If ( timer >= 1.5 )
+		set timer to 0
+		set Pause to 0				
+	else
+		return
+	endif
+endif
+
+
+If ( player->GetSoundPlaying, "bowPull" == 1 )
+	set Calc to 1
+elseif ( ajrb_QuiverInitialize_GL == 1 )
+	set Calc to 1
+	set ajrb_QuiverInitialize_GL to 0
+endif
+
+
+If ( Calc == 1 )
+	set wastingFlame to "player"->GetItemCount "arrow of wasting flame"
+	set wastingShard to "player"->GetItemCount "arrow of wasting shard"
+	set wastingSpark to "player"->GetItemCount "arrow of wasting spark"
+	set wastingViper to "player"->GetItemCount "arrow of wasting viper"
+	set bonemold to "player"->GetItemCount "bonemold arrow"
+	set chitin to "player"->GetItemCount "chitin arrow"
+	set corkbulb to "player"->GetItemCount "corkbulb arrow"
+	set cruelFlame to "player"->GetItemCount "cruel flamearrow"
+	set cruelFrost to "player"->GetItemCount "cruel frostarrow"
+	set cruelShard to "player"->GetItemCount "cruel Shardarrow"
+	set cruelSpark to "player"->GetItemCount "cruel Sparkarrow"
+	set cruelViper to "player"->GetItemCount "cruel Viperarrow"
+	set daedric to "player"->GetItemCount "daedric arrow"
+	set direFlame to "player"->GetItemCount "dire flamearrow"
+	set direFrost to "player"->GetItemCount "dire frostarrow"
+	set direShard to "player"->GetItemCount "dire Shardarrow"
+	set direSpark to "player"->GetItemCount "dire Sparkarrow"
+	set direViper to "player"->GetItemCount "dire Viperarrow"
+	set ebony to "player"->GetItemCount "ebony arrow"
+	set flame to "player"->GetItemCount "flame arrow"
+	set glass to "player"->GetItemCount "glass arrow"
+	set greyHolding to "player"->GetItemCount "grey shaft of holding"
+	set greyNonsense to "player"->GetItemCount "grey shaft of nonsense"
+	set greyUnraveling to "player"->GetItemCount "grey shaft of unraveling"
+	set iron to "player"->GetItemCount "iron arrow"
+	set shard to "player"->GetItemCount "shard arrow"
+	set silver to "player"->GetItemCount "silver arrow"
+	set spark to "player"->GetItemCount "spark arrow"
+	set steel to "player"->GetItemCount "steel arrow"
+	set viper to "player"->GetItemCount "viper arrow"
+	set ajrb_TotalArrows_GL to ( chitin + bonemold + wastingViper + wastingSpark + wastingShard + wastingFlame + corkbulb )
+	set ajrb_TotalArrows_GL to ( ajrb_TotalArrows_GL + cruelFlame + cruelFrost + cruelShard + cruelSpark + cruelViper + daedric )
+	set ajrb_TotalArrows_GL to ( ajrb_TotalArrows_GL + direFlame + direFrost + direShard + direSpark + direViper + ebony )
+	set ajrb_TotalArrows_GL to ( ajrb_TotalArrows_GL + flame + glass + greyHolding + greyNonsense + greyUnraveling + iron )
+	set ajrb_TotalArrows_GL to ( ajrb_TotalArrows_GL + shard + silver + spark + steel + viper )	
+	set Calc to 0			
+	set Pause to 1
+	StartScript "ajrb_CalcFletcherArrows_GL"
+
+;MessageBox "Calculated arrows: %.0f" ajrb_TotalArrows_GL
+	;StartScript "ajrb_QuiverSwitch_GL"
+endif
+	
+End

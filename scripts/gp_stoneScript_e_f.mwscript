@@ -1,0 +1,185 @@
+; Actual Mannequin code.
+; NOTE: If anyone can figure out how to check the TOTAL number of  inventory
+; items the NPC has, please tell me. Right now you can move the  Mannequin
+; while it has armor on, which is bad, because you end up losing it  when a new
+; mannequin is created. This could all be avoided if the scripting  language would
+; let you pass variables to functions..but no. If it were true, I would  just use Posistion
+; and all armor stays put.   But since we can't know exactly where you  are at all times,
+; we have to use variables, and since we can't, we're stuck. If any  Bethsoft guys are
+; reading, PLEASE fix/add this.
+;
+; Changed by Heph
+; Further changed by Stephen Kent
+;
+; Script changed to use tribunal functions for checking weapon/armor to prevent PC from
+; moving mannequin while weapons and/or armor are present on mannequin.  Also split into
+; two seperate scripts to support both male and female versions of the mannequin.  I do not
+; know how to change an NPC's gender from script.  These changes do not prevent PC from
+; picking up the mannequin while there are still misc items on it, those items will be lost.
+; This may or may not be the best/only way to get a mannequin to wield weapons, but I'd
+; wager for the moment it's probably the easiest.
+;
+;	I've also added more commenting so people can understand what I'm doing.
+;
+; Modified by Grumblepunk
+
+begin gp_stoneScript_e_f
+	short NoLore	;This should help remove some of the extraneous dialogue
+	short button
+	short questionState
+	short nEquipType
+	short nStillEquipped
+	short nMannequin
+	short companion
+	short nWeaponShown
+	short OnPCHitMe
+	float fWeaponTimer
+	float fDeleteTimer
+
+	;This is how we get the mannequin to draw the weapon (wield it)
+	if ( nWeaponShown != 1 )
+		SkipAnim	; If we aren't showing the weapon then we need to make sure the mannequin doesn't move
+	elseif ( nWeaponShown == 1 )
+		; Wait for 1 second which should be enough time for mannequin to pull out weapon.
+		Set fWeaponTimer to ( fWeaponTimer + GetSecondsPassed )
+		if ( fWeaponTimer >= 1 )
+			; Reset our variables as the SkipAnim should make sure that the mannequin continues holding the weapon
+			Set fWeaponTimer to 0
+			Set nWeaponShown to 0
+			; Stop combat with player so that player can interact with it again.
+			StopCombat
+		endif
+	endif
+
+	if ( menumode == 1 )
+		return
+	endif
+
+	if ( GetDisabled == 1 )
+		; if mannequin has been disabled then we need to wait some time then delete this reference
+		Set fDeleteTimer to ( fDeleteTimer + GetSecondsPassed )
+		if ( fDeleteTimer > 5 )
+			SetDelete 1
+		endif
+		return
+	endif
+
+	; To prevent mannequin from becoming permanently in combat with player
+	if ( OnPCHitMe == 1 )
+		Set OnPCHitMe to 0
+		StopCombat
+	endif
+
+	if ( nMannequin != 1 )
+		Set companion to 1
+		Set nMannequin to 1
+		Player->AddTopic "Show Weapon"
+		Player->AddTopic "Pick-Up"
+	endif
+
+	if ( questionState == 1 )
+		; This is the set-up for wielding a weapon.  NOTE: we get here through dialogue.
+		Set questionState to 0
+		Set nWeaponShown to 1
+		StartCombat Player	; Essential, we can't show the weapon if we don't start combat with
+									; someone and the player is convienent because they talked with the
+									; mannequin to tell it to show weapon.
+		return		; We can cut processing this script short right here because we don't need
+					; anything below here for wielding weapons.
+	endif
+
+	; We will set questionState to 10 in dialogue to allow picking it up.
+	if ( questionState == 10 )
+		; This section is split into two groups of nested ifs because of nested if limits of
+		; the scripting language.
+		Set nStillEquipped to 0
+		Set nEquipType to ( GetWeaponType )
+		if ( nEquipType == -1 )
+			Set nEquipType to ( GetArmorType 0 )
+			if ( nEquipType == -1 )
+				Set nEquipType to ( GetArmorType 1 )
+				if ( nEquipType == -1 )
+					Set nEquipType to ( GetArmorType 2 )
+					if ( nEquipType == -1 )
+						Set nEquipType to ( GetArmorType 3 )
+						if ( nEquipType == -1 )
+							Set nEquipType to ( GetArmorType 4 )
+							if ( nEquipType == -1 )
+								Set nEquipType to ( GetArmorType 5 )
+								if ( nEquipType != -1 )
+									Set nStillEquipped to 1
+								endif
+							else
+								Set nStillEquipped to 1
+							endif
+						else
+							Set nStillEquipped to 1
+						endif
+					else
+						Set nStillEquipped to 1
+					endif
+				else
+					Set nStillEquipped to 1
+				endif
+			else
+				Set nStillEquipped to 1
+			endif
+		else
+			Set nStillEquipped to 1
+		endif
+
+		if ( nStillEquipped != 1 )
+			Set nEquipType to ( GetArmorType 6 )
+			if ( nEquipType == -1 )
+				Set nEquipType to ( GetArmorType 7 )
+				if ( nEquipType == -1 )
+					Set nEquipType to ( GetArmorType 8 )
+					if ( nEquipType == -1 )
+						Set nEquipType to ( GetArmorType 9 )
+						if ( nEquipType == -1 )
+							Set nEquipType to ( GetArmorType 10 )
+							if ( nEquipType == -1 )
+								; Only show this question if the mannequin doesn't have weapons or armor equipped.
+								MessageBox "Did you remove all items from the  mannequin?", "Yes", "No"
+							else
+								Set nStillEquipped to 1
+							endif
+						else
+							Set nStillEquipped to 1
+						endif
+					else
+						Set nStillEquipped to 1
+					endif
+				else
+					Set nStillEquipped to 1
+				endif
+			else
+				Set nStillEquipped to 1
+			endif
+		endif
+
+		set questionState to 20
+	endif
+
+	if ( questionState == 20 )
+		if ( nStillEquipped != 1 )
+			set button to GetButtonPressed
+		else
+			; Mannequin still has weapons or armor equipped so activate it, instead of allowing pick-up.
+			MessageBox "You haven't removed your equipment."
+			set button to 1
+		endif
+
+		if ( button == 0 )
+			set questionState to 0
+			Disable
+			player->addItem, "_gp_stone_placeholder_e_f", 1
+			playSound "Item Misc Up"
+		elseif ( button == 1 )
+			set questionState to 0
+			Activate
+		endif
+	endif
+
+end
+

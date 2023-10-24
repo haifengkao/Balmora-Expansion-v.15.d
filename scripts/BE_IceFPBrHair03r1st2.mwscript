@@ -1,0 +1,56 @@
+begin BE_IceFPBrHair03r1st2
+
+; Vorwoda originally wrote this script for Daduke's Wizard Hats pluggin
+
+short Control 
+short button 
+
+if ( Control == 0 ) 
+	MessageBox "Select Race" "Breton" "DarkElf" "HighElf" "Imperial" "Nord" "Redguard" "WoodElf" "Yukon"
+	set Control to 1 
+endif 
+if ( Control == 1 ) 
+	set button to GetButtonPressed 
+	if ( button == -1 ) 
+		return 
+	elseif ( button == 0 ) 
+		player->AddItem "1Ice_BE_FPBrHair03r_B" 1 
+		player->Equip "1Ice_BE_FPBrHair03r_B" 1 
+		set Control to 2 
+	elseif ( button == 1 ) 
+		player->AddItem "1Ice_BE_FPBrHair03r_D" 1 
+		player->Equip "1Ice_BE_FPBrHair03r_D" 1 
+		set Control to 2 
+	elseif ( button == 2 ) 
+		player->AddItem "1Ice_BE_FPBrHair03r_H" 1 
+		player->Equip "1Ice_BE_FPBrHair03r_H" 1 
+		set Control to 2 
+	elseif ( button == 3 ) 
+		player->AddItem "1Ice_BE_FPBrHair03r_I" 1 
+		player->Equip "1Ice_BE_FPBrHair03r_I" 1 
+		set Control to 2 
+	elseif ( button == 4 ) 
+		player->AddItem "1Ice_BE_FPBrHair03r_N" 1 
+		player->Equip "1Ice_BE_FPBrHair03r_N" 1 
+		set Control to 2
+	elseif ( button == 5 ) 
+		player->AddItem "1Ice_BE_FPBrHair03r_R" 1 
+		player->Equip "1Ice_BE_FPBrHair03r_R" 1 
+		set Control to 2
+	elseif ( button == 6 ) 
+		player->AddItem "1Ice_BE_FPBrHair03r_W" 1 
+		player->Equip "1Ice_BE_FPBrHair03r_W" 1 
+		set Control to 2
+	elseif ( button == 7 ) 
+		player->AddItem "1Ice_BE_FPBrHair03r_C" 1 
+		player->Equip "1Ice_BE_FPBrHair03r_C" 1 
+		set Control to 2
+	endif 
+endif 
+if ( Control == 2 ) 
+	player->RemoveItem "1Ice_BE_FPBrHair03r_Script" 1 
+	set Control to 0 
+	StopScript, BE_IceFPBrHair03r1st2 
+endif 
+
+end

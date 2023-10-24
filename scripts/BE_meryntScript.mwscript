@@ -1,0 +1,30 @@
+begin BE_meryntScript
+
+short NoLore
+short MakeMoney
+short Gals
+
+if ( Gals == 0 )
+	if ( Random100 <= 70 )
+		"BE_betty_bronson"-> enable
+		"BE_wanda_williams"-> enable
+		"BE_lina_inverse"-> disable
+		"BE_naga_theserpent"-> disable
+		Set Gals to 1
+	elseif ( Random100 > 70 )
+		"BE_lina_inverse"-> enable
+		"BE_naga_theserpent"-> enable
+		"BE_betty_bronson"-> disable
+		"BE_wanda_williams"-> disable
+		Set Gals to 2
+	endif
+endif
+
+if ( CellChanged == 1 )
+	if ( "BE_lezring" == 9 )
+		set "BE_lezring" to 0
+		set Gals to 0
+	endif
+endif
+
+end

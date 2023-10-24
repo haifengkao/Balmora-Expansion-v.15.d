@@ -1,0 +1,62 @@
+begin BE_lovescript1
+short Returning
+short noLore
+short dancingGirl
+
+if (OnDeath)
+	set BE_Makelove to 5
+endif
+
+if ( dancingGirl != 1 )
+	Set dancingGirl to 1
+endif
+
+;if (BE_MakeLoveTo != 1)
+;	if (GetCurrentAIPackage==1)
+;	if (GetAIPackageDone)
+;		AIWander 0 5 0 20 20 20 20 0 0 0 80
+;		Playgroup Idle9
+;		playsound "shock hit"
+;		set Returning to 0
+;	endif
+;	endif
+;endif
+
+
+
+if (BE_makelove == 4)
+if (BE_makeloveto == 1)
+	if (Saydone)
+		set BE_makelove to 3
+		EnablePlayerControls
+		EnablePlayerLooking		
+		FadeTo 0 1
+		Messagebox "You feel tougher."
+		ModDisposition 50
+          player->ModEndurance 2
+;		player->ModPersonality 2
+;   		player->ModAcrobatics 2
+	endif
+endif
+endif
+
+
+if (BE_makelove == 1)
+if (BE_makeloveto == 1)
+	if (GetCurrentAIPackage==1)
+		if (GetAIPackageDone)
+			playsound "LeftS"
+;			AiTravel 2746, 4509,10731
+			set BE_makelove to 2
+		endif
+	endif
+endif
+endif
+
+if (BE_makelove == 3)
+if ( GetLOS player !=1)
+	positioncell 2905,5248,10758,270 "Balmora, Morgana's House of Earthly Delights"
+endif
+endif
+
+end

@@ -1,0 +1,41 @@
+Begin _ar_crn_wings
+
+
+short OnPCEquip
+short ItemEquipped
+short OnPCDrop
+
+if ( OnPCEquip == 1 )
+	
+   if ( MenuMode == 1 )
+		return
+	else
+		if ( ItemEquipped == 0 )
+   
+        
+
+               PlaySound "blackoutin"
+               Player-> AddSpell "_ar_crn_flight" 
+
+			set ItemEquipped to 1
+		endif
+	endif
+
+
+else
+	if ( ItemEquipped == 1 )
+		Player-> RemoveSpell "_ar_crn_flight" 
+
+        
+		set ItemEquipped to 0
+	endif
+endif
+else
+if ( OnPCDrop == 1 )
+disable
+player-> removespell "_ar_crn_flight"
+set OnPCDrop to 0
+endif
+endif
+
+end  

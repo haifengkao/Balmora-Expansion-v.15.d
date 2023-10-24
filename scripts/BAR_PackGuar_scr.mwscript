@@ -1,0 +1,42 @@
+begin BAR_PackGuar_scr
+
+short Companion
+
+float playerx
+float playery
+float playerz
+float warptimer
+
+set Companion to 1
+
+set playerx to ( Player->GetPos x )
+set playery to ( Player->GetPos y )
+set playerz to ( Player->GetPos z )
+
+;Warp to player - Improves following ability
+
+if ( GetCurrentAiPackage == 3 )
+	if ( GetWeaponDrawn == 1 )
+		elseif ( GetSpellReadied == 1 )
+		return
+			elseif ( GetDistance Player > 800 )
+			set warptimer to warptimer + GetSecondsPassed
+				if ( warptimer > 8 )
+				set warptimer to 0
+				SetPos x playerx
+				SetPos y playery
+				SetPos z playerz
+		endif
+	endif
+endif
+
+;Makes companion go into wait mode if player casts a levitation spell.
+;Keeps pack guar from warping to player and falling to its death.
+
+if ( Player->GetEffect, sEffectLevitate == 1 )
+	if ( GetEffect, sEffectLevitate == 0 )
+		AIWander 0 0 0 0
+	endif
+endif
+
+end

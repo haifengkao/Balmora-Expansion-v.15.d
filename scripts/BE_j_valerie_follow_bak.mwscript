@@ -1,0 +1,89 @@
+Begin BE_j_valerie_follow_bak
+
+short followDone
+short followNow
+short distanceCheck
+float timer
+
+if ( MenuMode == 1 )
+	Return
+endif
+
+if ( FollowDone == 1 )
+	Return
+endif
+
+if ( GetHealth <= 0 )
+	return
+endif
+
+if ( GetCurrentAiPackage == 3 )
+	;if follow is the current package, set followNow and continue
+	set followNow to 1
+	SetHello 0
+
+	if ( GetAIPackageDone == 1 )
+		;if the follow is done, set followDone to 1, reset followNow to 0
+		set followDone to 1
+		set followNow to 0
+
+		;Give NPC new package to avoid dumb-looking behavior
+		AiWander 256 0 0 40 20 20 0 0 0 0 0 0
+
+		;And journal entry gives feedback to the player...
+		;Journal, "A1_7HuleeyaInformant", 20
+
+		;And increase PC Reputation...
+		;Player->ModReputation 1
+
+		;And increase Huleeya's Dispositions
+		;ModDisposition 30
+
+		;force a greeting to make sure quest is over
+		ForceGreeting
+
+		;and say something
+		Say "Vo\W\F\Flw_WF003.mp3" "Thank you."
+
+		;and start doing idles, hellos, etc. again
+		SetHello 30
+
+	 endif
+
+	if ( GetPCCell "Jolard - Moniah Home" == 1 )
+		;do it all here also
+		set followDone to 1
+		set followNow to 0
+		AiWander 100 0 0 40 20 20 0 0 0 0 0 0
+		;Journal, "A1_7HuleeyaInformant", 20
+		;Player->ModReputation 1
+		;ModDisposition 30
+		ForceGreeting
+		Say "Vo\W\F\Flw_WF003.mp3" "Thank you."
+		SetHello 30
+	endif		
+
+	if ( timer < 3 )
+		set timer to ( timer + GetSecondsPassed )
+		return
+	endif
+
+	if ( GetDistance Player < NPCVoiceDistance )
+		if ( GetDistance Player < 500 )
+			set distanceCheck to 0
+		endif
+		set timer to 0
+		return
+	endif
+
+	if ( distanceCheck == 0 )
+		Say "Vo\W\F\Flw_WF001.mp3" "Where are you going?"
+		set distanceCheck to 1
+	endif
+
+else
+	;if follow is NOT the current package, make sure followNow is zero
+	set followNow to 0
+endif
+
+End BE_j_valerie_follow_bak

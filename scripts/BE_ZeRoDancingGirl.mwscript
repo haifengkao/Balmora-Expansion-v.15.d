@@ -1,0 +1,12 @@
+Begin BE_ZeRoDancingGirl
+
+short noLore
+
+short dancingGirl
+;if this is one it means "I am a dancing girl"
+
+if ( dancingGirl != 1 )
+	Set dancingGirl to 1
+endif
+
+end

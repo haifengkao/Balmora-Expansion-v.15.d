@@ -1,0 +1,42 @@
+Begin BE_bladeScript2
+
+short OnPCEquip
+short bladeOut
+short addOnce
+
+if ( Player->GetItemCount "BE_nerevarblade_01_flame2" == 0 )
+	return
+endif
+
+if ( OnPCEquip == 0 )
+	if ( player->GetWeaponDrawn == 0 )
+		set bladeOut to 0
+	endif
+elseif ( OnPCEquip == 1 )
+	if ( player->GetWeaponDrawn == 0 )
+		set bladeOut to 0
+	endif
+endif
+
+if ( OnPCEquip == 1 )
+	if ( player->GetWeaponDrawn == 1 )
+		set bladeOut to 1
+	endif
+endif
+
+if ( bladeOut == 0 )
+	if ( Player->GetItemCount "Blade Light" > 0 )
+		Player->RemoveItem "Blade Light" 1
+		set addOnce to 0
+	endif
+endif
+
+if ( bladeOut == 1 )
+	if ( addOnce == 0 )
+		Player->AddItem "Blade Light" 1
+		set addOnce to 1
+	endif
+endif
+
+
+End BE_bladeScript2

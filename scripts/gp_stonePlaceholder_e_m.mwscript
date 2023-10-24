@@ -1,0 +1,33 @@
+; The item thats added to our inventory when we want to move. When you  drop it,
+; a new mannequin is created at your feet, hence the necessary removal  of armor.
+; You will lose it all otherwise.
+;
+; Changed by Heph
+; Changed by Stephen Kent
+;
+; Script split into two scripts to handle the two different mannequin genders.  Added some
+; clean up code to prevent disabled references from being all over the place.
+;
+; Modified by Grumblepunk
+
+begin gp_stonePlaceholder_e_m
+	short OnPCDrop
+	float fDeleteTimer
+
+	if ( GetDisabled == 1 )
+		; if mannequin has been disabled then we need to wait some time then delete this reference
+		Set fDeleteTimer to ( fDeleteTimer + GetSecondsPassed )
+		if ( fDeleteTimer > 5 )
+			SetDelete 1
+		endif
+		return
+	endif
+
+	if ( OnPCDrop == 1 )
+		Disable
+		PlaceAtPC, "_gp_stone mannequin_e_m", 1, 0, 0
+		Set OnPCDrop to 0
+	endif
+end
+
+

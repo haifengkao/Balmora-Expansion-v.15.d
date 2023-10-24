@@ -1,0 +1,7 @@
+Begin BE_ZeRoDrunk1
+
+short nolore
+
+addspell"BE_Drunk Man Spell"
+
+end

@@ -1,0 +1,33 @@
+
+
+Begin _ar_crn_daul_claws
+
+short OnPCEquip
+short ItemEquipped
+
+
+
+if ( OnPCEquip == 1 )
+	
+   if ( MenuMode == 1 )
+		return
+	else
+		if ( ItemEquipped == 0 )
+			
+               Player-> AddItem "_ar_CRN_claws_02" 1
+               Player-> Equip "_ar_CRN_claws_02" 1 
+
+			set ItemEquipped to 1
+		endif
+	endif
+
+else
+	if ( ItemEquipped == 1 )
+		Player-> RemoveItem "_ar_CRN_claws_02" 1 
+          
+        
+		set ItemEquipped to 0
+	endif
+endif
+
+end 

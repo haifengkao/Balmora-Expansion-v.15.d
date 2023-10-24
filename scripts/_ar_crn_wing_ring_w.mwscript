@@ -1,0 +1,33 @@
+
+
+Begin _ar_crn_wing_ring_w
+
+short OnPCEquip
+short ItemEquipped
+
+
+
+if ( OnPCEquip == 1 )
+	
+   if ( MenuMode == 1 )
+		return
+	else
+		if ( ItemEquipped == 0 )
+			
+               Player-> AddItem "_ar_CRN_ring_wings_demon_white" 1
+               Player-> Equip "_ar_CRN_ring_wings_demon_white" 1 
+
+			set ItemEquipped to 1
+		endif
+	endif
+
+else
+	if ( ItemEquipped == 1 )
+		Player-> RemoveItem "_ar_CRN_ring_wings_demon_white" 1 
+          Player-> Removespell "_ar_crn_flight"
+        
+		set ItemEquipped to 0
+	endif
+endif
+
+end 

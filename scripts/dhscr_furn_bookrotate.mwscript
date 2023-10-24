@@ -1,0 +1,88 @@
+begin dhscr_furn_bookrotate
+	; Displays a message to pickup, rotate or move up/down the object.  Rotates/Moves the object as
+	; required until the user activates it again, or the set maximum amount of movement is exceeded
+	; (to try and prevent the object from 'running away').  Used for simple objects like cushions which
+	; the player might want to rearrange in different orientations.
+
+  short	messageOn;
+  short	button;
+  short	OnPCDrop;
+  short 	IsDropping;
+
+	if ( OnPCDrop == 1 )
+		set OnPCDrop to 0;
+		set IsDropping to 1;
+		return;
+	endif
+		
+		; Ignore if currently in menu mode
+	if ( MenuMode == 1)
+		return
+	endif
+
+	if ( IsDropping = 1 )
+		SetAngle x, 90.0;
+		SetAngle z, -90.0;
+		set IsDropping to 0;
+	endif
+
+		; Check for object activation
+	if ( OnActivate == 1 )
+	
+			; Pickup the object if the script has been disabled
+		if ( g_dhfurn_EnableMove == 0 )
+			Activate
+			return;
+		endif
+	
+		Set messageOn to 2
+	endif
+	
+		; Check for doing nothing to exit script early, hopefully speeding it
+	if ( messageOn == 0 )
+		return
+	endif
+	
+		; Initial object activation 
+	if ( messageOn == 2 )
+
+			; Display message box with choices for the player
+		MessageBox "What do you want to do with this object?"  " Pick It Up " " Rotate Flat " "Rotate Standing" "    Nothing      "
+		Set messageOn to 1
+	endif
+
+		; Process the player's choice from the message box
+	if ( messageOn == 1 )
+		set button to GetButtonPressed
+
+			; Pickup object
+		if ( button == 0 )
+			Activate;
+			Set messageOn to 0;
+			return;
+		endif
+	
+			; Rotate object to flat
+		if ( button == 1 )
+			SetAngle x, 0.0;
+			SetAngle z, -90.0;
+			Set messageOn to 0;
+			return;
+		endif	
+
+			; Rotate object to standing
+		if ( button == 2 )
+			SetAngle x, 90.0;
+			SetAngle z, -90.0;
+			Set messageOn to 0;
+			return;
+		endif
+
+			; Do nothing
+		if ( button == 3 )
+			Set messageOn to 0
+			return
+		endif
+	endif
+	
+end

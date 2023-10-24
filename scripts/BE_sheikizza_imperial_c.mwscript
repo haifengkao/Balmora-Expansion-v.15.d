@@ -1,0 +1,52 @@
+begin BE_sheikizza_imperial_c 
+
+short state 
+
+if( MenuMode == 1 ) 
+return 
+endif 
+
+If (state == 3) 
+return 
+endif 
+
+if (state == 0) 
+If( OnActivate == 1 ) 
+activate 
+if( "Player"->GetRace "Imperial" == 1 ) 
+set state to 3 
+return 
+elseif( "Player"->GetRace "Breton" == 1 ) 
+"Player"->AddItem "BE_daedric_cuirass_F_03BRET" 1 
+elseif( "Player"->GetRace "Dark Elf" == 1 ) 
+"Player"->AddItem "BE_daedric_cuirass_F_03DELF" 1 
+elseif( "Player"->GetRace "High Elf" == 1 ) 
+"Player"->AddItem "BE_daedric_cuirass_F_03HELF" 1 
+elseif( "Player"->GetRace "Argonian" == 1 ) 
+"Player"->AddItem "BE_daedric_cuirass_F_03ARGO" 1 
+elseif( "Player"->GetRace "Khajiit" == 1 ) 
+"Player"->AddItem "BE_daedric_cuirass_F_03KHAJ" 1 
+elseif( "Player"->GetRace "Nord" == 1 ) 
+"Player"->AddItem "BE_daedric_cuirass_F_03NORD" 1 
+elseif( "Player"->GetRace "Orc" == 1 ) 
+"Player"->AddItem "BE_daedric_cuirass_F_03ORC" 1 
+elseif( "Player"->GetRace "Redguard" == 1 ) 
+"Player"->AddItem "BE_daedric_cuirass_F_03REDG" 1 
+elseif( "Player"->GetRace "Wood Elf" == 1 ) 
+"Player"->AddItem "BE_daedric_cuirass_F_03WELF" 1 
+endif 
+set state to 2 
+endif 
+endif 
+
+if (state == 2) 
+if( "Player"->GetRace "Imperial" != 1 ) 
+"Player"->RemoveItem "BE_daedric_cuirass_F_03IMP" 1 
+set state to 3 
+else 
+set state to 3 
+return 
+endif 
+endif 
+
+end 

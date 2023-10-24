@@ -1,0 +1,55 @@
+begin dhscr_PlantCounter
+; Used to count the hours for computing the elapsed time for the dh_ harvestable plants.
+; Is attached to a reference which is persistant which means it should be run for every 
+; frame. Doing it this way removes a good amount of complexity from each plant script
+; and prevents us from having to make the persistant, greatly increasing the system resources
+; from all those plant scripts running constantly.
+	float	PrevHour
+	float   DiffTime
+	short	PrevDay
+	short  PrevMonth
+	short  PrevYear
+	short	DoOnce
+
+			; Perform initialization once
+	if ( DoOnce == 0 )
+		set PrevHour to GameHour
+		set PrevDay to Day		
+		set PrevMonth to Month
+		set PrevYear to Year
+		Set DoOnce to 1
+	endif
+
+			; Do not compute time if in menu mode
+	if ( MenuMode == 1 )
+		return
+	endif
+
+			; Adjust the time according to the number of hours difference
+	set DiffTime to ( GameHour - PrevHour )
+	set PrevHour to GameHour
+	
+			; Check for changes in the day
+	if ( PrevDay  != Day )
+		set DiffTime to ( DiffTime + 24.0 * ( Day - PrevDay ) )
+		set PrevDay to Day
+	endif
+
+			; Check for changes in the month ( uses 30 days in a month )
+	if ( PrevMonth  != Month )
+		set DiffTime to ( DiffTime + 24.0 * 30.0 * ( Month - PrevMonth ) )
+		set PrevMonth to Month
+	endif
+
+			; Check for changes in the year ( uses 12 months in a year )
+	if ( PrevYear  != Year )
+		set DiffTime to ( DiffTime + 24.0 * 30.0 * 12.0 * ( Year - PrevYear ) )
+		set PrevYear to Year
+	endif
+
+			; Adjust the new counter only if the passed time is positive
+	if ( DiffTime > 0 ) 
+		set g_dh_PlantCounter to ( g_dh_PlantCounter + DiffTime )
+	endif
+
+end

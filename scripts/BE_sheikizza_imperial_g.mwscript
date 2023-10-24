@@ -1,0 +1,52 @@
+begin BE_sheikizza_imperial_g 
+
+short state 
+
+if( MenuMode == 1 ) 
+return 
+endif 
+
+If (state == 3) 
+return 
+endif 
+
+if (state == 0) 
+If( OnActivate == 1 ) 
+activate 
+if( "Player"->GetRace "Imperial" == 1 ) 
+set state to 3 
+return 
+elseif( "Player"->GetRace "Breton" == 1 ) 
+"Player"->AddItem "BE_daedric_greaves1BRE" 1 
+elseif( "Player"->GetRace "Dark Elf" == 1 ) 
+"Player"->AddItem "BE_daedric_greaves1DUN" 1 
+elseif( "Player"->GetRace "High Elf" == 1 ) 
+"Player"->AddItem "BE_daedric_greaves1ALT" 1 
+elseif( "Player"->GetRace "Argonian" == 1 ) 
+"Player"->AddItem "BE_daedric_greaves1ARG" 1 
+elseif( "Player"->GetRace "Khajiit" == 1 ) 
+"Player"->AddItem "BE_daedric_greaves1KHA" 1 
+elseif( "Player"->GetRace "Nord" == 1 ) 
+"Player"->AddItem "BE_daedric_greaves1NOR" 1 
+elseif( "Player"->GetRace "Orc" == 1 ) 
+"Player"->AddItem "BE_daedric_greaves1ORC" 1 
+elseif( "Player"->GetRace "Redguard" == 1 ) 
+"Player"->AddItem "BE_daedric_greaves1RED" 1 
+elseif( "Player"->GetRace "Wood Elf" == 1 ) 
+"Player"->AddItem "BE_daedric_greaves1BOS" 1 
+endif 
+set state to 2 
+endif 
+endif 
+
+if (state == 2) 
+if( "Player"->GetRace "Imperial" != 1 ) 
+"Player"->RemoveItem "BE_daedric_greaves1IMP" 1 
+set state to 3 
+else 
+set state to 3 
+return 
+endif 
+endif 
+
+end 

@@ -1,0 +1,422 @@
+Begin WI_FLetchingKit_MAIN
+
+short OnPCEquip
+short choice
+short button
+short numToMake
+short num10sToMake
+
+short boneshafts
+short ironshafts
+short steelshafts
+short dwemershafts
+short silvershafts
+short goldshafts
+short steelAmt
+short stoneAmt
+short alloyAmt
+short featherAmt
+
+If ( MenuMode == 0 )
+	return
+endif
+
+
+If ( OnPCEquip == 1 )
+	MessageBox "You prepare the fletching kit"
+	set steelAmt to "player"->GetItemCount "WI_Bar_Steel"
+	set stoneAmt to "player"->GetItemCount "WI_Rock_Small"
+	set alloyAmt to "player"->GetItemCount "WI_Bar_Alloy"
+	set choice to 1
+	set OnPCEquip to 0	
+endif
+
+If ( choice == 1 )
+	MessageBox "What do you want to do with the fletching kit?", "Exit", "Make Arrows/Bolts", "Apply Poisons", "Make Arrowheads", "Attach Alloy Razor Tips", "Make Alchemy Tips", "Attach Alchemy Tips", "Make Feathers"
+	set choice to 3
+endif
+
+If ( choice == 3 )
+	set button to GetButtonPressed
+	if ( button == 0 )
+		set choice to 0
+	endif
+	if ( button == 1 )
+		set choice to 10
+	endif
+	if ( button == 2 )
+		set choice to 50
+	endif
+	if ( button == 3 )
+		set choice to 100
+	endif
+	if ( button == 4 )
+		set choice to 120
+	endif
+	if ( button == 5 )
+		set choice to 200
+	endif
+	if ( button == 6 )
+		set choice to 220
+	endif
+	if ( button == 7 )
+		set choice to 300
+	endif
+endif
+
+;select what to make arrow/bolts
+If ( choice == 10 )
+	MessageBox "Which do you want to make?", "Exit", "Arrows", "Bolts"
+	set choice to 12
+endif
+
+If ( choice == 12 )
+	set button to GetButtonPressed
+	if ( button == 0 )
+		set choice to 0
+	endif
+	if ( button == 1 )
+		set choice to 20
+	endif
+	if ( button == 2 )
+		set choice to 30
+	endif
+endif
+
+;make arrows
+If ( choice == 20 )
+	set Make_Arrows to 1
+	StartScript, "WI_make_Arrows1"
+	set choice to 0
+endif
+
+;make bolts
+If ( choice == 30 )
+	set Make_Bolts to 1
+	StartScript, "WI_make_Bolts1"
+	set choice to 0
+endif
+
+
+
+;select what to apply poison to - arrow/bolts
+If ( choice == 50 )
+	MessageBox "Which do you want to apply poisons too?", "Exit", "Arrows", "Bolts"
+	set choice to 52
+endif
+
+If ( choice == 52 )
+	set button to GetButtonPressed
+	if ( button == 0 )
+		set choice to 0
+	endif
+	if ( button == 1 )
+		set choice to 54
+	endif
+	if ( button == 2 )
+		set choice to 56
+	endif
+endif
+
+;apply poisons to arrows
+If ( choice == 54 )
+	set Make_PArrows to 1
+	StartScript, "WI_make_PArrows1"
+	set choice to 0
+endif
+
+;apply poisons to bolts
+If ( choice == 56 )
+	set Make_PBolts to 1
+	StartScript, "WI_make_PBolts1"
+	set choice to 0
+endif
+
+
+
+;select what type of arrowheads to make
+If ( choice == 100 )
+	MessageBox "What types of arrowheads to you want to make?", "Exit", "Stone", "Steel", "Alloy razor tips"
+	set choice to 102
+endif
+
+If ( choice == 102 )
+	set button to GetButtonPressed
+	
+	if ( button == 0 )
+		set choice to 0
+	endif
+	
+	if ( button > 0 )
+		MessageBox "How many arrowheads would you like to make?", "Exit", "10", "20", "30", "40", "50", "100", "As many batches of 10 as possible"
+		set choice to 110
+	endif
+endif
+
+If ( choice == 110 )
+	set num10sToMake to GetButtonPressed
+
+	If ( num10sToMake == 0 )
+		set choice to 0
+	endif
+	
+	if ( num10sToMake > 0 )
+	
+		if ( num10sToMake == 6 )
+			; 100 to be made.
+			set num10sToMake to 10
+		endif
+		if ( num10sToMake == 7 )
+			; Calculate the max number that can be made.
+			if ( button == 1 )
+				set num10sToMake to stoneAmt
+			elseif ( button == 2 )
+				set num10sToMake to steelAmt
+			elseif ( button == 3 )
+				set num10sToMake to alloyAmt
+			endif
+			if ( num10sToMake == 0 )
+				set num10sToMake to 1
+			endif
+		endif
+		
+		set numToMake to num10sToMake * 10
+;		MessageBox "shafts= %.0f   heads= %.0f  fletching= %.0f" shafts heads fletchingAmt
+;		MessageBox "num10sToMake= %.0f   num to make= %.0f" num10sToMake numToMake
+		
+		if ( button == 1 )
+			set choice to 105
+		endif
+		if ( button == 2 )
+			set choice to 107
+		endif
+		if ( button == 3 )
+			set choice to 109
+		endif
+	endif
+endif
+
+;make stone arrowheads from rock
+If ( choice == 105 )
+	If ( stoneAmt >= num10sToMake )
+		MessageBox "You use the chisel and the small hammer to break up the rock and form it into %.0f pieces of the right shape.  Then you use the sharpening stone on them until the edges are sharp" numToMake "Ok"
+		while ( num10sToMake > 0 )
+			"player"->RemoveItem "WI_Rock_Small" 1
+			"player"->Additem "WI_ArrowTips_Stone" 1
+			PlaySound "Repair"
+			set num10sToMake to num10sToMake - 1
+		endwhile
+		set choice to 0
+	else
+		MessageBox "You don't have enough Rocks to make the stone arrowheads with" "Ok"
+		set choice to 0
+		set OnPCEquip to 0
+	endif
+endif
+
+;make steel arrowheads from steel bars
+If ( choice == 107 )
+	If ( steelAmt >= num10sToMake )
+		MessageBox "You use the chisel and the small hammer to break up the steel bar and form it into %.0f pieces of the right shape.  Then you use the sharpening stone on them until the edges are sharp" numToMake "Ok"
+		while ( num10sToMake > 0 )
+			"player"->RemoveItem "WI_Bar_Steel" 1
+			"player"->AddItem "WI_ArrowTips_Steel" 1
+			PlaySound "Repair"
+			set num10sToMake to num10sToMake - 1
+		endwhile
+		set choice to 0
+	else
+		MessageBox "You don't have enough Steel bars to make the arrowheads out of" "Ok"
+		set choice to 0
+		set OnPCEquip to 0
+	endif
+endif
+
+;make alloy razor tips from alloy bars
+If ( choice == 109 )
+	If ( alloyAmt >= 1 )
+		MessageBox "You use the chisel and the small hammer to break up the alloy bar and form it into %.0f pieces of the right shape.  Then you use the sharpening stone on them until the edges are razor sharp" numToMake "Ok"
+		while ( num10sToMake > 0 )
+			"player"->RemoveItem "WI_Bar_Alloy" 1
+			"player"->AddItem "WI_ArrowTips_Alloy" 1
+			PlaySound "Repair"
+			set num10sToMake to num10sToMake - 1
+		endwhile
+		set choice to 0
+	else
+		MessageBox "You don't have enough Alloy bars to make the razor tips out of" "Ok"
+		set choice to 0
+		set OnPCEquip to 0
+	endif
+endif
+
+;razor tips
+If ( choice == 120 )
+	MessageBox "Which do you want to attach alloy razor tips to?", "Exit", "Arrows", "Bolts"
+	set choice to 122
+endif
+
+If ( choice == 122 )
+	set button to GetButtonPressed
+	if ( button == 0 )
+		set choice to 0
+	endif
+	if ( button == 1 )
+		set choice to 130
+	endif
+	if ( button == 2 )
+		set choice to 140
+	endif
+endif
+
+;attach razor tips to arrows
+If ( choice == 130 )
+	set Make_RazorArrows to 1
+	StartScript, "WI_make_RazorArrows1"
+	set choice to 0
+endif
+
+;attach razor tips to bolts
+If ( choice == 140 )
+	set Make_RazorBolts to 1
+	StartScript, "WI_make_RazorBolts1"
+	set choice to 0
+endif
+
+;Make Alchemy Tips
+If ( choice == 200 )
+	set Make_AlchemyTips to 1
+	StartScript, "farrp_make_AlchemyTips1"
+	set choice to 0
+endif
+
+;Attach Alchemy Tips to arrows/bolts
+If ( choice == 220 )
+	MessageBox "Which do you want to attach alchemy tips to?", "Exit", "Arrows", "Bolts"
+	set choice to 222
+endif
+
+If ( choice == 222 )
+	set button to GetButtonPressed
+	if ( button == 0 )
+		set choice to 0
+	endif
+	if ( button == 1 )
+		set choice to 230
+	endif
+	if ( button == 2 )
+		set choice to 240
+	endif
+endif
+
+;attach alchemy tips to arrows
+If ( choice == 230 )
+	set Make_AlchArrows to 1
+	StartScript, "farrp_make_AlchArrows1"
+	set choice to 0
+endif
+
+;attach alchemy tips to bolts
+If ( choice == 240 )
+	set Make_AlchBolts to 1
+	StartScript, "farrp_make_AlchBolts1"
+	set choice to 0
+endif
+
+;Make fletching feathers from racer plumes
+If ( choice == 300 )
+	set featherAmt to "player"->GetItemCount "ingred_racer_plumes_01"
+	set choice to 301
+endif
+
+If ( choice == 301 )
+	MessageBox "How many boxes of fletching feathers would you like to make (each box has enough feathers to make 10 arrows/bolts)?" "None", "1", "2", "5", "10", "20"
+	set choice to 305
+endif
+
+If ( choice == 305 )
+	set button to GetButtonPressed
+	if ( button == 0 )
+		set choice to 0
+	endif
+	if ( button == 1 )
+		set choice to 310
+	endif
+	if ( button == 2 )
+		set choice to 320
+	endif
+	if ( button == 3 )
+		set choice to 330
+	endif
+	if ( button == 4 )
+		set choice to 340
+	endif
+	if ( button == 5 )
+		set choice to 350
+	endif
+endif
+
+If ( choice == 310 )
+	If ( featherAmt >= 2 )
+		MessageBox "You use the tongs and a small knife to break up the racer plumes and form it into 1 box of feathers." "Ok"
+		"player"->RemoveItem "ingred_racer_plumes_01" 2
+		"player"->AddItem "WI_Fletching" 1
+		PlaySound "Repair"
+		set choice to 0
+	else
+		MessageBox "You don't have enough Racer Plumes to make a box of Fletching Feathers" "Ok"
+		set choice to 0
+		set OnPCEquip to 0
+	endif
+elseif ( choice == 320 )
+	If ( featherAmt >= 4 )
+		MessageBox "You use the tongs and a small knife to break up the racer plumes and form it into 2 boxes of feathers." "Ok"
+		"player"->RemoveItem "ingred_racer_plumes_01" 4
+		"player"->AddItem "WI_Fletching" 2
+		PlaySound "Repair"
+		set choice to 0
+	else
+		MessageBox "You don't have enough Racer Plumes to make 2 boxes of Fletching Feathers" "Ok"
+		set choice to 0
+		set OnPCEquip to 0
+	endif
+elseif ( choice == 330 )
+	If ( featherAmt >= 10 )
+		MessageBox "You use the tongs and a small knife to break up the racer plumes and form it into 5 boxes of feathers." "Ok"
+		"player"->RemoveItem "ingred_racer_plumes_01" 10
+		"player"->AddItem "WI_Fletching" 5
+		PlaySound "Repair"
+		set choice to 0
+	else
+		MessageBox "You don't have enough Racer Plumes to make 5 boxes of Fletching Feathers" "Ok"
+		set choice to 0
+		set OnPCEquip to 0
+	endif
+elseif ( choice == 340 )
+	If ( featherAmt >= 20 )
+		MessageBox "You use the tongs and a small knife to break up the racer plumes and form it into 10 boxes of feathers." "Ok"
+		"player"->RemoveItem "ingred_racer_plumes_01" 20
+		"player"->AddItem "WI_Fletching" 10
+		PlaySound "Repair"
+		set choice to 0
+	else
+		MessageBox "You don't have enough Racer Plumes to make 10 boxes of Fletching Feathers" "Ok"
+		set choice to 0
+		set OnPCEquip to 0
+	endif
+elseif ( choice == 350 )
+	If ( featherAmt >= 40 )
+		MessageBox "You use the tongs and a small knife to break up the racer plumes and form it into 20 boxes of feathers." "Ok"
+		"player"->RemoveItem "ingred_racer_plumes_01" 40
+		"player"->AddItem "WI_Fletching" 20
+		PlaySound "Repair"
+		set choice to 0
+	else
+		MessageBox "You don't have enough Racer Plumes to make 20 boxes of Fletching Feathers" "Ok"
+		set choice to 0
+		set OnPCEquip to 0
+	endif
+endif
+
+
+End WI_FletchingKit_MAIN

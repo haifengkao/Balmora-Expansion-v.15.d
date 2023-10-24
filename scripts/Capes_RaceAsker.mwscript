@@ -1,0 +1,60 @@
+Begin Capes_RaceAsker
+
+short button
+short QuestionState
+short OnPCAdd
+
+
+if ( menumode == 1 )
+	return
+endif
+
+;if ( OnActivate == 0 )
+;	if ( QuestionState == 0 )
+;		Return
+;	endif
+;endif
+
+if ( onactivate == 1 )
+	MessageBox "Your Race?", "Breton", "Dark Elf", "High Elf", "Imperial", "Nord", "Redguard", "Wood Elf", "Orc"
+	set QuestionState to 9
+endif
+
+if ( QuestionState == 9 )
+	Set button to GetButtonPressed
+	if ( button == 0 )
+		"player"-> additem "FP_cape_bk_Br" 1
+		disable
+		set QuestionState to 0
+	elseif ( button == 1 )
+		"player"-> additem "FP_cape_bk_DE" 1
+		disable
+		set QuestionState to 0
+	elseif ( button == 2 )
+		"player"-> additem "FP_cape_bk_HE" 1
+		disable
+		set QuestionState to 0
+	elseif ( button == 3 )
+		"player"-> additem "FP_cape_bk_Im" 1
+		disable
+		set QuestionState to 0
+	elseif ( button == 4 )
+		"player"-> additem "FP_cape_bk_No" 1
+		disable
+		set QuestionState to 0
+	elseif ( button == 5 )
+		"player"-> additem "FP_cape_bk_RG" 1
+		disable
+		set QuestionState to 0
+	elseif ( button == 6 )
+		"player"-> additem "FP_cape_bk_WE" 1
+		disable
+		set QuestionState to 0
+	elseif ( button == 7 )
+		"player"-> additem "FP_cape_bk_Or" 1
+		disable
+		set QuestionState to 0
+	endif
+endif
+
+end

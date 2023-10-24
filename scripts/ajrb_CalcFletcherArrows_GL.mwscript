@@ -1,0 +1,76 @@
+Begin ajrb_CalcFletcherArrows_GL
+
+short bone2side
+short bone4side
+short boneblk
+short bonebrn
+short bonescorp
+short bonebleed
+short boneSbleed
+short Dwemer
+short Dwem2side
+short Dwem4side
+short Dwemblk
+short Dwembrn
+short Dwemscorp
+short Dwembleed
+short DwemSbleed
+short Eb2side
+short Eb4side
+short Ebblk
+short Ebbrn
+short Ebscorp
+short Ebbleed
+short EbSbleed
+short Gold
+short Gold2side
+short Gold4side
+short Goldblk
+short Goldbrn
+short Goldscorp
+short Goldbleed
+short GoldSbleed
+
+
+set bone2side to "player"->GetItemCount "WI_Arrow_Bone_2sided"
+set bone4side to "player"->GetItemCount "WI_Arrow_Bone_4sided"
+set boneblk to "player"->GetItemCount "WI_Arrow_Bone_BlackSpider"
+set bonebrn to "player"->GetItemCount "WI_Arrow_Bone_BrownSpider"
+set bonescorp to "player"->GetItemCount "WI_Arrow_Bone_Scorpion"
+set bonebleed to "player"->GetItemCount "WI_Arrow_Bone_Bleeding"
+set boneSbleed to "player"->GetItemCount "WI_Arrow_Bone_SevereBleeding"
+set Dwemer to "player"->GetItemCount "WI_Arrow_Dwemer"
+set Dwem2side to "player"->GetItemCount "WI_Arrow_Dwemer_2sided"
+set Dwem4side to "player"->GetItemCount "WI_Arrow_Dwemer_4sided"
+set Dwemblk to "player"->GetItemCount "WI_Arrow_Dwemer_BlackSpider"
+set Dwembrn to "player"->GetItemCount "WI_Arrow_Dwemer_BrownSpider"
+set Dwemscorp to "player"->GetItemCount "WI_Arrow_Dwemer_Scorpion"
+set Dwembleed to "player"->GetItemCount "WI_Arrow_Dwemer_Bleeding"
+set DwemSbleed to "player"->GetItemCount "WI_Arrow_Dwemer_SevereBleeding"
+set Eb2side to "player"->GetItemCount "WI_Arrow_Ebony_2sided"
+set Eb4side to "player"->GetItemCount "WI_Arrow_Ebony_4sided"
+set Ebblk to "player"->GetItemCount "WI_Arrow_Ebony_BlackSpider"
+set Ebbrn to "player"->GetItemCount "WI_Arrow_Ebony_BrownSpider"
+set Ebscorp to "player"->GetItemCount "WI_Arrow_Ebony_Scorpion"
+set Ebbleed to "player"->GetItemCount "WI_Arrow_Ebony_Bleeding"
+set EbSbleed to "player"->GetItemCount "WI_Arrow_Ebony_SevereBleeding"
+set Gold to "player"->GetItemCount "WI_Arrow_Gold"
+set Gold2side to "player"->GetItemCount "WI_Arrow_Gold_2sided"
+set Gold4side to "player"->GetItemCount "WI_Arrow_Gold_4sided"
+set Goldblk to "player"->GetItemCount "WI_Arrow_Gold_BlackSpider"
+set Goldbrn to "player"->GetItemCount "WI_Arrow_Gold_BrownSpider"
+set Goldscorp to "player"->GetItemCount "WI_Arrow_Gold_Scorpion"
+set Goldbleed to "player"->GetItemCount "WI_Arrow_Gold_Bleeding"
+set GoldSbleed to "player"->GetItemCount "WI_Arrow_Gold_SevereBleeding"
+
+set ajrb_TotalArrows_GL to ( ajrb_TotalArrows_GL + bone2side + bone4side + boneblk + bonebrn + bonescorp + bonebleed )
+set ajrb_TotalArrows_GL to ( ajrb_TotalArrows_GL + boneSbleed + Dwem2side + Dwem4side + Dwemblk + Dwembrn + Dwemscorp )	
+set ajrb_TotalArrows_GL to ( ajrb_TotalArrows_GL + Dwembleed + DwemSbleed + Eb2side + Eb4side + Ebblk + Ebbrn )
+set ajrb_TotalArrows_GL to ( ajrb_TotalArrows_GL + Ebscorp + Ebbleed + EbSbleed + Gold2side + Gold4side + Goldblk )
+set ajrb_TotalArrows_GL to ( ajrb_TotalArrows_GL + Goldbrn + Goldscorp + Goldbleed + GoldSbleed + Gold + Dwemer )
+
+
+StartScript "ajrb_CalcFletcherArrows2_GL"
+StopScript "ajrb_CalcFletcherArrows_GL"
+
+End

@@ -1,0 +1,10 @@
+begin BE_script_beddrollplace
+	short OnPCDrop
+
+	if ( OnPCDrop == 1 )
+		Disable
+;		PlaceAtPC, "BE_Bedroll", 1, 64, 0
+		PlaceAtPC, "BE_Bedroll", 1, 0, 0
+		Set OnPCDrop to 0
+	endif
+end BE_script_bedrollplace

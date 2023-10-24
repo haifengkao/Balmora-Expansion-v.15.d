@@ -1,0 +1,25 @@
+Begin GBG_Remove_Sittingpants_03
+
+short OnPCHitMe
+short doonce
+
+if ( OnPCHitMe == 0)
+ if ( GetDistance, Player < 200 ) 
+  Face -543, -405
+ endif
+endif
+
+
+if ( OnPCHitMe )
+ if ( doonce == 0 )
+ RemoveItem "1_GBG_Sittinglegs_01" 1
+ AddItem "common_pants_03_c" 1
+ Position -78, -374, 9, 294
+ StartCombat, Player
+ set doonce to 1
+ endif
+endif
+
+
+end
+

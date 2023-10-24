@@ -1,0 +1,19 @@
+begin BE_RopeScript
+
+if ( OnActivate == 1 )
+	if (  "BE_lezring" == 1 )
+		PlaySound3D "bell6"
+		set BE_lezring to 3
+		DisablePlayerFighting
+		DisablePlayerMagic
+		disablevanitymode
+	elseif (  "BE_lezring" == 2 )
+		PlaySound3D "bell6"
+		set BE_lezring to 4
+		DisablePlayerFighting
+		DisablePlayerMagic
+		disablevanitymode
+	endif
+endif
+
+end

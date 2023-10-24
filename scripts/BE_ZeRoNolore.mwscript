@@ -1,0 +1,15 @@
+begin BE_ZeRoNolore
+
+Short NoLore
+
+If ( Pcvampire = 1) 
+	AddSpell, "Vampire Blood Aundae"	
+	AddSpell, "Vampire Attributes"
+	AddSpell, "Vampire Skills"
+	AddSpell, "Vampire Immunities"
+	AddSpell, "Vampire Sun Damage"
+	AddSpell, "Vampire Touch"
+	AddSpell, "Vampire Aundae Specials"
+endif
+
+end 
