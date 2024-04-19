@@ -5,8 +5,7 @@ if ( MenuMode == 0)
 	if ( OnActivate == 1 )
 
 		if ( BE_Makelove == 2 )
-
-			if ( (Player->GetItemCount "BE_condom") == 0)
+			if ((Player->GetItemCount "BE_condom") == 0)
 				Messagebox "You can't make love unprotected"
 				return
 			endif
